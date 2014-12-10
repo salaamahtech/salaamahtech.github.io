@@ -131,6 +131,12 @@ a:focus {
     }
 }
 
+.gray {
+    width: 100%;
+    height: auto;
+    background-color: gray;
+}
+
 .intro {
     display: table;
     width: 100%;
