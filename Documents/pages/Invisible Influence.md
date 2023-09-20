@@ -1,0 +1,5 @@
+- #Books, #[[Psychology Concepts]]
+- > Author: Jonah Berger
+- Seeing people more frequently made people like them more
+- Words activate different ideas in people’s minds, which then spilled over to affect their perceptions of him. All without their awareness. All driven by the power of non conscious influence. Example?
+- Monkey see, monkey do: Even when the answer is clear, people still imitate others.

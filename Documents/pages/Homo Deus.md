@@ -1,0 +1,5 @@
+- #Books
+- Famine, Pandemic, War
+- 21st century - pursuit of immortality, pursuit of happiness, pursuit of divinity
+- No clear line separates healing from upgrading
+- We read history not only to not repeat it but to be liberated from it e. g., African Americans commemorating the horrors of slave trade, wasting lawn space carrying the tradition of middle age French rich dukes

@@ -1,0 +1,15 @@
+# Overview
+	- Definition: Any technique that allows computers to bring meaning to data in similar ways to a human.
+	- **Types**
+		- **Artificial Special Intelligence**:
+			- AI focused on specific problem domains - e.g., natural language processing, computer vision, etc.
+			- Also commonly referred to as "**Weak AI**".
+		- **[Artificial General Intelligence](https://en.wikipedia.org/wiki/Artificial_general_intelligence)**:
+			- having a machine perform any task a human could.
+			- Also commonly referred to as "**Strong AI**")
+	- Avoiding [*AI Winter*](https://en.wikipedia.org/wiki/AI_winter)
+-
+- # Chatbots
+	- ## Learning Resources
+		- Build your own chatbot https://apps.cognitiveclass.ai/learning/course/course-v1:IBMDeveloperSkillsNetwork+CB0101EN+v1/home
+		-

@@ -1,0 +1,12 @@
+- #Books, #[[Leadership Concepts]]
+-
+- > Author: Kerry Patterson, Joseph Grenny, Ron McMillan, Al Switzler, Laura Roppe
+-
+- **Refocus on your motives** - When someone completely disagrees with you on a hot issue, instead of losing temper, start by examining your motives. Ask yourself what you really want.
+	- Do not vehemently defend yourself, save face, avoid embarrassment, win, be right or punish others
+	- Our motives change when adrenaline kicks in
+- **Start with your heart** - although we are merely bystanders in life’s never ending stream of head on collisions, rarely are we completely innocent.
+	- Work on yourself first - not only can you improve yourself, you are the only person you can change.
+- When people contribute to a shared pool, they are committed to act.
+- Salute and stay mute - with superiors
+- Freeze your lover - with spouse. Giving cold shoulder

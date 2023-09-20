@@ -1,0 +1,54 @@
+- # Overview
+	- API Management involves more than just governing the design, implementation, and release of APIs. It also includes the management of API ecosystem, the distribution of decisions within your organization, and even the process of migrating existing APIs into your growing API landscape.
+		- API Landscape
+			- Another important challenge managing APIs is the difference between the work of designing, building, and releasing a *single API* and supporting and managing *many APIs*. This is called as API Landscape.
+	- 3 elements of APIs
+		- **API Interface**
+			- REST, SOAP, GraphQL
+			- Protocol: Http, Thrift, TCP/IP
+			- Serialization Format: JSON, XML, HTML, etc.
+		- **API Implementation**
+			- e.g., Python, Java, Node.JS, etc.
+		- **API Instance**
+			- running an API
+	- ## Why API Management is difficult?
+		- ### Scope
+			- One of the big challenges of operating a healthy API management program is **achieving the proper level of central control** and, to make it even more challenging, the proper level of changes as the program matures.
+			- Lever of control needs to move from giving *orders* (e.g., “All APIs *must* use the following URL patterns…”) to giving *guidance* (e.g., “APIs running over HTTP *should* use one of the following URL templates…”)
+		- ### Scale
+			- The processes you use to design, implement, and maintain a single API are not always the same when you need to scale your ecosystem.
+		- ### Standards
+			- As groups grow larger—including the group of teams responsible for your organization’s APIs—there is a **coordination cost** that is incurred. The solution is to rely more on **general standards** instead of **specific design constraints**.
+			- As programs mature, management and governance efforts need to **move from detailed advice** on API design and implementation **to more general standardization** of the API landscape, freeing teams to make more of their own decisions at a detailed level.
+			- Avoid creating **tightly-focused implementation guidance** based on any single language or framework. This allows creative teams to invent new languages, architecture patterns, and even runtime frameworks without breaking any existing implementations.
+- # API Pillars
+	- API Management includes
+		- **Designing**
+		- **Implementing**
+		- **Testing**
+		- **Documenting** - and publishing them to a portal so that the right audience (internal developers, partners, 3rd party app developers, etc.) can find and learn how to use them
+		- **Registry/Discovery**
+		- **Releasing**
+		- **Versioning**
+		- **Monitoring**
+		- **Maintaining** including changes over their lifetime.
+- # API Landscape
+	- API Landscapes present unique challenges for API management
+	- ## Scaling technology
+		- API programs are not cheap, and you need to carefully monitor your investments of time and energy into activities that will have a high impact on your API’s success without risking lots of capital too early in the process.
+		- Gain early wins by limiting your technical scope
+		- As you grow your API program, relying on a limited set of tools and technologies can become one of the key things that slow you down.
+	- ## Scaling teams
+		- As technological variety grows, your teams may need to become more specialized.
+		- For larger companies, decision making itself needs to be distributed; a central committee rarely understands the realities of the day-to-day operations in a global enterprise.
+		- A growing ecosystem means teams need to become more specialized on a technical level and more responsible at the decision-making level.
+	- ## Scaling governance
+		- sticking to **old governance models** can slow or even stall the success of your APIs.
+		- API program governance often takes the form of multipage process documents that explain specific tasks: how to design the URLs for an API, or which names are valid for URLs, or where the version number must appear in an HTTP header. **Providing clear guidelines** with few options makes it hard for developers to stray from the approved way of implementing your APIs.
+		- **One-size cannot fit all**: the sheer size and scope of the community begin to make it difficult to maintain a single guidance document that applies to all teams
+		- That’s why as your API landscape expands, your governance documents need to change in tone from offering direct process instructions to **providing general principles**.
+			- For example, instead of writing up details on what constitutes a valid URL for your company, it is better to point developers to the Internet Engineering Task Force’s guidelines on URI design and ownership (RFC 7320) and provide general guidance on how to apply this public standard within your organization.
+			- Another great example of this kind of *principled guidance* can be found in most UI/UX guidelines, such as the [“10 Usability Heuristics for User Interface Design”](https://oreil.ly/qU66X) from the Nielsen Norman Group.
+		- For large organizations, and especially companies that operate in multiple locations and time zones, governance needs to **move from distributing principles to collecting advice**. The primary role of the central governance committee becomes to collect experience information from the field, find correlations, and echo back guidance that reflects “best practice” within the wider organization.
+- # API Maturity Stages
+	- TBD

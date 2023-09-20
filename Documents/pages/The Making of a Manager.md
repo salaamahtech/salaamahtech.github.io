@@ -1,0 +1,16 @@
+- #Books #[[Leadership Concepts]]
+- Your job, as a manager, is to get better outcomes from a group of people working together
+- Facebook - evaluating a manager
+	- Present outcomes: Did the team achieve the aspirations?
+	- Future outcomes:  Did the manager do a good job hiring and developing individuals, and is the team happy and working well together?
+- 3 buckets of daily tasks for a manager
+	- Purpose. Why?
+		- The outcome the team is trying to accomplish.
+		- First big part of a manager’s job is to ensure that the team knows what success looks like and cares about achieving it.
+	- People. Who?
+		- Are there members of the team have the right skills? Are they motivated to do great work?
+	- Process. How?
+		- Who should do what but when? What principles should govern decision making?
+		- Important processes for managers to master: running effective meetings, future proofing against past mistakes, planning for tomorrow, and nurturing a healthy culture
+- Your role as a manager is not to do the work yourself, even if you are the best at it, because that will only take you so far. Your role is to improve the purpose, people and process of your team to get as high a multiplier effect on your collective outcome as you can.
+- The best outcomes come from inspiring people to action, not by telling them what to do.

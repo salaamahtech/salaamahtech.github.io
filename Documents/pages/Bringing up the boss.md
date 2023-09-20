@@ -1,0 +1,108 @@
+- #Books #[[Leadership Concepts]]
+-
+- ![Page 1](https://d1b14unh5d6w7g.cloudfront.net/1953295010.01.S001.JUMBOXXX.jpg?Expires=1693518508&Signature=OXuZX0KSFgfBRRSrHu9EqiZ-23ZFkl11DiASax08bYBcMlxZsXjILPcbkjM3gNDp1SOzrFLilSJwkX5vq86JopYr~JSbUc9hAOfz90j7MS0KoC2isuG5igul2ULjzwU-3HbCh7nS-RzhuDEq544i8y3yoodi0dNunBp1WMViY10_&Key-Pair-Id=APKAIUO27P366FGALUMQ){:height 430, :width 271}
+- # Part I - Managing Individual
+	- ## Performance
+		- ## Ch 1: Great expectations
+		  collapsed:: true
+			- Clearly communicate your expectations to your team members.
+			- Give clear, well defined expectations with examples
+			- *An unarticulated expectation guarantees disappointment.*
+			- Expectation setting is one of the first things one should acquire as a manager
+			- Setting clear expectations and micromanagement are not the same
+			- Dunning-Kruger Effect: newbies underestimate the complexity and effort needed for an initiative. on the other hand, an expert assumes what is easy for him is easy for others too.
+			- ### Expectations - How to set?
+				- 4 pronged questions to answer for setting up crystal clear expectations
+					- What’s the objective or end goal
+					- What does good look like
+					- What’s the timing
+					- What are examples, if possible
+		- ## Ch 2: Feedback
+		  collapsed:: true
+			- A good manager gives constructive, well structured, frequent feedbacks.
+			- Good feedbacks are well thought out, timely, changes or reinforces a behavior.
+			- Great feedback is kind and empathetic as it comes from a place to help the candidate improve.
+			- Before giving feedback, think about what this person could do differently to alter the behavior. If you can’t think anything, should you be giving feedback? Actionable items from your feedback shouldn’t try to change the person who he is.
+			- **Don’t sandwich constructive feedback** - don’t layer criticism between 2 positive feedbacks. Get right to the point.
+			- Don’t muddy the message. e.g,, *“I know you’ve been under lot of stress. You are doing good in other areas. …”*
+			- Make feedback sessions as discussions. Be open to hear other person’s point of view.
+			- Saying “*great work*” all the time isn’t really motivational.
+			- **Receiving feedback**
+				- To be a great manager, you should also receive effective feedbacks from your team. It’s an evolutionary instinct to run away from negative feedback, even though that may help in our growth.
+			- **Overconfidence bias**
+				- Again similar to Dunning-Kruger effect.
+				- Our subjective confidence in our abilities is far greater than the actual objective abilities.
+			- **Attribution theory**
+				- We think that our own shortcomings are the results of the environment around us - not something we have control over. Therefore we subconsciously make excuses when we fall short of expectations. e.g., *when my friend is late, that’s because he is lazy. When I’m late, it’s because of traffic.*
+			- **Tools to receive upwards feedback from your team**
+				- Ask for feedback
+					- Keep asking.
+					- Listen attentively
+					- Be open
+					- Be truly thankful to your team members for sharing.
+					- Seek suggestions for actionable ways you can improve
+					- Take it seriously. Explain to them how are or why you are not changing the behavior they commented on.
+				- Separate receiving upward feedback from downwards feedback
+					- Schedule different meetings.
+				- Send the team an anonymous feedback survey.
+					- *What’s one thing I could do to make you do your job better?*
+				- Praise and reward the one who gives you hard feedback
+		- ## Ch 3: Own your development
+		  collapsed:: true
+			- To be a great manager, ask your team members to own their career development and goals.
+			- If someone  says “*I want to be a manager*” but lacks skills, list the down the capabilities expected/needed for the promotion - instead of declining the request without data.
+			- **Individual development plans**
+				- what are your goals for the next one year
+				- Where do you see yourself in 3 years
+				- Capabilities/skills you want to achieve this year? Any trainings or certifications
+				- How will you measure success?
+		- ## Ch 4: Coaching
+		  collapsed:: true
+			- Mentors give feedback on what to improve and how to improve
+			- Coaches asks a set of thought provoking questions. Doesn’t immediately tell what to do differently or how they would do it in such situations.
+			- Coach helps the coachee build the decision making muscle and build their path to solve a problem or their goal
+			- Coaching is a great way to build trust with the  team.
+			- Instead Id throwing a solution right away, ask them probing  questions first.
+			-
+			- **Coaching best practices**
+				- Ask open questions
+				- ask one at a time
+				- Ask for the context but brief
+				- Be open and curious rather than fishing for a solution
+					- Fishing: Why did you do this?
+					- Curiosity: what prompted you to go that path?
+				- Embrace the silence. Give space for the coachee to think
+				- Repeat what you understood
+				- Always end the coaching with next actionable steps for accountability
+			-
+			- **Coaching questions**
+				- What concerns you about this situation?
+				- What feats you most about taking that action or having a discussion?
+				- What is your ideal outcome?
+				- What would be an alternative way to approach this that you haven’t considered?
+				- If you could do it all over again, what would do differently?
+				- What would you need for this to be a success?
+		- ## Ch 5: Managing Performance Anxiety
+		  collapsed:: true
+			- **Performance Improvement Plan (PIP)**
+				- Meant for low performers who are consistently not performing well. Don’t surprise someone with a PIP. Give frequent feedbacks before that.
+				- Explain the philosophy of PIP before putting someone on one
+			- Biases
+				- **Ladder of inference**:
+				- model that describes how quickly and subconsciously take data and make high level inference about individuals and their behavior. These inferences may not be valid and may not represent the true performance of an individual.
+				- We managers often reach conclusions e.g., Because someone missed a deadline or didn’t present well in the last meeting
+				- Confirmation bias
+				- Pygmalion Effect
+				- Attribution theory
+			- PIP helps to counteract these biases by forcing you to explicitly write down the areas a team member is underperforming and provide examples.
+			- Structuring a PIP
+				- list areas to improve with examples
+				- Action plan for improvement - provide details on how to objectively demonstrate improvement
+				- Clear timelines for check up. And how long the PIPs last
+	- ## Motivation
+	- ## Meaning
+- # Part II - Managing a Team
+	- ## Hiring and Firing
+	- ## Team Dynamics
+- # Part III - Managing Yourself
+	- ## Managing Yourself

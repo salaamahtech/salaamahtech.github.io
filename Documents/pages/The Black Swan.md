@@ -1,0 +1,16 @@
+- #Books
+- Black Swan is an event with the following 3 attributes
+	- an *outlier*, as it lies outside the realm of regular expectations, because nothing in the past can convincingly point to its possibility
+	- it carries an extreme impact
+	- in spite of its outlier status, human nature makes us concoct explanations for its occurrence after the fact, making it explainable and predictable
+- Rarity, extreme impact, and retrospective predictability
+- e.g., 1987 stock market crash, 9/11, rise of Google, etc.
+- Black Swan logic makes *what you don't know* far more relevant than what you do know.
+- Almost no discovery, no technologies of note, came from designing and planning - they were just Black Swans. The strategy then is to tinker (trial-and-error) as much as possible and try to collect as many Black Swan opportunities as you can.
+- Thinking
+	- Evidence shows that we do much less thinking than we think we do  – except, of course, when we think about it.
+	- Great thinkers are scorned by their contemporary society and later worshipped and force-fed to school-children.
+- Gratitude
+	- Who is more valuable, the politician who avoids a war or the one who starts a new one and is luck enough to win?
+	- Who gets rewarded, the central banker who avoids a recession or the one who comes to 'correct' his predecessor's faults and happens to be there during some economic recovery?
+	- Everybody knows that you need more prevention than treatment, but few reward acts of prevention.

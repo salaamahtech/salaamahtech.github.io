@@ -1,0 +1,44 @@
+- #Books #[[Tech Concepts]]
+- Hyrum’s Law #[[Tech Concepts]]
+	- With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
+	- Hyrum’s Law represents the practical knowledge that—even with the best of intentions, the best engineers, and solid practices for code review—we cannot assume perfect adherence to published contracts or best practices.
+- Boiled frog #[[General Concepts]]
+	- it is far too easy for problems to worsen slowly and never manifest as a singular moment of crisis.
+- Jevons Paradox #[[Tech Concepts]] #[[Economics Concepts]]
+	- consumption of a resource may increase as a response to greater efficiency in its use.
+	- Example: if electricity becomes 3 times cheaper, would you really use the same amount of electricity and save the rest, or would you just use 3 times more electricity? Even if you decide to save the money and spend it on other things, the result is same, because those others things could be manufactured using electricity as well - so indirectly you use the same amount of energy.
+- Software Engineering vs. Programming
+	- “Software engineering” differs from “programming” in dimensionality: programming is about producing code. Software engineering extends that to include the maintenance of that code for its useful life span.
+- Bus Factor #[[Tech Concepts]]
+	- Bus factor (noun): the number of people that need to get hit by a bus before your project is completely doomed.
+	- How dispersed is the knowledge and know-how in your project? If you’re the only person who understands how the prototype code works, you might enjoy good job security—but if you get hit by a bus, the project is toast. If you’re working with a colleague, however, you’ve doubled the bus factor.
+- “Many eyes make sure your project stays relevant and on track.” People working in caves awaken to discover that while their original vision might be complete, the world has changed and their project has become irrelevant.
+- ### 3 pillars of Social Interaction
+	- To reach collaborative nirvana, you first need to learn and embrace what I call the “three pillars” of social skills
+	- Pillar 1: Humility
+		- You are not the center of the universe (nor is your code!). You’re neither omniscient nor infallible. You’re open to self-improvement.
+	- Pillar 2: Respect
+		- You genuinely care about others you work with. You treat them kindly and appreciate their abilities and accomplishments.
+	- Pillar 3: Trust
+		- You believe others are competent and will do the right thing, and you’re OK with letting them drive when appropriate.5
+- ### Failure is an option
+	- There’s a well-known urban legend in the business world about a manager who makes a mistake and loses an impressive $10 million. He dejectedly goes into the office the next day and starts packing up his desk, and when he gets the inevitable “the CEO wants to see you in his office” call, he trudges into the CEO’s office and quietly slides a piece of paper across the desk.
+		- _“What’s this?” asks the CEO._
+		- _“My resignation,” says the executive. “I assume you called me in here to fire me.”_
+		- _“Fire you?” responds the CEO, incredulously. “Why would I fire you? I just spent $10 million training you!”_
+	- At Google, one of our favorite mottos is that “Failure is an option.” It’s widely recognized that if you’re not failing now and then, you’re not being innovative enough or taking enough risks. Failure is viewed as a golden opportunity to learn and improve for the next go-around
+- ### Blameless PostMortem
+	- A good postmortem should include the following:
+		- A brief summary of the event
+		- A timeline of the event, from discovery through investigation to resolution
+		- The primary cause of the event
+		- Impact and damage assessment
+		- A set of action items (with owners) to fix the problem immediately
+		- A set of action items to prevent the event from happening again
+		- Lessons learned
+- ### Be open to influence
+	- The more open you are to influence, the more you are able to influence; the more vulnerable you are, the stronger you appear.
+	- But everyone can think of someone they’ve worked with who is just maddeningly stubborn—no matter how much people try to persuade them, they dig their heels in even more. What eventually happens to such team members? In our experience, people stop listening to their opinions or objections; instead, they end up “routing around” them like an obstacle everyone takes for granted.
+	- It’s impossible for you to be right about everything all the time unless you have an unchanging environment and perfect knowledge, so of course you should change your mind when presented with new evidence
+	- The idea of vulnerability can seem strange, too. If someone admits ignorance of the topic at hand or the solution to a problem, what sort of credibility will they have in a group? Vulnerability is a show of weakness, and that destroys trust, right?
+	- Not true. Admitting that you’ve made a mistake or you’re simply out of your league can increase your status over the long run. In fact, the willingness to express vulnerability is an outward show of humility, it demonstrates accountability and the willingness to take responsibility, and it’s a signal that you trust others’ opinions. In return, people end up respecting your honesty and strength. Sometimes, the best thing you can do is just say, “I don’t know.”

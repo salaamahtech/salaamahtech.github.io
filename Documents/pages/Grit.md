@@ -1,0 +1,7 @@
+- #Books
+- Highly accomplished are dogged in their pursuits
+- It’s the chase as much as the capture that is gratifying
+- Never give up attitude
+- Ferocious determination
+- Determination + Direction
+- Passion + Perseverance

@@ -1,0 +1,24 @@
+# Communication
+	- [[Crucial Conversations]]
+	- [[HBR Guide to Better Business Writing]]
+- # Wealth
+	- [[The Psychology of Money]]
+	- [[The Almanack of Naval Ravikant]]
+- # Leadership
+	- [[Bringing up the boss]]
+	- [[Good Boss, Bad Boss]]
+	- [[Manager's Path]]
+	- [[The 6 Critical Practices For Leading A Team]]
+	- [[The Charisma Rules]]
+	- [[The Making of a Manager]]
+- # Technology
+	- [[Software Engineering at Google]]
+	- [[What are ChatGPT and its friends?]]
+- # Misc
+	- [[Atomic Habits]]
+	- [[Grit]]
+	- [[Homo Deus]]
+	- [[Invisible Influence]]
+	- [[The Black Swan]]
+	- [[The Secret to Peak Productivity]]
+	-

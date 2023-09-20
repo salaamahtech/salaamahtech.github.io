@@ -1,0 +1,4 @@
+- #Books #[[Leadership Concepts]]
+- Directive vs collaborative leadership
+- Leader behavior ripples through org
+- Constructive conflict benefits team dynamics  - e.g. Lincoln critics in his cabinet

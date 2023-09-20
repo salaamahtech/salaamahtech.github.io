@@ -1,0 +1,41 @@
+- > Venue: Gavits centre, NYC
+  Date: Aug 14, 2017
+-
+- ## Keynote
+- (Speaker: Adrian Cockroft)
+	- Field Programmable Gate Arrays
+		- Genomic research
+		- Real-time video processing
+		- Financial analytics
+	- X1 instances
+		- 2 TB memory today. 8-16 TB next year
+	- AWS Database migration tools
+		- Expedia - 300 million writes per day into db
+- Claus Moldt - CIO FICO
+- AWS Migration Hub
+	- new tool launched today
+	- SMS - server migration service
+	- DMS - db migration service
+	- data center migraiton from on-prem to cloud
+- AWS Artificial Intelligence (Dr. - GM AI, AWS)
+	- Athena
+	- ORC - https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC
+	- Spectrum - Exabytes of data takes few seconds to query with join,group,etc.
+	- AWS Glue - ETL tool launched today
+	- Stanford - Early detection of diabetic complications (using Deep learning model to predict such complications)
+	- Wolfram Alpha uses AWS MXNet
+	- Instacart - online grocery delivery service uses machine learning
+	- Pinterest uses machine learning and TensorFlow
+	- tuSimple - automated driving system
+	- CTO - Zocdoc
+		- Patient's health care journey (like kayak, hotels but for healthcare)
+		- Relevancy model to find the most relevant doctor based on the context information given by the patients
+	- AWS Macie - new tool launched today
+		- automatically discover and classify your data
+		- understand where sensitive data is located and how it is accessed
+		- automatically monitor for anomalies
+		- alert users when anomalies are detected
+- Security
+	- AWS Amazon EFS data at rest - new product launched today
+	- upgraded version of AWS CloudHSM
+	- AWS CloudTrail is enabled by default for all customers which retains 7 days worth of trail

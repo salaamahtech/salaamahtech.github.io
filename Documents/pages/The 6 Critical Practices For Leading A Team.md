@@ -1,0 +1,37 @@
+- #Books #[[Leadership Concepts]]
+-
+- > Author: Franklin Covey
+- __1. Develop a leader's mindset__
+	- Mindset
+		- Common Mindset: _I am responsible for my results._
+		- Effective Mindset: _I am responsible for delivering results through other people._
+	- The Power of Mindsets: `See-Do-Get` Cycle
+		- The results we `__GET__` in our lives depend on what we `__DO__`. What we `__DO__` depends on how we `__SEE__` the world around us. If you want to change your results, begin by changing your mindsets.
+		        * SEE --> Mindsets
+		        * DO --> Practices
+		        * GET --> Results
+- __2. Hold regular 1-on-1s__
+	- Mindset
+		- Common Mindset: _I hold 1-on-1s to check on people's progress._
+		- Effective Mindset: _I hold regular 1-on-1s to help people get and stay engaged._
+- __3. Set up your team to get results__
+	- Mindset
+		- Common Mindset: _I tell team members what to do and how to do it._
+		- Effective Mindset: _I help people get clear about the 'why' behind the 'what' and support them in the 'how'._
+- __4. Create a culture of feedback__
+	- Mindset
+		- Common Mindset: _I give feedback so I can fix people's problems._
+		- Effective Mindset: _I give and seek feedback to elevate the entire team._
+- __5. Lead your team through change__
+	- Mindset
+		- Common Mindset: _I control and contain change for my team._
+		- Effective Mindset: _I champion change with my team._
+- __6. Manage your time and energy__
+	- Mindset
+		- Common Mindset: _I am too busy to take time for myself._
+		- Effective Mindset: _I must manage my time and energy to be an effective leader._
+-
+- __Leadership Books__
+	- Leader Shift by Maxwell
+	- Everyone deserves a great manager by Scott Miller
+	- Strength Finder

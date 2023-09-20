@@ -1,0 +1,8 @@
+- [[CS Concepts]]
+- [[General Concepts]]
+- [[Economics Concepts]]
+- [[Financial Concepts]]
+- [[Leadership Concepts]]
+- [[Psychology Concepts]]
+- [[Tech Concepts]]
+- [[ChatGPT]]

@@ -1,0 +1,12 @@
+- #Books #[[Leadership Concepts]]
+- > Author: Camille Fournier
+- Identify and communicate what each resource is accountable for, in 30, 90, 120 days
+- Performance standards
+- Performance reviews
+	- Ask what are their goals
+	- Read past reviews
+	- What would you have done differently
+	- Tell problems with solutions
+- Team members and their strengths and weaknesses
+- Promotion process - self and team?
+- Identify promotion-worthy stretch goals for team members

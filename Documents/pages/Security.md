@@ -1,0 +1,46 @@
+# Secure Design & Coding
+	- > Notes from book "Pushing Left Like a Boss"
+	  https://wehackpurple.com/pushing-left-like-a-boss-part-3-secure-design/
+	- Design Flaw vs. Security bug
+		- Design Flaw is a design problem and is expensive to fix.
+		- Security bug is an implementation problem and cheap to fix.
+	- Cost of discovering a flaw late
+		- Bug found during requirement = $6
+		- Bug found during design = $10
+		- Bug found during coding = $100
+		- Bug found during testing = $1000
+		- Bug found during release = $10,000
+	-
+	- ## Secure Design Concepts
+	  collapsed:: true
+		- **1) Defense in depth (layered protection)**
+			- Web app firewall + secure code + secure data store
+		- **2) Minimize attack surface**
+			- Remove unused resources + code
+			- Cleanup commented code
+		- **3) Least Privilege**
+			- RBAC (role based access control) for both the software and the people who build it
+		- **4) Fail-safe or Fail-closed**
+			- Always fail back to a known state, preferably an original one
+			- Fail-safe = rollback transaction and start again, fail gracefully and log errors.
+		- **5) Use existing security controls**
+			- Do NOT write your own security controls like encryption, encoding, input sanitization, etc.
+		- **6) Never hardcode secrets**
+		- **7) Re-authentication for important transaction**
+			- To avoid CSRF
+			- Step up security
+		- **8) Segregation of production data**
+		- **9) Threat Modelling**
+			- https://martinfowler.com/articles/agile-threat-modelling.html
+			- Evil Brainstorming - brainstorming session in search of defining all threats that your application system or product will likely face
+		- **10) Source code protection**
+			- Security through obscurity (obfuscation)
+		- **11) Error handling**
+			- Never show stacktrace to users. Hackers can learn what tech stack you are using. Always catch your errors.
+		- **12) Logging and alerting**
+			- Don't log PII data. Log enough for debugging and auditing purposes.
+	- ## Secure Coding Concepts
+	  collapsed:: true
+		- > Notes from https://infosecwriteups.com/pushing-left-like-a-boss-table-of-contents-42fd063a75bb
+		- Guarding against accidental or unintentional misuse of the app
+		- Always use the security features in your framework e.g., captcha, anti-CSRF token, session management
