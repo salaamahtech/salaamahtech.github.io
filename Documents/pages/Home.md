@@ -1,27 +1,27 @@
 # Technology
 background-color:: red
-	- ## Architecture
+	- ## 🛠 Architecture
 	  background-color:: blue
-		- [[Architecture]] | [[Coding Principles]] | [[Concurrency & Parallelism]] | [[Design Principles]] | [[Distributed Computing]] | [[Event Sourcing]] | [[Lambda Architecture]] | [[Observability]] | [[Operations]] | [[Scalability]] | [[Security]]
-	- ## Cloud
+		- [[Architecture]] | [[Coding Principles]] | [[Concurrency & Parallelism]] | [[Design Principles]] | [[Distributed Computing]] | [[Event Sourcing]] | [[Lambda Architecture]] | [[Observability]] | [[Operations]] | [[Scalability]] | [[Security]] | [[Transactions]]
+	- ## 🌤Cloud
 	  background-color:: blue
 		- [[AWS]] | [[Cloud Computing]] | [[Infrastructure as Code]] | [[Serverless]] | [[Virtualization]]
-	- ## Data
+	- ## 💾 Data
 	  background-color:: blue
 		- [[Big Data]] | [[Big Data Frameworks]] | [[ElasticSearch]] | [[Hadoop]] | [[RDBMS Concepts]] |  [[DB Design]] | [[DB Performance]] | [[Knowledge Graph]] | [[NoSQL]] | [[SQL]]
-	- ## Languages
+	- ## 📙Languages
 	  background-color:: blue
 		- [[Functional Programming]] | [[Object Oriented Programming]]
 		- [[Groovy]] | [[Python]] | [[Scala]]
 	- ## Spring
 	  background-color:: blue
 		- [[Spring]] | [[Spring Batch]] | [[Spring MVC]] | [[Spring Security]]
-	- ## Web
+	- ## 🕸 Web
 	  background-color:: blue
-		- [[Angular]] | [[JavaScript]] | [[DOM]] |  [[HTTP]] | [[Micro Frontend]] | [[Web Analytics]] | [[Web Security]]
+		- [[Angular]] | [[JavaScript]] | [[DOM]] |  [[HTTP]] | [[Micro Frontend]] | [[Web Application Physical Architecture]] | [[Web Analytics]] | [[Web Security]]
 	- ## Web Services
 	  background-color:: blue
-		- [[API Management]] | [[Camel]] | [[Backend for Frontend]] | [[GraphQL]] | [[Messaging]] | [[Microservices]] | [[REST]] | [[Service Mesh]] | [[SOA]] | [[SOAP]] | [[Service Design Patterns]]
+		- [[API Management]] | [[API Security]] | [[Backend for Frontend]] | [[Camel]] | [[GraphQL]] | [[Messaging]] | [[Microservices]] | [[REST]] | [[Service Mesh]] | [[SOA]] | [[SOAP]] | [[Service Design Patterns]]
 	- ## General
 	  background-color:: blue
 		- [[Algorithms]] | [[Data Structures]] | [[Networking]] | [[Object Oriented Programming]] | [[OKRs]] | [[Operating Systems]] | [[Version Control Systems]]
@@ -38,4 +38,5 @@ background-color:: red
   background-color:: red
 	- [[Brain Teasers]] | [[Physics]]
 - # Conferences
+  background-color:: pink
 	- [[2017 AWS Summit]]

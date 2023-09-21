@@ -408,7 +408,6 @@
 	- ## Conneg (Content Negotiation)
 		- [HTTP Conneg Basics](/technology/webconcepts.html#http-content-negotiation-conneg)
 - # Pagination
-  collapsed:: true
 	- While designing a REST API capable of returning vast datasets, it is important to limit the amount of data returned for bandwidth and performance reasons.
 	- The bandwidth concerns become more important in the case of mobile clients consuming the API.
 	- Limiting the data can vastly improve the server’s ability to retrieve data faster from a datastore and the client’s ability to process the data and render the UI. By splitting the data into discrete pages or paging data, REST services allow clients to scroll through and access the entire dataset in manageable chunks.

@@ -1,5 +1,4 @@
 # Load Balancers
-collapsed:: true
 	- ![](../assets//reverse_proxy.png)
 	- ## Overview
 		- From a physical point of view, it can be plugged anywhere in the architecture:
@@ -28,7 +27,7 @@ collapsed:: true
 					- works only if a user use a single IP address or never change his IP address during the session.
 					- wouldn't work for multiple users who are behind a single proxy
 			- 4. Use application layer information to maintain ***persistance*** between a user and a server
-				-  Store the user information details in a _Session Cookie_, either set by the load-balancer itself or using one set up by the application server.
+				- Store the user information details in a _Session Cookie_, either set by the load-balancer itself or using one set up by the application server.
 				- Pros
 				- Cons
 	- ## Affinity vs. Persistence
