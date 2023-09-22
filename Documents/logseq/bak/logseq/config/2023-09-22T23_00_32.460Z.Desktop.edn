@@ -225,7 +225,7 @@
  :property-pages/enabled? true
  :graph/settings {:journal? false, :builtin-pages? false, :orphan-pages? false}
  :publishing/all-pages-public? true
- :ui/show-brackets? false
+ :ui/show-brackets? true
  :feature/enable-journals? false
  :feature/enable-whiteboards? false
  :feature/enable-flashcards? false
