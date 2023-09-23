@@ -13,7 +13,7 @@ background-color:: red
 	  background-color:: blue
 		- [[Functional Programming]] | [[Object Oriented Programming]]
 		- [[Groovy]] | [[Python]] | [[Scala]]
-		- [[Java]] | [[Java Collections]]
+		- [[Java]] | [[Java Collections]] | [[Java Concurrency]] | [[JMX]]
 	- ## Spring
 	  background-color:: blue
 		- [[Spring]] | [[Spring Batch]] | [[Spring MVC]] | [[Spring Security]]

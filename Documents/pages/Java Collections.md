@@ -76,7 +76,7 @@ collapsed:: true
 			- Do not mix generics and varargs - http://www.javaspecialists.eu/archive/Issue140.html
 	- ## Type Erasure
 	  collapsed:: true
-		- Example 1 is implemented using generics and #2 is not. However, the bytecode for both the programs are exactly the same. Java internally converts the generic representation into a code that looks like Example #2, by erasing the type details and adding casts. This is called ***type erasure***.
+		- Example 1 is implemented using generics and no. 2 is not. However, the bytecode for both the programs are exactly the same. Java internally converts the generic representation into a code that looks like Example 2, by erasing the type details and adding casts. This is called ***type erasure***.
 		- The reason behind such implementation is for backward compatibilty.
 		- Java has *typed erased generics-  which loses type information at runtime. JetBrains' Kotlin language has *reified generics-  which retains the type information at runtime.
 		- **Reification**   means *preserving type information at runtime*. Java Generics are **non-reifed.**
