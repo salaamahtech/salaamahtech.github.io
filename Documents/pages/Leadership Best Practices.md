@@ -1,0 +1,16 @@
+### 5 things your team expects from you
+	- Clearly explain what you want from them
+	- Give more praise and positive reinforcement (e.g., *I'm confident you can do this.*)
+	- Stop playing favorites with praise and assignment. e.g., *1 positive feedback to everyone once in 2 weeks*
+	- Trust them. Provide space and freedom to do their job.
+- ### Giving feedback
+	- Avoid [sandwich technique](https://aap.jhana.com/blog/the-sandwich-technique-loved-by-managers-hated-by-direct-reports/) - *Praise->Critize->Praise*.
+	- Ask each individual how they'd like to receive feedback (private, public, writing, in person, etc.)
+	- Give positive feedback separately from constructive feedback
+	- Ask for permission to give feedback. e.g., *May I give some feedback?*
+	- Describe what you observed -> listen carefully to the response -> ask follow up questions -> summarize the action items -> thank the person -> follow up after some time
+- ### Meeting Best Practices
+	- No agenda, no meeting
+	- Give break between meetings. Convert 30 mins meeting to 25 mins, 1 hr meetings to 50 mins.
+	- Out-of-office emails - "set as free"
+	- Out-of-office emails - don't block few hours. Block the day but in the subject specify the away hours
