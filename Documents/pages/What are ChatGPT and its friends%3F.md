@@ -5,8 +5,8 @@
 -
 - ChatGPT is a chat application that is built on LLMs like GPT-3, GPT-4, etc.
 -
-- What is a Language Model?
 - Few known models?
+  collapsed:: true
 	- Developed by OpenAI. GPT-2 is open-source. GPT-3 & GPT-4 are not open-source.
 	- Microsoft's Sydney is model based on GPT-4 used in Bing search engine.
 	- Microsoft's Kosmos-1 is trained on image content.
@@ -21,6 +21,7 @@
 		- GPT-3 provides a base "understanding" of English and several other human languages.
 		- Codex is trained on the contents of StackOverflow and Github.
 - What is a LLM (Large Language Model)?
+  collapsed:: true
 	- A large language model is a trained deep-learning model that understands and generates text in a human-like fashion.
 	- Behind the scene, it is a large transformer model that does all the magic.
 	- https://machinelearningmastery.com/what-are-large-language-models/
@@ -43,6 +44,7 @@
 	- Prompt injection is similar to SQL injection, in which an attacker inserts a malicious SQL statement into an application's entry field. Many applications built on language models use a hidden layer of prompts to tell the model what is and isn't allowed. In prompt injection, the attacker writes a prompt that tells the model to ignore any of its previous instructions, including this hidden layer. Prompt injection is used to get models to produce hate speech; it was used against Bing/Sydney to get Sydney to reveal its name, and to override instructions not to respond with copyrighted content or language that could be hurtful.
 - What are responses?
 - What are Transformers?
+  collapsed:: true
 	- Transformers is a technology from Google Research and Google Brain from 2017.
 	- Transformers are the building blocks for the AI models like GPT-4.
 	- Transformers are a machine learning model architecture, like Long Short Term Memory Neutal Networks (LSTMs), and Convolutional Neural Networks (CNNs).

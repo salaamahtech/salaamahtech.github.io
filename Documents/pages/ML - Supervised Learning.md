@@ -8,7 +8,7 @@ collapsed:: true
 	- ### Types of Supervised Learning
 	  background-color:: green
 		- **Classification**
-			- For a given input, the output predicted is from a small, finite number of possible outputs (*output categories or output classes*). e.g., Email spam filtering has only 2 possible outputs - spam or not.
+			- For a given input, the output predicted is from a small and finite number of possible outputs (*output categories or output classes*). e.g., Email spam filtering has only 2 possible outputs - spam or not.
 		- **Regression**
 			- For a given input, the output predicted is from a infinite number of possible outputs. e.g., House price prediction
 	- ### Benefits of Supervised Learning
@@ -25,23 +25,23 @@ collapsed:: true
   background-color:: yellow
   collapsed:: true
 	- Here are some of the most commonly used supervised learning algorithms
-	- ### Linear Regression
+	- ## Linear Regression
 		- Linear regression is a popular algorithm used for predicting continuous output values. It establishes a linear relationship between the input features and the target variable, allowing us to make predictions based on this relationship.
-	- ### Logistic Regression
+	- ## Logistic Regression
 		- Logistic regression is employed when the output variable is binary or categorical. It models the relationship between the input features and the probability of a particular outcome using a logistic function.
-	- ### Decision Trees
+	- ## Decision Trees
 		- Decision trees are tree-like models that use a hierarchical structure to make decisions. They split the data based on different features and create a tree-like structure, enabling classification or regression tasks.
-	- ### Random Forests
+	- ## Random Forests
 		- Random forests are an ensemble learning method that combines multiple decision trees. They improve the predictive accuracy by aggregating predictions from multiple trees, reducing overfitting and increasing robustness.
-	- ### Support Vector Machines (SVM)
+	- ## Support Vector Machines (SVM)
 		- Support Vector Machines are effective for both classification and regression tasks. They create hyperplanes or decision boundaries that maximize the margin between different classes, allowing for accurate predictions.
-	- ### Naive Bayes
+	- ## Naive Bayes
 		- Naive Bayes algorithms are based on Bayes’ theorem and are commonly used for classification tasks. They assume that the input features are independent, making predictions based on the probability of each class.
-	- ### K-Nearest Neighbors (KNN)
+	- ## K-Nearest Neighbors (KNN)
 		- K-Nearest Neighbors is a non-parametric algorithm that classifies new instances based on their proximity to the labeled instances in the training data. It assigns a class label based on the majority vote of its k nearest neighbors.
-	- ### Neural Networks
+	- ## Neural Networks
 		- Neural networks are a powerful class of algorithms inspired by the human brain’s structure and functioning. They consist of interconnected nodes (neurons) organized in layers, enabling them to learn complex patterns and relationships.
-	- ### Gradient Boosting Algorithms
+	- ## Gradient Boosting Algorithms
 		- Gradient boosting algorithms, such as Gradient Boosted Trees and XGBoost, are ensemble methods that sequentially build models, each focusing on the errors of the previous models. They are effective for classification and regression tasks, providing high predictive accuracy.
 - # Mathematical Notation
   background-color:: yellow
@@ -60,22 +60,21 @@ collapsed:: true
 			- A single pair of a training example is denoted as $$(x,y)$$.
 			- To denote the $i^\text{th}$ training example pair, use $$(x^\text{(i)},y^\text{(i)})$$. e.g., 8th training example pair is denoted as $$(x^\text{(8)},y^\text{(8)})$$
 				- Note: here $$x^\text{(i)}$$ is called as "$x$ superstroke $i$" - this is not exponent.
-	- #### Classification
+	- ### Classification
 		- When $y _{i}$ is a *categorical or nominal variable* from some finite set, $y _{i}$ ∈ {1, . . . , C} (such as male or female), the problem is known as **classification or pattern recognition**.
 			- *Document classification* - e.g., email spam filtering, ad targeting
 			- *Image classification* - e.g., photo is vertical or horizontal, detect the person in picture is male/female, face detection in Google street view
-	- #### Regression
+	- ### Regression
 		- When $y _{i}$ is a *real-valued scalar* (such as income level) or *continuous*, the problem is known as **regression**. *Ordinal regression* occurs where label space Y has some natural ordering, such as grades A–F.
 		  	* Predict tomorrow’s stock market price given current market conditions and other possible side information.
 		  	* Predict the age of a viewer watching a given video on YouTube.
 - # Regression
   background-color:: yellow
-  collapsed:: true
 	- ## Linear Regression
 	  background-color:: red
-	  collapsed:: true
 		- ### Overview
 		  background-color:: green
+		  collapsed:: true
 			- Training data (features $x$ and targets $y$) are fed into a learning algorithm which outputs a function $f$. This function is also called as a **model** or a **hypothesis**.
 				- Sample training set for house price prediction example
 					- | Size in sq. ft $x$ (**Features**) | Price in $1000s $y$ (**Targets**) |
@@ -110,6 +109,7 @@ collapsed:: true
 				- ![image.png](../assets/image_1693859553937_0.png){:height 419, :width 791}
 			- #### Formula for cost function
 			  background-color:: purple
+			  collapsed:: true
 				- To calculate the cost function, take the prediction $\hat{y}$ and compare it to the target $y$ by taking 
 				  $$\hat{y}-y$$.
 					- This measure is called the **error**. We are measuring how far off is the prediction to the target.
@@ -128,6 +128,7 @@ collapsed:: true
 				- In ML, different cost functions are used for different applications, but Squared error cost function is by far the most used one for linear regression.
 			- #### Cost function intuition
 			  background-color:: purple
+			  collapsed:: true
 				- Let's build some intuition about what the cost function is doing
 				- > **Model**:  $f_{w,b}(x) = wx + b$
 				  > 
@@ -257,12 +258,14 @@ collapsed:: true
 			-
 		- ### Gradient Descent
 		  background-color:: green
+		  collapsed:: true
 			- repeat {
 			   $w_j = w_j - \alpha \frac{\partial }{\partial w_j} J(\vec{w},b)$
 			   $b = b - \alpha \frac{\partial }{\partial b} J(\vec{w},b)$
 			  }
 			- ![image.png](../assets/image_1694207221683_0.png)
 			- #### Checking Gradient Descent for Convergence
+			  collapsed:: true
 				- When running gradient descent, how can you tell if it is converging? That is, whether it's helping you to find parameters close to the global minimum of the cost function
 				- **Learning Curve**
 					- Draw a learning curve as follows - where x-axis is the number of iterations (for each time the parameters w and b are updated)
@@ -281,17 +284,16 @@ collapsed:: true
 				- So, use a smaller \alpha always.
 				- ![image.png](../assets/image_1694612005736_0.png)
 				-
-		- ### Feature Scaling
+		- ### Feature Scaling/Normalization
 		  background-color:: green
+		  collapsed:: true
 			- https://medium.com/analytics-vidhya/mean-normalization-and-feature-scaling-a-simple-explanation-3b9be7bfd3e8
 			-
 			- ### Why feature scaling is needed?
 			  background-color:: purple
-			  collapsed:: true
 				- When you have different features that take on very different ranges of values, it can cause gradient descent to run slowly but re-scaling the different features so they all take on comparable range of values.
 			- ### What is feature scaling?
 			  background-color:: purple
-			  collapsed:: true
 				- Let's take an example of calculating home prices based on home size and number of bedrooms as 2 features.
 					- $\hat{price} = w_1x_1 + w_2x_2 + b$
 					- where $x_1$ is the home size whose values can range from 300 – 2000 sq.ft. (**large**)
@@ -403,7 +405,6 @@ collapsed:: true
 			- 1/0 (negative class/positive class)
 	- ## Logistic Regression
 	  background-color:: red
-	  collapsed:: true
 		- ### Binary Classification
 		  background-color:: green
 		  collapsed:: true
@@ -445,6 +446,7 @@ collapsed:: true
 			  $$f_{\vec{w}, b}\vec{(x)} = g(\vec{w} \cdot \vec{x} + b) = \frac{1}{1+e^{-(\vec{w} \cdot \vec{x} + b)}}$$
 		- ### Interpretation of the output
 		  background-color:: green
+		  collapsed:: true
 			- Using the example of tumor classification, where
 			  $x$ is tumor size
 			  $y$ is 0 (not malignant)
@@ -491,10 +493,12 @@ collapsed:: true
 			- ![image.png](../assets/image_1695742563327_0.png)
 			- $L(f_{\vec{w}, b}\vec{(x^{(i)})}, y^{(i)})$ is called the **loss function**. In other words, the loss at one training data row level. The cost function is the average of all the loss at the training data set level.
 			- Simplified form of the above formula can be written as follows:
-				- ![image.png](../assets/image_1695818696597_0.png)
-				- ![image.png](../assets/image_1695818902115_0.png) Simplified cost function
+				- ![image.png](../assets/image_1695818696597_0.png){:height 268, :width 736}
+				- **Simplified cost function**
+				  ![image.png](../assets/image_1695818902115_0.png){:height 145, :width 816}
 		- ### Gradient Descent
 		  background-color:: green
+		  collapsed:: true
 			- Gradient descent formula is calculated as follows.
 			- The teal and purple arrows show the simplified formula of the derivates on the left hand side.
 			- ![image.png](../assets/image_1696041295220_0.png){:height 367, :width 725}
@@ -506,6 +510,47 @@ collapsed:: true
 					- Monitor gradient descent (learning curve)
 					- Vectorized implementation to run gradient descent run faster
 					- Feature scaling
+- # Overfitting
+  background-color:: yellow
+  collapsed:: true
+	- ## Definition
+	  background-color:: pink
+	  collapsed:: true
+		- In the below linear regression example for housing prices,
+			- **Underfitting** or **High Bias**
+				- The algorithm does not fit the training set well. So it is called **Underfitting** or the algorithm has **High Bias**
+				- For example, you may have heard in the news about some popular algorithms having bias towards certain ethnicities or genders.
+				- Another way to think of this form of bias is as if the learning algorithm has a very strong preconception, or we say a very strong bias, that the housing prices are going to be a completely linear function of the size despite data to the contrary.
+			- **Just right** or **Generalization**
+				- In the below example, a quadratic equation with $x$ and $x^2$ fits the training set pretty well.
+				- A good algorithm does well even on examples that are not on the training set. This is called **Generalization**. Technically we say that you want your algorithm to *generalize* well, which means to make good predictions even on brand new example that it has never seen.
+			- **Overfitting** or **High Variance**
+				- In this case, a 4th order polynomial function is used for the example. With this higher order polynomial function, the curve fits through all the training examples perfectly - causing the cost function to return 0 for each training data.
+				- However, it performs poorly for the new data not seen in the training set. The model does not generalize well for the new examples not seen in the training. This is called "**Overfitting**" or the technical term is that we'll say this model has *overfit the data* or this model has *an overfitting problem*.  Another term for this is the algorithm has **High Variance**.
+				- With overfitting problem, if 2 ML engineers were to fit this fourth-order polynomial model to a slightly different datasets, they could end up with different predictions or highly variable predictions.
+			- ![image.png](../assets/image_1696427069949_0.png){:height 492, :width 585}
+			- The same issue can occur in Classification problems as well
+			- ![image.png](../assets/image_1696428495912_0.png){:height 543, :width 697}
+	- ## Addressing Overfitting
+	  background-color:: pink
+	  collapsed:: true
+		- The goal of the ML is to find a model hopefully in the Goldilock zone - neither underfitting nor overfitting. In other words, the model has neither high bias nor high variance.
+		- How to address? there are different techniques to address overfitting. Few are listed below.
+		- ### 1. Collect more data
+			- One way to avoid overfitting problem is to collect more training examples.
+			- ➕ Easy to just add more training data.
+			- ⛔️ It's not always easy to find more training data. e.g., there may only be a certain number of houses on sale for house price prediction.
+			- ![image.png](../assets/image_1696431594355_0.png){:height 431, :width 540}
+		- ### 2. Select features to include/exclude
+			- If you have a lot of features and not enough training data, then your learning algorithm may also overfit your training set.
+			- Instead of using all the available features, just pick a subset of the most useful ones. Choosing the most appropriate set of features to use is called **Feature Selection**.
+			- ⛔️ one disadvantage of feature selection is that by using only a subset of features, the algorithm is throwing away some of the information you have about the houses.
+			- ![image.png](../assets/image_1696435922692_0.png){:height 432, :width 565}
+		- ### 3. Reduce size of parameters
+			- In an overfit algorithm with higher order polynomial functions, the size of the parameters $w_j$ are generally large. **Regularization** is the process of lowering the parameter values to reduce their impact on the model.
+			- Unlike in Feature selection, instead of dropping a feature altogether, what **Regularization** does is, it lets you keep all of your features, but it just prevents the features from having an overly large effect. By convention, reducing the weightage or the parameter values $w_j$, that is $w_1$ to $w_n$.
+			- > It doesn't make a huge difference whether you regularize parameter $b$ or not. So it can be skipped.
+			- ![image.png](../assets/image_1696436879469_0.png){:height 534, :width 584}
 - # Applications
   background-color:: yellow
   collapsed:: true

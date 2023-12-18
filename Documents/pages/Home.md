@@ -174,6 +174,8 @@ background-color:: yellow
 	  background-color:: pink
 		- [[AI]]
 		  logseq.order-list-type:: number
+		- [[Generative AI]]
+		  logseq.order-list-type:: number
 		- [[Probability]]
 		  logseq.order-list-type:: number
 		- [[Statistics]]

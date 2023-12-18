@@ -1,0 +1,198 @@
+# Popular names
+	- **OpenAI** is a research organization that aims to create safe and beneficial AI for humanity
+	- **ChatGPT** is a large language model (LLM) that understands and generates natural language text
+	- **GitHub Copilot** is an AI-powered pair programmer that suggests code snippets based on the context of your code
+	- **Azure OpenAI** is  a cloud-based platform that offers access to OpenAI's cutting-edge language models and AI capabilities
+	- **Amazon Bedrock**
+	- **Amazon Titan**
+	- **Huggingface** is like Github for AI/ML - open-source. Users can upload, create and share 3 types of resources
+		- Models
+		- Training data
+		- Spaces (Environment/Infrastructure to run ML Models & demo)
+	- **[Stability.ai](https://stability.ai)** - Open-source Gen AI company behind Stable Diffusion XL
+	- **NLP Cloud** - Company behind [Dolphin AI](https://chat.nlpcloud.com/) -
+	-
+- # Overview
+  background-color:: red
+	- **Generative models** are a class of AI machine learning models that can generate new data based on training data. The generated content may be text, images, audio and video.
+	- Building Generative AI is a highly empirical (experimental) process - we repeatedly find and fix mistakes. Here are some tools used to improve its performance
+		- **Prompting**
+		- **RAG** (Retrieval Augmented Generation): Gives LLM access to external data sources
+		- **Fine-tune models**: Adapt LLM to your tasks
+		- **Pre-train models**: Train LLM from scratch
+	- ![image.png](../assets/image_1702311364193_0.png)
+	-
+	- ![image.png](../assets/image_1702310883058_0.png)
+	-
+	- ![image.png](../assets/image_1702246158680_0.png)
+	- ## Limitations of Generative AI
+	  collapsed:: true
+		- Knowledge cutoff
+			- cannot respond to events that happened after the cutoff data upto which the model is trained
+		- Hallucinations
+		- Context length
+			- depending on the LLM used, there are limitations on the context length (which includes both input prompt and output generated)
+		- Tabular data
+			- Gen AI is well suited for unstructured data (text, audio, video, etc.) but not for the tabular data input
+		- Bias and Toxicity
+			- LLMs can reflect bias that exist in the text it learned from (generally from internet)
+			- LLMs can also output toxic or harmful speech
+			- ![image.png](../assets/image_1702321416981_0.png)
+- # LLM - Large Language Models
+	- **What is a Language Model?**
+		- Predicting the next word e.g., Gmail, Teams, Google Search, etc.
+		- 3 ingredients to build a successful language model
+			- large amount of training text
+			- good word to vector embedding tools
+			- and a deep learning neural network architecture
+		- **Auto Regressive Models**
+			- Models that take the last output and feed back into the model to generate the next word
+	- ## What is a Large Language Model?
+	  collapsed:: true
+		- Language Model trained on internet scale data
+		- A large language model is a trained deep-learning model that understands and generates text in a human-like fashion.
+		- Think of LLM as a **reasoning engine*. Typically, a database is used as a source of information, whereas LLM is used to process information.
+		- LLM have a lot of general knowledge, but they don't know everything.
+		- Behind the scene, it is a large transformer model that does all the magic.
+		- https://machinelearningmastery.com/what-are-large-language-models/
+		- ![image.png](../assets/image_1702007259386_0.png)
+	- ## Popular LLMs
+	  collapsed:: true
+		- Developed by OpenAI. GPT-2 is open-source. GPT-3 & GPT-4 are not open-source.
+		- Microsoft's Sydney is model based on GPT-4 used in Bing search engine.
+		- Microsoft's Kosmos-1 is trained on image content.
+		- Google's LaMDA. Google's Bard chat UI is based on this.
+		- Google's PaLM has 3x more parameters than LaMDA. Multimodal model used for robots and image content.
+		- Google's Chinchilla
+		- Anthropic's Claude. Poe is the chat UI
+		- Meta's LLaMA
+		- BigScience's BLOOM - open-source multilingual model
+		- Stability AI's Stable Diffusion - generates images from text.
+		- Github's Copilot - model to generate code from text is based on OpenAI Codex which is based on GPT-3.
+			- GPT-3 provides a base "understanding" of English and several other human languages.
+			- Codex is trained on the contents of StackOverflow and Github.
+	- ## What is a Foundational Model?
+	  collapsed:: true
+		- The GPT-series LLMs are also called "foundation models."
+		- Foundation models are a class of very powerful AI models that can be used as the basis for other models: they can be specialized, or retrained, or otherwise modified for specific applications.
+		- While most of the foundation models people are talking about are LLMs, foundation models aren't limited to language: a generative art model like Stable Diffusion incorporates the ability to process language, but the ability to generate images belongs to an entirely different branch of AI.
+	- ## LLM Types
+	  collapsed:: true
+		- ![](https://tolacapital.com/wp-content/uploads/2023/05/image-1024x426.png)
+		- Text to text
+		- Text to image
+			- Generative Adversarial Networks
+				- Discovered in 2014
+				- Uses 2 neural networks "Generator" (to generate images) and "Discriminator" (to verify the image is real or fake)
+				- This model is now replaced by Diffusion Model
+				- ![image.png](../assets/image_1702245696630_0.png)
+			- Diffusion Model
+				- In the forward diffusion process, a training image is fed into the neural network, which adds noise in each stage.
+				- The output from each stage $x_1$ is fed into a denoising network (Reverse Diffusion Network) which tries to remove the noise and reconstruct the image
+				- ![image.png](../assets/image_1702245545952_0.png){:height 448, :width 713}
+	- ## LLM Managed Services
+		- [Amazon Bedrock](https://aws.amazon.com/bedrock/)
+			- Fully managed serverless service that offers foundational models
+	- ## How to choose a model?
+		- Model Size
+			- One way to estimate how capable an LLM is is to look at the model size
+			- | **Model size** | **Typical use-case** | **Example** |
+			  | ---- | ---- | ---- |
+			  | 1B parameters | Pattern matching and basic knowledge of the world | Restaurant review sentiment |
+			  | 10B parameters | Greater world knowledge. Can follow basic instructions. | Food order chatbot |
+			  | 100B+ parameters | Rich world knowledge. Complex reasoning | Brainstorming partner |
+		- Open source vs. Proprietary
+			-
+- # Advanced Techniques
+	- Both RAG and fine-tuning are cheaper options. Pre-training is expensive.
+	- ## RAG
+	  collapsed:: true
+		- RAG (Retrieval Augmented Generation) gives LLM access to external data sources
+		- RAG, simply is modification of your prompt
+		- Examples: Chat with PDF applications, Snapchat, etc.
+	- ## Fine-tuning
+	  collapsed:: true
+		- Why fine-tune?
+			- To carry out a task that isn't easy to define in a prompt.
+				- e.g., summarize a call center conversation in a certain style or structure
+				- e.g., mimicking a writing or speaking style. How would you describe what someone's style of speech in a prompt?
+			- To help LLM gain a specific knowledge
+				- e.g., here is how a typical Doctor's medical note looks like for a patient with shortness of breath.
+				- > Pt c/o SOB, DOE. PE: RRR, JVD absent, CTAB.
+				  EKG: NSR. Tx: F/u w/ PCP, STAT CXR, cont. PRN 02.
+				- Extract information from Legal documents like this
+				- > Licensor grants to Licensee, per Section 2(a) (ili), a non-exclusive right to use the intellectual property, contingent upon compliance with fiduciary duties outlined in Section 8, paragraphs 1-4, and payment as specified in Schedule B, within 15 days hereof.
+			- To get a smaller model to perform a task (e.g., 100B parameters to 1B parameters)
+				- to lower the cost/latency to deploy
+				- to run on mobile/laptop (edge devices)
+		- ![image.png](../assets/image_1702828208346_0.png)
+	- ## Pre-train LLM
+		- Pre-training general purpose with specific knowledge to specialized domains e.g., Bloomberg has introduced BloombergGPT with 50-billion parameter LLM, purpose-built from scratch for finance.
+		- This option can cost $10s of millions of dollars, many months and huge amount of data.
+		- Some companies built such specialized LLMs and open-source it.
+		- This should be the last resort.
+	- ## RLHF
+		- We've been thinking of LLMs as having learned from a lot of texts on the Internet to predict the next word. But when you prompt an LLM, it doesn't just predict the next word on the Internet, it actually follows your instructions. How does it do that?
+		- An LLM trained on data like this would be good at repeatedly predicting the next word based on what text on the Internet sounds like. If you were to prompt an LLM with a question like, "*what is the capital of France?*", it is quite possible that it will reply, "*what is the capital of Germany?*". But this isn't the answer you want. You wanted to say that the capital of France is Paris.
+		- In order to get an LLM to follow instructions and not just predict the next word, there's a technique called **RLHF (Reinforcement Learning from Human Feedback)**, that can improve the quality of answers further.
+		-
+		- In RLHF, the model is given a number of prompts, and the results are evaluated by humans. This evaluation is converted into a score, which is then fed back into the training process. (In practice, humans are usually asked to compare the output from the model with no additional training to the current state of the trained model.)
+		- Triple H framework: Helpful, Honest, Harmless
+			- Many companies training LLMs want the LLM to give results that are helpful, honest, and harmless.
+			- Steps
+				- Step 1: First step is to train an answer quality (reward) model. In other words, making supervised learning to learn to rate the answers of LLM. e.g., Advise me how to apply for a job
+					- ![image.png](../assets/image_1702832369409_0.png)
+				- Step 2: Have LLM generate a lot of answers. Further train it to generate more responses that get high scores.
+				-
+		- https://huggingface.co/blog/rlhf
+		- ![image.png](../assets/image_1702007670099_0.png)
+- # Embeddings
+  collapsed:: true
+	- Words -> Tokens -> Token IDs -> Vectors
+	- ![image.png](../assets/image_1702006081766_0.png)
+	- ![image.png](../assets/image_1702005489060_0.png)
+	- Libraries
+		- word2vec
+		- [FastText](https://fasttext.cc/)
+		- GloVe
+		- BERT
+		- [OpenAI Tiktoken](https://github.com/openai/tiktoken)
+	-
+- # Transformers
+  collapsed:: true
+	- Special type of neural network - enabling context-aware text generation
+	-
+	- Transformers is a technology from Google Research and Google Brain from 2017.
+	- Transformers are the building blocks for the AI models like GPT-4. Used in Generative AI, Computer vision.
+	- Transformers are a machine learning model architecture, like Long Short Term Memory Neutal Networks (LSTMs), and Convolutional Neural Networks (CNNs)
+	- Before transformers, the older models were sequential in processing the text - one word at a time - which limited processing large text since it was compute intensive and time-taking
+	- Transformers output only one word or token at a time which is then fed back into the model to generate the next word. Feeding the output back into the model is called **Auto Regressive Model**
+	-
+- # Prompt Engineering
+	- https://promptingguide.ai
+	- CREATE framework
+		- ![image.png](../assets/image_1702246667115_0.png)
+- # Links
+	- https://machinelearningmastery.com/what-are-large-language-models/
+	- https://towardsai.net/p/machine-learning/introduction-to-neural-networks-and-their-key-elements-part-c-activation-functions-layers-ea8c915a9d9
+	- https://lifearchitect.ai/
+	- GPT
+		- GPT Builder to create a custom GPT - https://chat.openai.com/create
+		- GPT API https://platform.openai.com
+		- API Playground https://platform.openai.com/playground
+		- Tokenizer https://platform.openai.com/tokenizer
+	- Text to Text
+		- Chat with PDF files
+			- Panda chat
+			- ChatPDF
+			- AskYourPDF
+			- PDF.ai
+			- LightPDF
+			- docAnalyzer.ai
+			- Tactic
+	- Text to Image
+		- https://leonardo.ai/
+		- https://ideogram.ai/
+	- Text to Slides
+		- https://www.beautiful.ai/
+		- Canva with AI capability

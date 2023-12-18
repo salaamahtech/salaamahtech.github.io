@@ -1,4 +1,18 @@
 - [Basics of Security](/technology/security.html)
+-
+- **[https://www.pingidentity.com/en/resources/blog/post/complete-guide-to-api-security.html](https://www.pingidentity.com/en/resources/blog/post/complete-guide-to-api-security.html)**
+-
+-
+- ![image.png](../assets/image_1702666991991_0.png)
+-
+- ![image.png](../assets/image_1702667005437_0.png)
+-
+- ![image.png](../assets/image_1702667017929_0.png)
+-
+- ![image.png](../assets/image_1702667029422_0.png)
+- ![image.png](../assets/image_1702667041576_0.png)
+- ![image.png](../assets/image_1702667056685_0.png)
+-
 - # Authentication
   background-color:: yellow
 	- To enable authentication, modify the */WEB-INF/web.xml* file in the war file deployed.

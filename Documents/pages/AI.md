@@ -1,4 +1,5 @@
 # Overview
+background-color:: yellow
 	- Definition: Any technique that allows computers to bring meaning to data in similar ways to a human.
 	- **Types**
 		- **Artificial Special Intelligence**:
@@ -10,6 +11,21 @@
 	- Avoiding [*AI Winter*](https://en.wikipedia.org/wiki/AI_winter)
 -
 - # Chatbots
+  background-color:: green
 	- ## Learning Resources
 		- Build your own chatbot https://apps.cognitiveclass.ai/learning/course/course-v1:IBMDeveloperSkillsNetwork+CB0101EN+v1/home
-		-
+	- Spectrum of support systems
+		- Humans only
+		- Bots support humans - where humans evaluate the and accept or decline the responses from the bot.
+		- Bot triages for humans - here bots respond to simple questions and triage the harder ones to humans. e.g., refund requests
+		- Chatbots only
+		- ![image.png](../assets/image_1702319935998_0.png)
+	- Advice for deploying chatbots
+		- Start with an internal-facing chatbot
+			- work with staff to assess behavior of chatbot
+			- avoid public mistakes
+		- Deploy with human-in-the-loop to check for mistakes
+		- Only after deemed safe, allow bot to communicate directly with customers
+- # References
+	- O'Reilly What are ChatGPT and Its Friends?
+	- ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098152604/files/assets/cover.png){:height 414, :width 245}
