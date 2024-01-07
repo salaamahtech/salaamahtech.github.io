@@ -12,7 +12,36 @@
 - ![image.png](../assets/image_1702667029422_0.png)
 - ![image.png](../assets/image_1702667041576_0.png)
 - ![image.png](../assets/image_1702667056685_0.png)
--
+- # API Security Methods
+  background-color:: yellow
+	- Web APIs use 3 authentication mechanisms: HMAC, Digital Signature, OAuth
+	- ## HMAC
+		- What?
+			- HMAC (hash-based message authentication code) is used to verify that a request is coming from an expected source and that the request has not been tampered with in transit.
+		- How it works
+			- Server generates a public key (or API key that is unique for each client) and a private key (or secret key) combination.
+			- Server sends both the keys to the client
+			- Before passing the payload message to the server, client creates a signature or HMAC (hashed code) using the private key as follows
+				- `signature = Base64( HMAC-SHA-256( PrivateKey, PayloadMessage ) )`
+			- Client sends the payload (*API key + HMAC Signature + Actual Message* ) to the server
+			- Server gets the public/API key from the request payload and gets the associated private key from the server.
+			- Server then generates a signature of the message using the same formula as the client. If the server generated signature matches the one in the payload, then the server trusts the client and processes the request.
+			- Server responses are signed in a similar way
+			- ![image.png](../assets/image_1704636907407_0.png)
+		- When to use?
+			- When you have a public API and want to control who can access your API
+		- Pros
+			- Easy to implement
+		- Cons
+			- Server generates both the private and public key.
+	- ## Digital Signature
+		- What?
+			- Digital Signature relies on private-public key pairs - which is useful for securing server-to-server communications. (same as mTLS)
+		- How it works?
+	- ## mTLS
+		-
+	- ## OAuth
+	-
 - # Authentication
   background-color:: yellow
 	- To enable authentication, modify the */WEB-INF/web.xml* file in the war file deployed.
@@ -75,19 +104,19 @@
 		  @Path("/customers")
 		  @RolesAllowed({"ADMIN", "CUSTOMER"})
 		  public class CustomerResource {
-		  @GET
-		  @Path("{id}")
-		  @Produces("application/xml")
-		  public Customer getCustomer(@PathParam("id") int id) {...}
+		    @GET
+		    @Path("{id}")
+		    @Produces("application/xml")
+		    public Customer getCustomer(@PathParam("id") int id) {...}
 		  
-		  @RolesAllowed("ADMIN")
-		  @POST
-		  @Consumes("application/xml")
-		  public void createCustomer(Customer cust) {...}
+		    @RolesAllowed("ADMIN")
+		    @POST
+		    @Consumes("application/xml")
+		    public void createCustomer(Customer cust) {...}
 		  
-		  @PermitAll
-		  @GET
-		  @Produces("application/xml")
-		  public Customer[] getCustomers() {}
+		    @PermitAll
+		    @GET
+		    @Produces("application/xml")
+		    public Customer[] getCustomers() {}
 		  }
 		  ```

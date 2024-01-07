@@ -194,21 +194,27 @@ background-color:: yellow
 		  logseq.order-list-type:: number
 	- ## Softskills
 	  background-color:: pink
-		- [[Coding Interview]]
-		  logseq.order-list-type:: number
-		- [[Engineering Manager Interview]]
-		  logseq.order-list-type:: number
 		- [[Leadership Best Practices]]
 		  logseq.order-list-type:: number
 		- [[Presentation Skills]]
 		  logseq.order-list-type:: number
 		- [[Written Communication]]
 		  logseq.order-list-type:: number
+		- [[Career Advice]]
+		  logseq.order-list-type:: number
 	- ## General
 	  background-color:: red
 		- [[Brain Teasers]]
 		  logseq.order-list-type:: number
 		- [[Physics]]
+		  logseq.order-list-type:: number
+	- ## Interviews
+	  background-color:: pink
+		- [[Coding Interview]]
+		  logseq.order-list-type:: number
+		- [[System Design Interview]]
+		  logseq.order-list-type:: number
+		- [[Engineering Manager Interview]]
 		  logseq.order-list-type:: number
 - # Conferences
   background-color:: yellow

@@ -1,9 +1,9 @@
 # Basics
-	- ## Scale Up
+	- ## Scale Up / Vertical Scaling
 		- When volume of data increases, add computing power to a single server or move to a bigger server.
 		- Pros: no change in architecture needed.
 		- Cons: there are limitation on how big a single host can be.
-	- ## Scale Out
+	- ## Scale Out / Horizontal Scaling
 		- Processing is handled by more than 1 server. When data volume increases, add more servers to the farm.
 		- Pros: Cheaper purchase costs than scale up, High availability
 		- Cons: complex data processing stratagies involved.
@@ -30,19 +30,47 @@
 		- When your application involves heavy data reads/writes and heavy transactional volumes, and if none of the above techniques work, then scaling horizontally is the only option.
 		- Partitioning/Sharding data across multiple nodes/servers in a cluster also introduces multiple failure points. DB cluster must be *highly available- to ensure the interim server failures do not interrupt the live operations.
 - # Sharding
-  collapsed:: true
-	- ## Consistent hashing or Hash Ring
-		- is a special kind of hashing such that when a hash table is resized and consistent hashing is used, only `K/n` keys need to be remapped on average, where `K` is the number of keys, and `n` is the number of slots. In contrast, in most traditional hash tables, a change in the number of array slots causes nearly all keys to be remapped.
-		- The advantage of Consistent Hashing with sharding is to reduce the number of rows affected (i.e., that need to be moved) as new physical shard servers are added or removed.
-		- [Consistent Hashing Explained](http://michaelnielsen.org/blog/consistent-hashing/)
-	- ## Black-Box Sharding
-		- The most common sharding technique in existence is black-box sharding, meaning that the shard distribution logic is controlled internally by the toolkit or product, and not exposed to the application.
-		- The primary drawback for the black-box sharding approach is when you need to obtain related data, such as lists of items that have to do with a particular data element. I often refer to this as a *scatter-gather approach*: the data is scattered by key across the cluster, and must be gathered into meaningful lists of related data
-	- ## Relational Sharding
-		- With relational sharding, the application or database architect defines the sharding schema along the natural data relationships in the data model. The advantage is that related data is *co-located- in the same physical server, allowing more application queries to be resolved with a single invocation to a given shard server.
-		- The sharding strategy for the relational approach also uses a hash function to partition the data, again typically using a modulus or consistent hash approach. It is also possible to partition data using a key range scheme, where shard keys are grouped together by a range (such as a date range).
-		- While it is true that relational sharding is easiest to implement with a relational DBMS engine, the advantages of this technique can be applied to other types of DBMS engines as well. It can even be used with an object database, through clever utilization of secondary indexes – particularly if the engine stores sharded data in range-based chunks.
-		- Allows easy join of related data unlike in black-box sharding.
+  background-color:: gray
+	- ## What is Sharding?
+	  background-color:: pink
+		- Sharding is a form of scaling known as **horizontal scaling** or **scale-out**, as additional nodes are brought on to share the load.
+		- **Sharding** is a method for distributing a single large dataset across multiple databases, which can then be stored on multiple machines. This allows for larger datasets to be split into smaller chunks and stored in multiple data nodes, increasing the total storage capacity of the system.
+		- by distributing the data across multiple machines, a sharded database can handle more requests than a single machine can.
+	- ## Sharding Strategy
+	  background-color:: pink
+		- ### Range-based sharding
+		  background-color:: blue
+			- **Ranged sharding** divides data into ranges based on the shard key values. Each chunk is then assigned a range based on the shard key values.
+			- ![image.png](../assets/image_1703261265746_0.png)
+		- ### Simple hashed sharding
+		  background-color:: blue
+			- **Hashed Sharding** involves computing a hash of the shard key field’s value. Each chunk is then assigned a range based on the hashed shard key values.
+			- ![image.png](../assets/image_1703261280417_0.png)
+		-
+		- ### Consistent hashing or Hash Ring
+		  background-color:: blue
+			- is a special kind of hashing such that when a hash table is resized and consistent hashing is used, only `K/n` keys need to be remapped on average, where `K` is the number of keys, and `n` is the number of slots. In contrast, in most traditional hash tables, a change in the number of array slots causes nearly all keys to be remapped.
+			- The advantage of Consistent Hashing with sharding is to reduce the number of rows affected (i.e., that need to be moved) as new physical shard servers are added or removed.
+			- http://highscalability.com/blog/2023/2/22/consistent-hashing-algorithm.html
+			- [Consistent Hashing Explained](http://michaelnielsen.org/blog/consistent-hashing/)
+	- ## Sharding Types
+	  background-color:: pink
+		- ### Black-Box Sharding
+		  background-color:: blue
+			- The most common sharding technique in existence is black-box sharding, meaning that the shard distribution logic is controlled internally by the toolkit or product, and not exposed to the application.
+			- The primary drawback for the black-box sharding approach is when you need to obtain related data, such as lists of items that have to do with a particular data element. This is often referred to as a *scatter-gather approach*: the data is scattered by key across the cluster, and must be gathered into meaningful lists of related data
+		- ### Relational Sharding
+		  background-color:: blue
+			- With relational sharding, the application or database architect defines the sharding schema along the natural data relationships in the data model. The advantage is that related data is *co-located* in the same physical server, allowing more application queries to be resolved with a single invocation to a given shard server.
+			- The sharding strategy for the relational approach also uses a hash function to partition the data, again typically using a modulus or consistent hash approach.
+			- Allows easy join of related data unlike in black-box sharding.
+	- ## Replication vs. Sharding
+	  background-color:: pink
+		- Replication is taking copies of a given DB as-is. However, sharding is splitting the large dataset into multiple smaller chunks stored across multiple nodes.
+		- Replication is much simpler to setup than sharding.
+		- **Read-focused vs. Write-focused load**:
+			- Replication works well if your data workload is primarily read-focused. It increases availability and read performance by simply spinning up additional copies of the DB and through load balancing.
+			- Sharding works well if your DB contains large amounts of data, requires high read and high write volume, and have specific availability requirements.
 - # Caching
   collapsed:: true
 	- ## Locality of References
