@@ -1,7 +1,5 @@
 # Monolith Architecture
-collapsed:: true
 	- ## Downsides of monolith
-	  collapsed:: true
 		- Vulnerable to the perils of coupling—specifically, implementation and deployment coupling
 		- __Delivery contention__: Different developers wanting to change the same piece of code, different teams wanting to push functionality live at different times (or delay deployments)
 		- Agile development and deployment becomes impossible
@@ -55,17 +53,17 @@ collapsed:: true
 		- collapsed:: true
 		  *  __Independent deployability__
 			- make a change to a microservice and deploy it into a production environment without having to deploy anything else. To guarantee this,
-				-  Ensure the services are loosely-coupled.
-				-  Define well-defined, stable contracts between services.
-				-  Do not share databases.
+				- Ensure the services are loosely-coupled.
+				- Define well-defined, stable contracts between services.
+				- Do not share databases.
 		- collapsed:: true
 		  *  __Modeled around a business domain__
-			-  Make cross-service changes as infrequently as possible.
-			-  Changes in functionality are primarily about changes in business functionality. But in Figure 1-1 (typical 3-tier architecture) our business functionality is in effect spread across all three tiers, increasing the chance that a change in functionality will cross layers. This is an architecture in which we have high cohesion of related technology, but low cohesion of business functionality. Instead change how we group code - choose cohesion of business functionality, rather than technology.
-			-  Our business domain becomes the primary force driving our system architecture, hopefully making it easier to make changes, and making it easier for us to organize our teams around our business domain.
+			- Make cross-service changes as infrequently as possible.
+			- Changes in functionality are primarily about changes in business functionality. But in Figure 1-1 (typical 3-tier architecture) our business functionality is in effect spread across all three tiers, increasing the chance that a change in functionality will cross layers. This is an architecture in which we have high cohesion of related technology, but low cohesion of business functionality. Instead change how we group code - choose cohesion of business functionality, rather than technology.
+			- Our business domain becomes the primary force driving our system architecture, hopefully making it easier to make changes, and making it easier for us to organize our teams around our business domain.
 		- collapsed:: true
 		  *  __Own their own data__
-			-  If one service wants to access data held by another service, then it should go and ask that service for the data it needs. This gives the service the ability to decide what is shared and what is hidden. It also allows the service to map from internal implementation details, which can change for various arbitrary reasons, to a more stable public contract, ensuring stable service interfaces.
+			- If one service wants to access data held by another service, then it should go and ask that service for the data it needs. This gives the service the ability to decide what is shared and what is hidden. It also allows the service to map from internal implementation details, which can change for various arbitrary reasons, to a more stable public contract, ensuring stable service interfaces.
 			- Having stable interfaces between services is essential if we want independent deployability—if the interface a service exposes keeps changing, this will have a ripple effect causing other services to need to change as well.
 			- we want to think of our services as end-to-end slices of business functionality, that where appropriate encapsulate the UI, application logic, and data storage. This is because we want to reduce the effort needed to change business-related functionality. The encapsulation of data and behavior in this way gives us high cohesion of business functionality.
 	- ## Definition of a Stateless Service
@@ -175,7 +173,6 @@ collapsed:: true
 	- ![](../assets/microservices-patterns.png)
 	- 3 axes of decomposition from “The Art of Scalability” book.
 	- ## Decomposition Patterns
-	  collapsed:: true
 		- ### Functional decomposition
 		  collapsed:: true
 			- **Pros** of decomposing/partitioning to separate services
@@ -194,7 +191,6 @@ collapsed:: true
 				- Runtime overhead (nano-service anti-pattern) - e.g., overhead of running JVM which contains only 100 lines of code
 				- Tracing requests and performance measurement
 		- ### Partitioning Strategies
-		  collapsed:: true
 			- Goals of partitioning: parallelize development and deployment
 			- Strategies
 				- Partition by noun e.g., Catalog service for products
@@ -206,9 +202,7 @@ collapsed:: true
 				- Common Closure Principle - Components that change for the same reason should be packaged together
 			- Anti-pattern: Nano-services
 	- ## Deployment Patterns
-	  collapsed:: true
-		- collapsed:: true
-		  * __Multiple services per host__
+		- __Multiple services per host__
 			- Cons
 				- Less isolation
 				- Difficult to limit resource utilization
@@ -223,7 +217,6 @@ collapsed:: true
 			- http://packer.io, http://boxfuse.com - for automation of VM image creation
 		- __Service per container__
 	- ## Communication Patterns
-	  collapsed:: true
 		- Issues
 			- How do clients interact with the services?
 			- How do services within the system interact with each other?
@@ -250,7 +243,7 @@ collapsed:: true
 				- Invoke remote services via a bounded thread pool
 				- Use the circuit breaker pattern e.g., 5 failures in a row indicates the service is down
 				- Netflix Hystrix addresses all this
-		- ## Service Discovery
+		- ### Service Discovery
 		  collapsed:: true
 			- ![](../assets/microservices-patterns-discovery-problem.png)
 			- Forces
@@ -300,10 +293,8 @@ collapsed:: true
 						- Kubernetes/Marathon
 						- Netflix Eureka Prana
 						- Container Buddy - runs as services’ parent process in docker container, registers services with Consul or etcd
-		- ## Cross-cutting concerns
-		  collapsed:: true
+		- ### Cross-cutting concerns
 			- ### Microservice Chassis Framework
-			  collapsed:: true
 				- **Cross-cutting concerns**
 					- External configuration
 						- N/w location of external services, credentials, etc.
@@ -317,123 +308,118 @@ collapsed:: true
 					- Unlike monolith, all the above needs to be repeated multiple times
 					- Microservice Chassis is a framework that actually takes care of the above e.g., Spring Boot + Spring Cloud, DropWizard
 	- ## Data Management
-	  collapsed:: true
-		- Problem of Data Consistency
+		- ### Problem of Data Consistency
 			- What is the database architecture for a micro service architecture - shared db or db per service?
 			- Each microservices has its own data store in order to ensure loose coupling. However, this makes it difficult to maintain consistency across multiple services. You can't, for example, use distributed transactions (2PC).
-		- Forces
-			- Some business transactions must update data owned by other services
-			- Some queries must join data owned by other services
-			- Different services have different storage requirements
-			- Database must sometimes be sharded or replicated for scalability
-			- Services must be loosely coupled so that they can be developed and deployed independently
-		- ### Pattern: Shared Database
-		  collapsed:: true
-			- Pros
-				- Simple
-				- Local transactions only
-			- Cons
-				- Services are tightly coupled
-				- lack of encapsulation
-				- Single db may not satisfy the data access requirements of multiple services
-		- ### Pattern: Database per service
-		  collapsed:: true
-			- Private tables: services owns a set of tables that are private to that service
-			- Private schema: services owns a schema that are private to that service
-			- Private server: services owns a db server that are private to that service
-			- Pros
-				- Escapes the constraints of relational databases
-				- Services are loosely coupled
-			- Cons
-				- Implementing transactions and queries that spans multiple services is challenging
-				- More complex to operate
-			- Problem of 2-phase commit
-				- Guaranteed atomicity but
-					- Need a distributed transaction manager
-					- DB and message broker must support 2PC
-					- Impacts reliability
-		- ### Pattern: Transaction log tailing
-		  collapsed:: true
-			- After a record is written to db, other services can read/tail off of it
-			- [LinkedIn Databus](https://github.com/linkedin/databus), Mongodb (Oplog), AWS Dynamodb supports streaming of CRUD operations
-			- Pros
-				- No 2PC
-				- No app changes needed
-				- Guaranteed to be accurate
-			- Cons
-				- Immature
-				- Specific to a database solution
-				- Low level DB changes rather than business level events = need to reverse-engineer domain events
-		- ### Pattern: Event Sourcing
-		  collapsed:: true
-			- ![](../assets/microservices-patterns-eventsourcing1.png)
-			- Radically different approach in storing business entities and writing business logic. Most notably, the way in which business entities are stored in a data store is not by storing the current state but by storing the sequence of state-changing events (immutable events). Whenever the current state is needed, you reload past events and compute them.
-			- For each business entity (aggregate)
-				- Identify (state changing) domain events
-				- Define Event classes
-			- > Event Store = database + message broker
-				- Store entities as a series of state changing immutable events, and reconstruct the current state by replaying them.
-				- Functionality of event store
-					- Save aggregate events
-					- Get aggregate events
-					- Subscribe to events
-				- Implementations: Greg Young’s https://eventstore.org and https://eventuate.io
-			- Pros
-				- Solves data consistency issues in a microservice/nosql based architecture
-				- Reliable event publishing
-				- Eliminate O/R mapping problem
-				- Enables temporal querying, audit logs
-			- Cons
-				- Requires application rewrite
-				- Must detect and handle duplicate events
-					- Idempotent event handlers
-					- Or track most recent event and ignore older ones
-				- Querying the event store can be challenging
-					- Some queries can be complex or inefficient e.g., accounts with balance > X
-					- Event store might support only look up of events by entity id
-					- Must use CQRS to handle queries => app must handle eventual consistent data. CQRS subscribes to events and stores a denormalized view of the event data that is easier to query
-			- #### Event Sourcing Design
+			- Forces
+				- Some business transactions must update data owned by other services
+				- Some queries must join data owned by other services
+				- Different services have different storage requirements
+				- Database must sometimes be sharded or replicated for scalability
+				- Services must be loosely coupled so that they can be developed and deployed independently
+			- #### Pattern: Shared Database
+				- Pros
+					- Simple
+					- Local transactions only
+				- Cons
+					- Services are tightly coupled
+					- lack of encapsulation
+					- Single db may not satisfy the data access requirements of multiple services
+			- #### Pattern: Database per service
+				- Private tables: services owns a set of tables that are private to that service
+				- Private schema: services owns a schema that are private to that service
+				- Private server: services owns a db server that are private to that service
+				- Pros
+					- Escapes the constraints of relational databases
+					- Services are loosely coupled
+				- Cons
+					- Implementing transactions and queries that spans multiple services is challenging
+					- More complex to operate
+				- Problem of 2-phase commit
+					- Guaranteed atomicity but
+						- Need a distributed transaction manager
+						- DB and message broker must support 2PC
+						- Impacts reliability
+			- #### Pattern: Transaction log tailing
 			  collapsed:: true
-				- There are 3 types of components in an event sourcing design
-					- Data model
-					- Domain events
-					- Commands
-				- **1) Designing data model**
-					- DDD vocabulary
-						- Entities - something that is identified by an id and persisted in db. e.g., Order, Product, Account
-						- Value Object - e.g., Money, Date
-						- Service
-						- Repository
-						- Aggregates
-							- A transaction can update only a single aggregate. Scope of a transaction is really one aggregate. This fits well for NoSQL databases as well where you can update only one thing/document/aggregate at a time. Hence NoSQL databases are also called as aggregate-oriented databases.
-							- Aggregate granularity
-								- if you want you could combine Customer, Order and Product as a single aggregate, it will be work and be more consistent, but won’t scale well.
-								- however, if they are treated as separate aggregates, then scalability and user experience improves since they can be stored and worked on in parallel.
-				- **2) Designing Domain Events**
-					- Domain events store the information about the following
-						- Event Metadata e.g., time of the event, sender Id, etc.
-						- Required by aggregate e.g., productId,
-						- Enrichment - useful for consumers e.g., price, product name
-				- **3) Designing Commands**
-					- Created by a service from incoming request
-					- Processed by an aggregate
-					- Immutable
-			- __CQRS (Command-Query Responsibility Seggregation) pattern__
-			- {% img right /technology/microservices-patterns-cqrs.png 300 300 %}
-			- In relational databases, query a customer and his order details is joining those 2 tables. However, event store only supports primary key look ups.
-			- Rather a single component performing both command and query operation, handle them separately.
-			- Command side would handle HTTP POST, DELETE, PUT methods.
-			- Query side would handle GET methods. Query side stores only more materialized or denormalized views of the data.
-			- View Store could be MongoDb, GraphDb, ElasticSearch, AWS DynamoDb etc. depending on the data needs
-			- Pros
-				- Necessary in an event sourcing architecture
-				- Separation of concerns
-				- Supports multiple denormalized views either as documents or graphs
-				- Improved scalability and performance
-			- Cons
-				- Complexity
-				- Code duplication
-				- Replication lag/eventually consistent views
+				- After a record is written to db, other services can read/tail off of it
+				- [LinkedIn Databus](https://github.com/linkedin/databus), Mongodb (Oplog), AWS Dynamodb supports streaming of CRUD operations
+				- Pros
+					- No 2PC
+					- No app changes needed
+					- Guaranteed to be accurate
+				- Cons
+					- Immature
+					- Specific to a database solution
+					- Low level DB changes rather than business level events = need to reverse-engineer domain events
+			- #### Pattern: Event Sourcing
+				- ![](../assets/microservices-patterns-eventsourcing1.png)
+				- Radically different approach in storing business entities and writing business logic. Most notably, the way in which business entities are stored in a data store is not by storing the current state but by storing the sequence of state-changing events (immutable events). Whenever the current state is needed, you reload past events and compute them.
+				- For each business entity (aggregate)
+					- Identify (state changing) domain events
+					- Define Event classes
+				- > Event Store = database + message broker
+					- Store entities as a series of state changing immutable events, and reconstruct the current state by replaying them.
+					- Functionality of event store
+						- Save aggregate events
+						- Get aggregate events
+						- Subscribe to events
+					- Implementations: Greg Young’s https://eventstore.org and https://eventuate.io
+				- Pros
+					- Solves data consistency issues in a microservice/nosql based architecture
+					- Reliable event publishing
+					- Eliminate O/R mapping problem
+					- Enables temporal querying, audit logs
+				- Cons
+					- Requires application rewrite
+					- Must detect and handle duplicate events
+						- Idempotent event handlers
+						- Or track most recent event and ignore older ones
+					- Querying the event store can be challenging
+						- Some queries can be complex or inefficient e.g., accounts with balance > X
+						- Event store might support only look up of events by entity id
+						- Must use CQRS to handle queries => app must handle eventual consistent data. CQRS subscribes to events and stores a denormalized view of the event data that is easier to query
+				- #### Event Sourcing Design
+					- There are 3 types of components in an event sourcing design
+						- Data model
+						- Domain events
+						- Commands
+					- **1) Designing data model**
+						- DDD vocabulary
+							- Entities - something that is identified by an id and persisted in db. e.g., Order, Product, Account
+							- Value Object - e.g., Money, Date
+							- Service
+							- Repository
+							- Aggregates
+								- A transaction can update only a single aggregate. Scope of a transaction is really one aggregate. This fits well for NoSQL databases as well where you can update only one thing/document/aggregate at a time. Hence NoSQL databases are also called as aggregate-oriented databases.
+								- Aggregate granularity
+									- if you want you could combine Customer, Order and Product as a single aggregate, it will be work and be more consistent, but won’t scale well.
+									- however, if they are treated as separate aggregates, then scalability and user experience improves since they can be stored and worked on in parallel.
+					- **2) Designing Domain Events**
+						- Domain events store the information about the following
+							- Event Metadata e.g., time of the event, sender Id, etc.
+							- Required by aggregate e.g., productId,
+							- Enrichment - useful for consumers e.g., price, product name
+					- **3) Designing Commands**
+						- Created by a service from incoming request
+						- Processed by an aggregate
+						- Immutable
+				- __CQRS (Command-Query Responsibility Seggregation) pattern__
+					- ![](../assets/microservices-patterns-cqrs.png)
+					- In relational databases, query a customer and his order details is joining those 2 tables. However, event store only supports primary key look ups.
+					- Rather a single component performing both command and query operation, handle them separately.
+					- Command side would handle HTTP POST, DELETE, PUT methods.
+					- Query side would handle GET methods. Query side stores only more materialized or denormalized views of the data.
+					- View Store could be MongoDb, GraphDb, ElasticSearch, AWS DynamoDb etc. depending on the data needs
+					- Pros
+						- Necessary in an event sourcing architecture
+						- Separation of concerns
+						- Supports multiple denormalized views either as documents or graphs
+						- Improved scalability and performance
+					- Cons
+						- Complexity
+						- Code duplication
+						- Replication lag/eventually consistent views
 - # Monolith to Microservices Strategies
 	- Following are some of the strategies to refactor monoliths to microservices
 	- Strangler Application (Martin Fowler)

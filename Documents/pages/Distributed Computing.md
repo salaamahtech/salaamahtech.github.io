@@ -1,4 +1,5 @@
 # Scalability
+background-color:: yellow
 collapsed:: true
 	- 1. **Size scalability**: adding more nodes should make the system linearly faster; growing the dataset should not increase latency
 	- 2. **Geographic scalability**: it should be possible to use multiple data centers to reduce the time it takes to respond to user queries, while dealing with cross-data center latency in some sensible manner.
@@ -20,6 +21,7 @@ collapsed:: true
 				- less than 1 hour downtime per year  = 99.99% availability
 			- Availability is in some sense a much wider concept than uptime, since the availability of a service can also be affected by, say, a network outage or the company owning the service going out of business (which would be a factor which is not really relevant to fault tolerance but would still influence the availability of the system). But without knowing every single specific aspect of the system, the best we can do is design for fault tolerance.
 - # Fault tolerance
+  background-color:: yellow
   collapsed:: true
 	- ability of a system to behave in a well-defined manner once faults occur.
 	- define what faults you expect and then design a system or an algorithm that is tolerant of them.
@@ -33,11 +35,12 @@ collapsed:: true
 			- b) an increase in the number of independent nodes may increase the need for communication between nodes (reducing performance as scale increases)
 			- c) an increase in geographic distance increases the minimum latency for communication between distant nodes (reducing performance for certain operations)
 		- Beyond these tendencies - which are a result of the physical constraints - is the world of system design options.
-- # Design Techniques
-  collapsed:: true
-	- There are two basic techniques in which a data set is distributed between multiple nodes: **partition** and **replication**.
+- # Distributed Data
+  background-color:: yellow
+	- There are two basic techniques in which a data set is distributed across multiple nodes: **partition** and **replication**.
 	- ![Partition & Replication](http://book.mixu.net/distsys/images/part-repl.png)
 	- ## Partitioning
+	  background-color:: pink
 	  collapsed:: true
 		- Partitioning is dividing the dataset into smaller distinct independent sets; this is used to reduce the impact of dataset growth since each partition is a subset of the data.
 		- improves performance by limiting the amount of data to be examined and by locating related data in the same partition
@@ -45,7 +48,13 @@ collapsed:: true
 		- is also very much application-specific, so it is hard to say much about it without knowing the specifics.
 		- is mostly about defining your partitions based on what you think the primary access pattern will be, and dealing with the limitations that come from having independent partitions (e.g. inefficient access across partitions, different rate of growth etc.).
 	- ## Replication
-	  collapsed:: true
+	  background-color:: pink
+		- <p>There is an error with your mermaid syntax. Please rectify and render again.</p>
+		  {{renderer :mermaid_bdypat}}
+			- ```mermaid
+			  graph LR
+			     a -> b
+			  ```
 		- Replication is making copies of the same data on multiple machines; this allows more servers to take part in the computation.
 		- It can also be copied or cached on different nodes to reduce the distance between the client and the server and for greater fault tolerance.
 		- improves performance by making additional computing power and bandwidth applicable to a new copy of the data
@@ -53,6 +62,11 @@ collapsed:: true
 		- is also the source of many of the problems, since there are now independent copies of the data that has to be kept in sync on multiple machines - this means ensuring that the replication follows a consistency model.
 		- ***Strong consistency*** allows you to program as-if the underlying data was not replicated.
 		- ***Weaker consistency*** models can provide lower latency and higher availability.
+		- Why replicate?
+			- to increase availability (by tolerating individual node failures)
+			- to increase scalability (processing more requests than a single machine can handle)
+			- to reduce latency (placing replicas geographically closer to the users)
+			-
 - # System Models
   collapsed:: true
 	- In a distributed system :

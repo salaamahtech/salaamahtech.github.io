@@ -4,10 +4,10 @@
 - # Part I - Managing Individual
 	- ## Performance
 		- ## Ch 1: Great expectations
-		  collapsed:: true
 			- Clearly communicate your expectations to your team members.
 			- Give clear, well defined expectations with examples
 			- *An unarticulated expectation guarantees disappointment.*
+			  background-color:: yellow
 			- Expectation setting is one of the first things one should acquire as a manager
 			- Setting clear expectations and micromanagement are not the same
 			- Dunning-Kruger Effect: newbies underestimate the complexity and effort needed for an initiative. on the other hand, an expert assumes what is easy for him is easy for others too.

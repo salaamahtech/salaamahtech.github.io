@@ -39,7 +39,7 @@ collapsed:: true
 		- by caching writes in memory before committing to disk, Redis gains amazing performance in exchange for increased risk of data loss in the case of a hardware failure. good fit for caching noncritical data and for acting as a message broker.
 		- **3 Persistence modes**
 			- _in-memory_ - completely in-memory. data is lost when server crashes
-			- _snapshot_ (default) - snapshots taken to files periodically
+			- _snapshot_ (default) - snapshots taken to files periodically. Saving the entire DB to disk in a compressed RDB format
 			- _Append Only File_ (AOF) - all data is written to file every few seconds
 		- **Keys**
 			- Redis keys can be a simple string or a complex string (e.g., persons:123:nyc)

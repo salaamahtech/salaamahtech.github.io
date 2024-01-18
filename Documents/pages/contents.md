@@ -1,3 +1,5 @@
 -
 - {{renderer :tocgen2, [[what are chatgpt and its friends?]], calc(100vh - 135px)}}
 - {{renderer :tocgen2, [[home]], calc(100vh - 135px)}}
+- {{renderer :tocgen2, [[api security]], calc(100vh - 135px)}}
+- {{renderer :tocgen2, [[security]], calc(100vh - 135px)}}

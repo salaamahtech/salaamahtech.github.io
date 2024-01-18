@@ -113,6 +113,20 @@ collapsed:: true
 			- Most secure way to perform authentication on web.
 		- ### Cons
 			- Managing of the certificates is painful. The server must create a unique certificate for each client that wants to connect to the service. From the browser/human perspective, this can be a pain, as the user has to do some extra configuration to interact with the server.
+		- ### CLI commands
+			- ```bash
+			  # to fetch the certificate of google.com
+			  openssl s_client -connect google.com:443 2>/dev/null < /dev/null | sed -n '/BEGIN CERTIFICATE/,/END CERTIFICATE/p' > google.com.crt
+			  
+			  # to view the crt file content
+			  cat google.com.crt
+			  
+			  # to view the human-readable content of the certificate
+			  openssl x509 -text -noout -in google.com.crt
+			  
+			  ```
+		- ![Illustrated X.509 Certificate. Introduction _ by Takahiko Kawasaki _ Medium.pdf](../assets/Illustrated_X.509_Certificate._Introduction_by_Takahiko_Kawasaki_Medium_1704816157924_0.pdf)
+		- ![An_Overview_of_x.509_certificates.pdf](../assets/An_Overview_of_x.509_certificates_1704816238580_0.pdf)
 	- ## OpenID
 	  background-color:: pink
 	  collapsed:: true
@@ -263,15 +277,26 @@ collapsed:: true
 			- ![image.png](../assets/image_1704670823681_0.png)
 		- ### Difference between TLS and mTLS
 		  background-color:: blue
+		  collapsed:: true
 			- | **TLS** | **mTLS** |
 			  | Only server has a TLS certificate and a public/private key pair, while the client does not | Both client and server have their own TLS certificate and a key pair |
 			  | TLS uses an external certificate authority | Organization implementing mTLS act as its own certificate authority. It uses a self-signed root certificate -  meaning the org creates it themselves. This won't work for one-way TLS on the public Internet because an external CA has to issue those certificates |
 			  | Computationally cheap and fast | Costly and slower due to additional round-trips|
 		- ### Where to use mTLS?
+		  background-color:: blue
+		  collapsed:: true
 			- mTLS is often used in zero trust security environments to verify users, devices, and servers within an org network.
 			- In B2B API interactions where the server doesn’t want to expose its services to the entire world and wants to make sure the request is coming from a known client.
 			- In B2B financial transactions. For example, transactions between two bank servers.
 			- For authenticating and encrypting service-to-service communication between microservices or with the API gateway.
+		- ### mTLS in Service Mesh
+		  background-color:: blue
+		  collapsed:: true
+			- For implementing mTLS, the service mesh control plane offers:
+				- A Certificate Authority that issues trusted x.509 certificates for microservices authentication
+				- A configuration API server to define and deliver communication security policies for authentication and authorization to the sidecar proxies.
+				- Sidecar proxies that sit alongside each microservice and help manage communications based on security policies
+			- ![Service-mesh-control-plane.webp](../assets/Service-mesh-control-plane_1704675286343_0.webp){:height 395, :width 901}
 		- ### Pros
 		  background-color:: blue
 			- Prevents various kinds of attacks including
@@ -564,6 +589,7 @@ collapsed:: true
 	  background-color:: pink
 		- Asymmetric encryption, also known as **public key encryption**, uses separate keys for the encryption and decryption processes, with one key remaining private and the other being shared for public use.
 		- ![assymetric_cryptography.png](../assets/assymetric_cryptography_1704643369061_0.png)
+		  id:: 659acb1e-7c64-4573-9525-91b14a1c36c4
 		- ![image.png](../assets/image_1704643961430_0.png)
 		- | **Public key** | **Private key** |
 		  | Visible to everyone | Owned only by the message owner |
@@ -597,13 +623,8 @@ collapsed:: true
 		- Bug found during coding = $100
 		- Bug found during testing = $1000
 		- Bug found during release = $10,000
-	- ## SAST
-		- TBD
-	- ## DAST
-		- TBD
-	- ## IAST
-		- TBD
 	- ## Secure Design Concepts
+	  background-color:: pink
 	  collapsed:: true
 		- **1) Defense in depth (layered protection)**
 			- Web app firewall + secure code + secure data store
@@ -632,10 +653,52 @@ collapsed:: true
 		- **12) Logging and alerting**
 			- Don't log PII data. Log enough for debugging and auditing purposes.
 	- ## Secure Coding Concepts
-	  collapsed:: true
+	  background-color:: pink
 		- > Notes from https://infosecwriteups.com/pushing-left-like-a-boss-table-of-contents-42fd063a75bb
 		- Guarding against accidental or unintentional misuse of the app
 		- Always use the security features in your framework e.g., captcha, anti-CSRF token, session management
+	- ## Security Testing Methodologies
+	  background-color:: pink
+		- ### SAST
+		  background-color:: blue
+			- **What is SAST?**
+				- Static Application Security Testing
+				- SAST is open box testing that scans a software application from the inside out before it is compiled or executed.
+			- **How it works?**
+				- SAST analyzes program source code to identify security vulnerabilities e.g., SQL injection, buffer overflows, XML external entity (XXE) attacks, and other [OWASP Top 10](https://owasp.org/www-project-top-ten/) security risks.
+				- SAST testing is integrated in the CI/CD pipelines to detect security errors in the earlier stages of development.
+			- e.g., Checkmarx
+		- ### DAST
+		  background-color:: blue
+			- **What is DAST?**
+				- Dynamic Application Security Testing
+				- DAST is a security testing methodology that involves dynamic analyzing of an application in its running state.
+				- It scans software applications in real-time against leading vulnerability sources, like the OWASP Top 10 or SANS/CWE 25, to find security flaws or open vulnerabilities.
+			- **How it works?**
+				- DAST testing simulates the actions of a malicious actor trying to break into your application from the outside.
+				- DAST often works from the outside in, identifying security vulnerabilities by simulating attacks, inspecting HTTP responses and observing the application’s reactions.
+			- **Cons**
+				- This external approach means it lacks the ability to understand the complex nuances and contexts of the code being run. This, in turn, limits DAST’s effectiveness and accuracy, especially when it comes to modern, complex applications.
+				- The existing DAST tools send attacks from an external vantage point and then attempt to determine whether these attacks are successful based on HTTP responses. While effective in certain circumstances, this method doesn’t offer detailed insights about what’s happening inside the code and therefore often misses true vulnerabilities.
+			- | **SAST** | **DAST** |
+			  | Scans app code at rest | Scans application at runtime | 
+			  | open-box testing | closed-box testing |
+			  | occurs during the early stages of development | scans a working application post deployment |
+			  | CANNOT catch authentication and encryption issues allowing unauthorized access | CAN catch |
+			  | Technology dependent | Independent |
+		- ### IAST
+		  background-color:: blue
+			- **What is IAST?**
+				- Interactive Application Security Testing
+				- IAST is a form of AppSec testing that analyzes applications in a running state but analyzes them from the inside out, rather than from the outside in.
+				- combines the functions of both SAST and DAST - it uses a monitoring mechanism (sensor or agent) in the application’s backend to gather information during runtime.
+				- provides highly detailed vulnerability descriptions that include the HTTP request, the exact lines of code involved, and the exact flow of data through an application or an API
+			- **How it works?**
+				- IAST uses instrumentation to monitor an application’s internal operations, interactions with  libraries, connections with backend systems and more, all in real time while the application is being used.
+				- ![image.png](../assets/image_1704824876867_0.png)
+			- **Pros**
+				- IAST-style DAST does not require vulnerabilities to be exploited in order to discover them. Ordinary application traffic, not fuzzing and attack exploits, can be used to find complex vulnerabilities. This opens the world of DAST to anyone, not just experienced AppSec experts. Developers can instantly find vulnerabilities in their code as they do their ordinary quality testing. All quality assurance (QA) testing, including automated test cases, can now do double-duty as both QA testing and security testing at once.
+				- allows developers test their application's behaviors at runtime using DAST testing techniques while still monitoring source code execution, like SAST testing. IAST mitigates a significant limitation of the SAST methodology: its inability to follow and test all dependencies, like libraries and frameworks, that modern web applications use
 - # Books and Trainings
   background-color:: yellow
   collapsed:: true
@@ -774,7 +837,6 @@ collapsed:: true
 			  https://github.com/spring-projects/spring-security/blob/main/config/src/main/java/org/springframework/security/config/annotation/web/configuration/HttpSecurityConfiguration.java#L87-L98
 - # References
   background-color:: yellow
-  collapsed:: true
 	- Books
 		- RESTful Java with JAX-RS - Chapter 12 - Securing JAX-RS
 		- REST in practice - Chapter 9 - Web Security
@@ -784,3 +846,4 @@ collapsed:: true
 		- Java EE Security - http://docs.oracle.com/javaee/6/tutorial/doc/gijrp.html
 		- Encyclopedia of Security - http://www.microsoft.com/mspress/books/sampchap/6429.aspx
 		- OAuth Roles - http://tutorials.jenkov.com/oauth2/roles.html
+		- mTLS Tutorial https://builtin.com/software-engineering-perspectives/mutual-tls-tutorial

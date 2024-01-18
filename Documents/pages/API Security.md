@@ -14,34 +14,45 @@
 - ![image.png](../assets/image_1702667056685_0.png)
 - # API Security Methods
   background-color:: yellow
-	- Web APIs use 3 authentication mechanisms: HMAC, Digital Signature, OAuth
-	- ## HMAC
-		- What?
-			- HMAC (hash-based message authentication code) is used to verify that a request is coming from an expected source and that the request has not been tampered with in transit.
-		- How it works
-			- Server generates a public key (or API key that is unique for each client) and a private key (or secret key) combination.
-			- Server sends both the keys to the client
-			- Before passing the payload message to the server, client creates a signature or HMAC (hashed code) using the private key as follows
-				- `signature = Base64( HMAC-SHA-256( PrivateKey, PayloadMessage ) )`
-			- Client sends the payload (*API key + HMAC Signature + Actual Message* ) to the server
-			- Server gets the public/API key from the request payload and gets the associated private key from the server.
-			- Server then generates a signature of the message using the same formula as the client. If the server generated signature matches the one in the payload, then the server trusts the client and processes the request.
-			- Server responses are signed in a similar way
-			- ![image.png](../assets/image_1704636907407_0.png)
-		- When to use?
-			- When you have a public API and want to control who can access your API
-		- Pros
-			- Easy to implement
-		- Cons
-			- Server generates both the private and public key.
-	- ## Digital Signature
-		- What?
-			- Digital Signature relies on private-public key pairs - which is useful for securing server-to-server communications. (same as mTLS)
-		- How it works?
-	- ## mTLS
-		-
-	- ## OAuth
-	-
+	- ## API Authentication Methods
+	  background-color:: pink
+		- Web APIs connected over the public Internet can make use of 3 authentication mechanisms: HMAC, Digital Signature, OAuth
+		- ## HMAC
+		  background-color:: blue
+		  collapsed:: true
+			- What?
+				- HMAC (hash-based message authentication code) is used to verify that a request is coming from an expected source and that the request has not been tampered with in transit.
+			- How it works
+				- Server generates a public key (or API key that is unique for each client) and a private key (or secret key) combination.
+				- Server sends both the keys to the client
+				- Before passing the payload message to the server, client creates a signature or HMAC (hashed code) using the private key as follows
+					- `signature = Base64( HMAC-SHA-256( PrivateKey, PayloadMessage ) )`
+				- Client sends the payload (*API key + HMAC Signature + Actual Message* ) to the server
+				- Server gets the public/API key from the request payload and gets the associated private key from the server.
+				- Server then generates a signature of the message using the same formula as the client. If the server generated signature matches the one in the payload, then the server trusts the client and processes the request.
+				- Server responses are signed in a similar way
+				- ![image.png](../assets/image_1704636907407_0.png)
+			- When to use?
+				- When you have a public API and want to control who can access your API
+			- Pros
+				- Easy to implement
+			- Cons
+				- Server generates both the private and public key.
+		- ## Digital Signature
+		  background-color:: blue
+			- This is nothing but the TLS mechanism
+			- What?
+				- This method relies on private-public key pairs (*Public Key Cryptography*) - which is useful for securing server-to-server communications.
+				- For 2 way communication, both client and server will hold their own key pairs and exchange public keys with each other. (Similar to mTLS)
+			- How it works?
+				- It works by signing the message content with a private key to produce a security signature that can be verified using the corresponding public key (certificate). A key pair is usually provided by a certificate authority.
+				- The client will provide its public key to the server. Each request is then made to the server by signing the message content using the private key. This allows the server to verify the message authenticity without knowing the private key of the client.
+		- ## mTLS
+		  background-color:: blue
+			- mTLS can be used only if the clients are known and are willing to use this security method.
+		- ## OAuth
+		  background-color:: blue
+			- Check OAuth under [[Security]]
 - # Authentication
   background-color:: yellow
 	- To enable authentication, modify the */WEB-INF/web.xml* file in the war file deployed.

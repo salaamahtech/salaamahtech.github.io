@@ -1,0 +1,3 @@
+file-path:: ../assets/Illustrated_X.509_Certificate._Introduction_by_Takahiko_Kawasaki_Medium_1704816157924_0.pdf
+file:: [Illustrated_X.509_Certificate._Introduction_by_Takahiko_Kawasaki_Medium_1704816157924_0.pdf](../assets/Illustrated_X.509_Certificate._Introduction_by_Takahiko_Kawasaki_Medium_1704816157924_0.pdf)
+title:: hls__Illustrated_X.509_Certificate._Introduction_by_Takahiko_Kawasaki_Medium_1704816157924_0
