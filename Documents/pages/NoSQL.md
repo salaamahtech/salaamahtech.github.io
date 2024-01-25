@@ -34,6 +34,7 @@ collapsed:: true
 			- lacks robust support for ad hoc queries, and key-value stores, by design, have trouble linking values together (in other words, they have no foreign keys).
 			- If you require simple queryability, complex data structures, or a rigid schema or if you have no need to scale horizontally with your servers, Riak is probably not your best choice.
 	- ## Redis
+	  background-color:: pink
 		- Redis stands for Remote Dictionary Server
 		- provides for complex datatypes like sorted sets and hashes, as well as basic message patterns like publish-subscribe and blocking queues.
 		- by caching writes in memory before committing to disk, Redis gains amazing performance in exchange for increased risk of data loss in the case of a hardware failure. good fit for caching noncritical data and for acting as a message broker.
@@ -42,10 +43,61 @@ collapsed:: true
 			- _snapshot_ (default) - snapshots taken to files periodically. Saving the entire DB to disk in a compressed RDB format
 			- _Append Only File_ (AOF) - all data is written to file every few seconds
 		- **Keys**
-			- Redis keys can be a simple string or a complex string (e.g., persons:123:nyc)
+			- Redis keys can be a simple string or a complex string (e.g., `persons:123:nyc`)
 			- A key can be of max size 512 MB. Keep it simple and small for performance
 			- expiration time can be set on keys
 			- Key space and keys are like Databases and tables in RDBMS
+		- ### Data Persistence Formats
+		  background-color:: blue
+			- <img src="https://mermaid.ink/img/IGZsb3djaGFydCBMUgoJQVtSZWRpcyBQZXJzaXN0ZW5jZV0tLi0-QjFbUkRCIC0gUmVkaXMgREJdOwoJQSAtLi0-IEIyW0FPRiAtIEFwcGVuZCBPbmx5IEZvcm1hdF07CglCMSAtLi0-IEMxW1NuYXBzaG90dGluZyAtIHBlcmlvZGljYWxseSB1cGRhdGVkXTsKICAgIEIxIC0uLT4gRDFbRGVmYXVsdCBmb3JtYXQuIENvbXBhY3QsIGJpbmFyeSBmb3JtYXQgLSBUYWtlcyBsZXNzIGRpc2sgc3BhY2VdOwogICAgQjEgLS4tPiBFMVtGYXN0ZXIgcmVjb3ZlcnldOwogICAgQjEgLS4tPiBGMVtIaWdoIHBlcmZvcm1hbmNlLiBMZXNzIGR1cmFibGUuIERhdGEgbG9zcyBwb3NzaWJsZV07CiAgICAKICAgIEIyIC0uLT4gQzJbSm91cm5hbGluZyAtIExvZ3MgZXZlcnkgd3JpdGUgb3BlcmF0aW9uXTsKICAgIEIyIC0uLT4gRDJbUGxhaW4gdGV4dCBmb3JtYXQgLSBUYWtlcyBtb3JlIGRpc2sgc3BhY2VdOwogICAgQjIgLS4tPiBFMltTbG93IHRvIHJlY292ZXIuIFRha2UgbW9yZSBwcm9jZXNzaW5nIHBvd2VyXTsKICAgIEIyIC0uLT4gRjJbSGlnaCBkdXJhYmlsaXR5LiBObyBkYXRhIGxvc3NdOwoK" />
+			  collapsed:: true
+			  {{renderer :mermaid_ddyimchv}}
+				- ```mermaid
+				  flowchart LR
+				  	A[Redis Persistence]-.->B1[RDB - Redis DB];
+				  	A -.-> B2[AOF - Append Only Format];
+				  	B1 -.-> C1[Snapshotting - periodically updated];
+				      B1 -.-> D1[Default format. Compact, binary format - Takes less disk space];
+				      B1 -.-> E1[Faster recovery];
+				      B1 -.-> F1[High performance. Less durable. Data loss possible];
+				      
+				      B2 -.-> C2[Journaling - Logs every write operation];
+				      B2 -.-> D2[Plain text format - Takes more disk space];
+				      B2 -.-> E2[Slow to recover. Take more processing power];
+				      B2 -.-> F2[High durability. No data loss];
+				  
+				  ```
+			- Redis has the ability to store the data on disk so that it can be recovered in case of a system crash or restart.
+			- 2 persistence mechanisms
+				- Redis supports two main mechanisms for data persistence: snapshotting and journaling.
+				- **Snapshotting** involves taking a snapshot of the in-memory data and saving it to disk as a single file. This is how RDB works.
+				  logseq.order-list-type:: number
+				- **Journaling** involves logging every write operation that modifies the dataset and saving it to disk. AOF uses the journaling approach.
+				  logseq.order-list-type:: number
+			- #### RDB: Redis Database
+			  background-color:: purple
+			  collapsed:: true
+				- RDB is the default persistence option in Redis, which involves periodically taking snapshots of the in-memory data and saving it to disk in a compact, binary format.
+				- RDB files are created by the Redis server as a background process, and their generation frequency can be configured based on the desired data durability and performance trade-offs.
+				- **Pros**
+					- **Compact Data Format**: RDB files are highly compressed and optimized, which reduces the disk space usage.
+					- **Faster Recovery**: Since RDB files contain a full snapshot of the data, the recovery process is faster than AOF.
+					- **Minimal Performance Impact**: The RDB snapshotting process has minimal impact on Redis performance, as it occurs in the background.
+				- **Cons**
+					- **Data Loss**: RDB snapshots are taken periodically, which means that in case of a system crash, you could lose data that was not yet included in the most recent snapshot.
+					- **Forking Overhead**: The Redis process needs to fork a child process to create the RDB snapshot, which can be resource-intensive for large datasets.
+			- #### AOF: Append Only File
+			  background-color:: purple
+			  collapsed:: true
+				- AOF is an alternative persistence option that logs every write operation that modifies the dataset to an append-only file.
+				- This provides better durability than RDB, as it allows you to recover the entire dataset in case of a crash.
+				- **Pros**
+					- **Better Durability**: AOF provides better data durability, as it logs every write operation, reducing the risk of data loss.
+					- **Human-Readable Format**: AOF files store the commands in a plain text format, making them easy to inspect and understand.
+					- **Flexible Configuration**: You can configure the AOF fsync policy to balance durability and performance based on your requirements.
+				- **Cons**
+					- **Larger File Size**: AOF files can be significantly larger than RDB files, as they store every write operation.
+					- **Slower Recovery**: The recovery process for AOF can be slower than RDB, as Redis needs to replay all the logged commands to reconstruct the dataset.
 		- ### Data Types
 		  collapsed:: true
 			- __Hash__ or Dictionaries
