@@ -19,7 +19,7 @@ background-color:: purple
 		  ```
 	-
 	- ![Machine Learning Techniques](https://analystprep.com/study-notes/wp-content/uploads/2021/03/Img_23.jpg){:height 585, :width 868}
-	- ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098107956/files/assets/dmls_0203.png)
+	- ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098107956/files/assets/dmls_0203.png){:height 521, :width 600}
 - # Supervised Learning
   background-color:: purple
 	- {{embed [[ML - Supervised Learning]]}}

@@ -15,6 +15,7 @@ collapsed:: true
 			- 3. Realm - acts the bridge/connector between the security provider and your application'' security data like user accounts, access controls, etc.
 - # 1. Authentication
   background-color:: yellow
+  collapsed:: true
 	- Process of verifying a user's identity. Also called 'login' process.
 	- `Authentication Token = Principal/username + Credential/password`
 	- If the submitted credentials match what the system expects for that user identity (principal), the user is considered authenticated.
@@ -313,7 +314,6 @@ collapsed:: true
 			- Can only be used in an environment where you have control over the clients and can dictate what type of security each client must have in order to connect to the server.
 - # 2. Authorization
   background-color:: yellow
-  collapsed:: true
 	- Authorization is essentially access control - controlling what your users can access in your application, such as resources, web pages, etc.
 	- ## Simple Access Control List (ACL)
 	  background-color:: pink
@@ -322,7 +322,6 @@ collapsed:: true
 		- Permissions are defined for features. Users are assigned permissions. This model allows dynamic addition of users.
 	- ## OAuth
 	  background-color:: pink
-	  collapsed:: true
 		- > OAuth 2.0 = Federated Authorization
 		  OpenID Connect = Federated Authentication
 		- __What is OAuth?__
@@ -361,19 +360,67 @@ collapsed:: true
 		- __Tools__
 		  collapsed:: true
 			- https://code.google.com/oauthplayground/
-		- ### OAuth Roles
+		- ### OAuth Terminology
 		  background-color:: green
-		  collapsed:: true
-			- ![](../assets/oauth-actors.png)
-			- __Resource server__
-				- The server hosting user-owned resources that are protected by OAuth. This is typically an API provider that holds and protects data such as photos, videos, calendars, or contacts. e.g., Google, Facebook, etc.
-			- __Resource owner__
-				- Typically the user of an application, the resource owner has the ability to grant access to their own data hosted on the resource server.
+			- ![](../assets/oauth-actors.png){:height 396, :width 753}
+			-
+			- ![download.png](../assets/download_1714734817339_0.png){:height 517, :width 785}
 			- __Client__
-				- An application making API requests to perform actions on protected resources on behalf of the resource owner and with its authorization. e.g., Quora
-			- __Authorization server__
+				- Needs an access token to use a resource (typically an API) on a resource server
+				- An application making web or API requests to perform actions on protected resources on behalf of the resource owner and with its authorization. e.g., Quora
+			- __Resource server (RS)__
+				- The server hosting user-owned resources that are protected by OAuth. This is typically an API provider that holds and protects data such as photos, videos, calendars, or contacts. e.g., Google, Facebook, etc.
+				- Location of a protected resource (typically an API that a client is requesting access to)
+				- E.g., PingAccess can act as a Resource Server
+			- __Resource owner (RO)__
+				- Typically the user of an application, the resource owner has the ability to grant access to their own data hosted on the resource server.
+				- In many OAuth workflows, a resource on a resource server has an owner. The resource owner must authorize the issuance of an access token.
+			- __Authorization server / Token Provider__
 				- The authorization server gets consent from the resource owner and issues access tokens to clients for accessing protected resources hosted by a resource server. e.g., Okta, Auth0
 				- Smaller API providers may use the same application and URL space for both the authorization server and resource server.
+				- A server that issues, validates and maintains tokens for the OAuth and OpenID Connect protocols
+				- Allows are resource owner to grant authorization to a client requesting access to resources protected by a resource server
+				- Issue access and refresh tokens
+				- Maintain scope list
+				- Maintain client list
+				- Issue authorization codes
+				- E.g., PingFederate is a token provider
+			- __Access Token__
+				- Credentials clients use to access protected resources
+				- A string representing an authorization issued to the client
+				- Represent specific scopes and duration of access
+				- Granted by the resource owner
+				- Enforced by the resource server(RS) and the authorization server (AS)
+				- **Access Token Security Model**
+					- Access tokens use a bearer token security model.
+					- A client's presentation of the token to the RS provides sufficient proof that the client received the same token from the OAuth AS
+					- A bearer token is like paper money ⏤ whoever holds the token is granted access.
+				- **Access Token Data Model**
+					- **Reference tokens**:
+						- Reference tokens are smaller and act only as a pointer (reference) to the actual token.
+						- The RS sends the token to the AS (introspection) to verify validity and determine what level of access to grant (claims).
+					- **Self-contained tokens**
+						- Self-contained tokens are in JWT format and contain the entire access token.
+						- JWT scan be cryptographically signed by the AS, so the RS can perform validation and introspection without having to send the token to the AS
+			- __Refresh Token__
+				- A special token used to obtain a renewed access token
+				- Used for long-lived relationships between a client and resource server
+			- __Grant types__
+				- 2 grant types: Authorization code and Client Credentials
+				-
+				- **Authorization code**
+					- Proof of user authorization. A user explicitly authorizes an application (web app or native app)
+					- Client exchanges an authorization code for an access token. e.g., Client ID
+				- **Client Credentials**
+					- Used for server to server communication (no user involved)
+				- ![download.png](../assets/download_1714734897331_0.png){:height 321, :width 467}
+				- ![download.png](../assets/download_1714734917923_0.png){:height 207, :width 881}
+			- __Scopes__
+				- Provide a way to limit the amount of access that is granted to an access token
+				- Just a string
+				- Generally, client specifies desired scopes when asking for authorization
+				- Issued access token is associated with these approved scopes in the AS
+				- Examples of Github scopes: https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps
 		- ### Client Registration
 		  background-color:: green
 		  collapsed:: true
@@ -504,6 +551,37 @@ collapsed:: true
 				  ```
 			- __When the Access Token Expires__
 				- The Client Credentials flow typically provides a long-lived access token. The authorization server may indicate an `expires_in` time; however, the protocol does not support issuing a refresh token in response to the Client Credentials flow. Instead, the application simply asks for a new access token if the current one expires.
+		-
+		- ### Ping Products
+		  background-color:: green
+			- ![image.png](../assets/image_1714734600739_0.png)
+			- #### PingAccess
+				- A Policy server - protects web apps and APIs by applying policies.
+				- Policies are collection of rules that enforce:
+					- Authentication criteria
+					- Access control
+						- RBAC (Role based AC)
+						- Or ABAC (Attribute-based AC)
+					- Modification of request/request
+				- Identity mapping
+					- HTTP header
+					- JWT
+				- 2 Models
+					- PA can operate in 2 models
+						- ![download.png](../assets/download_1714734757400_0.png)
+						- ![download.png](../assets/download_1714735142602_0.png){:height 333, :width 513}
+						- ![download.png](../assets/download_1714735164718_0.png){:height 617, :width 683}
+					- **Gateway Model** (as a reverse proxy server)
+						- PA combined Policy server and Reverse Proxy
+						- What is a reverse proxy server?
+							- A proxy server that retrieves resources on behalf of a client from one or more servers
+							- Resources are returned to the client as if they originated from the web server itself
+						- PingAccess acts as a combined reverse proxy and policy server, applying access management rules.
+						- ![download.png](../assets/download_1714734665784_0.png){:height 179, :width 469}
+					- **Agent Model**
+						- PingAccess agent installed on web server – Gets instructions from PingAccess server
+			- **PingFederate**
+				-
 	- ## JSON Web Tokens
 	  background-color:: pink
 		- TBD
@@ -521,6 +599,16 @@ collapsed:: true
 		  logseq.order-list-type:: number
 		- Asymmetric cryptography
 		  logseq.order-list-type:: number
+	- <img src="https://mermaid.ink/img/IGZsb3djaGFydCBMUgogICAgQTAoIkNyeXB0b2dyYXBoeSIpIC0tPiBBMSgiSGFzaCBmdW5jdGlvbnMiKQogICAgQTAgLS0-IEEyKCJTeW1tZXRyaWMgY3J5cHRvZ3JhcGh5IikKICAgIEEwIC0tPiBBMygiQXN5bW1ldHJpYyBjcnlwdG9ncmFwaHkiKQogICAgQTEgLS0-IEExMSgiQ3J5cHRvZ3JhcGhpYyBoYXNoIGZ1bmN0aW9ucyIpCiAgICBBMSAtLT4gQTEyKCJTYWx0IGhhc2hpbmciKQo" />
+	  {{renderer :mermaid_jykuxpb}}
+		- ```mermaid
+		  flowchart LR
+		      A0("Cryptography") --> A1("Hash functions")
+		      A0 --> A2("Symmetric cryptography")
+		      A0 --> A3("Asymmetric cryptography")
+		      A1 --> A11("Cryptographic hash functions")
+		      A1 --> A12("Salt hashing")
+		  ```
 	- When a client is interacting with a RESTful web service, it is possible for hostile individuals to intercept network packets and read requests and responses if your HTTP connection is not secure.
 	- Sensitive data should be protected with cryptographic services like SSL. The Web defines the HTTPS protocol to leverage SSL and encryption.
 	- ## Hash Functions (a.k.a Message Digest)
@@ -625,7 +713,6 @@ collapsed:: true
 		- Bug found during release = $10,000
 	- ## Secure Design Concepts
 	  background-color:: pink
-	  collapsed:: true
 		- **1) Defense in depth (layered protection)**
 			- Web app firewall + secure code + secure data store
 		- **2) Minimize attack surface**
@@ -654,11 +741,13 @@ collapsed:: true
 			- Don't log PII data. Log enough for debugging and auditing purposes.
 	- ## Secure Coding Concepts
 	  background-color:: pink
+	  collapsed:: true
 		- > Notes from https://infosecwriteups.com/pushing-left-like-a-boss-table-of-contents-42fd063a75bb
 		- Guarding against accidental or unintentional misuse of the app
 		- Always use the security features in your framework e.g., captcha, anti-CSRF token, session management
 	- ## Security Testing Methodologies
 	  background-color:: pink
+	  collapsed:: true
 		- ### SAST
 		  background-color:: blue
 			- **What is SAST?**

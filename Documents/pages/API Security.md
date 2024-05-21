@@ -12,6 +12,22 @@
 - ![image.png](../assets/image_1702667029422_0.png)
 - ![image.png](../assets/image_1702667041576_0.png)
 - ![image.png](../assets/image_1702667056685_0.png)
+- # Overview
+  background-color:: yellow
+	- ## 3 phases of API Security
+	  background-color:: pink
+		- **Secure by design**
+			- At the design time of the app, define the security strategies
+			- e.g., who are the consumers of the API? Is it going to be an internal or external API? Is PII data involved? What are the access patterns - B2B, B2C, B2B2C?
+			- Typically owned by architecture team and development team
+		- **Secure during build/development**
+			- Use security libraries or utilities to develop a secure code.
+			- Incorporate shift-left strategy in the CI pipeline (SAST)
+			- Owned by app development team
+		- **Secure at Runtime**
+			- DAST and XAST tools are used to monitor and secure apps at runtime.
+			- Includes the security setup in platforms like API Gateway, CDN, Service Mesh, etc.
+			- Owned by platform teams.
 - # API Security Methods
   background-color:: yellow
 	- ## API Authentication Methods

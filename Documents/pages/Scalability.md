@@ -1,6 +1,7 @@
 # Basics
 background-color:: yellow
 	- <img src="https://mermaid.ink/img/IGZsb3djaGFydCBMUgogICBBW1NjYWxpbmddLS4tPkIxW1NjYWxhYmlsaXR5IFR5cGVzXTsKICAgQSAtLi0-IEIyW1NjYWxpbmcgVHlwZXNdOwogICBCMSAtLi0-IEMxW1NpemUgc2NhbGFiaWxpdHldOwogICBCMSAtLi0-IEMyW0dlb2dyYXBoaWMgc2NhbGFiaWxpdHldOwogICBCMSAtLi0-IEMzW0FkbWluaXN0cmF0aXZlIHNjYWxhYmlsaXR5XTsKICAgCiAgIEIyIC0uLT4gRDFbU2NhbGluZyB1cCAvIFZlcnRpY2FsIFNjYWxpbmddOwogICBCMiAtLi0-IEQyW1NjYWxpbmcgb3V0IC8gSG9yaXpvbnRhbCBTY2FsaW5nXTsKCiAgIEQxIC0uLT4gRTFbU2hhcmVkIE1lbW9yeSBBcmNoaXRlY3R1cmVdOwogICBEMSAtLi0-IEUyW1NoYXJlZCBEaXNrIEFyY2hpdGVjdHVyZV0KICAgRDIgLS4tPiBFM1tTaGFyZWQgTm90aGluZyBBcmNoaXRlY3R1cmVdCg" />
+	  collapsed:: true
 	  {{renderer :mermaid_zcvped}}
 		- ```mermaid
 		  flowchart LR
@@ -19,7 +20,6 @@ background-color:: yellow
 		  ```
 	- ## Types of Scalability
 	  background-color:: pink
-	  collapsed:: true
 		- **Size scalability**: adding more nodes should make the system linearly faster; growing the dataset should not increase latency
 		  logseq.order-list-type:: number
 		- **Geographic scalability**: it should be possible to use multiple data centers to reduce the time it takes to respond to user queries, while dealing with cross-data center latency in some sensible manner.
@@ -44,7 +44,7 @@ background-color:: yellow
 				- **Cons**
 					- contention and the overhead of locking limit the scalability
 					- ![distributedlock_thumb.png](../assets/distributedlock_thumb_1705766090276_0.png)
-			- Pros: no change in architecture needed.
+				- **Pros**: no change in architecture needed.
 		- ### Scaling Out or Horizontal Scaling or Shared Nothing Architecture
 		  background-color:: blue
 			- Processing is handled by more than 1 server. When data volume increases, add more servers to the farm.
@@ -53,7 +53,7 @@ background-color:: yellow
 				- Increased availability and fault tolerance by distributing across geographic locations
 				- Reduce latency by distributing data closer to the users
 			- **Cons**: complex data processing stratagies involved.
-			- Features: smart-software-dumb-hardware, move-processing-not-data.
+			- Features: *smart-software-dumb-hardware*, *move-processing-not-data*.
 			- Challenges: Bottlenecks, increased risk of failure
 			- **Shared Nothing architecture**
 				- each machine or virtual machine running the database software is called a *node*. Each node uses its CPUs, RAM, and disks independently. Any coordination between nodes is done at the software level, using a conventional network.
@@ -61,6 +61,7 @@ background-color:: yellow
 		- > [Horizontal and Vertical Scaling Strategies for Batch applications](http://www.ontheserverside.com/blog/2014/07/23/horizontal-and-vertical-scaling-strategies-for-batch-applications)
 	- ## Scalability Factors
 	  background-color:: pink
+	  collapsed:: true
 		- There are 2 aspects to look at in scalability
 		- **Performance (or latency)**
 			- Depending on the context, this may involve achieving one or more of the following:
@@ -70,7 +71,7 @@ background-color:: yellow
 		- **Availability (and Fault Tolerance)**
 			- Distributed systems can take a bunch of unreliable components, and build a reliable system on top of them.
 			- Systems that have no redundancy can only be as available as their underlying components. Systems built with redundancy can be tolerant of partial failures and thus be more available.
-			- > Availability = uptime / (uptime + downtime)
+			- $$Availability = \frac{uptime}{(uptime + downtime)}$$
 			- For example,
 				- less than 4 days downtime per year  = 99% availability
 				- less than 9 hours downtime per year = 99.9% availability
@@ -79,7 +80,7 @@ background-color:: yellow
 	- ## Options for increasing the DB performance
 	  background-color:: pink
 	  collapsed:: true
-		- ## 1. Vertical Scaling
+		- ### 1. Vertical Scaling
 			- **CPU Upgrades**
 				- typically this is due to slow read queries. Optimizing those offensive queries can most of the times solve the issue.
 				- If the CPU is high due to too many users, then typically scaling out is the only option.
@@ -91,9 +92,9 @@ background-color:: yellow
 			- **Disk Upgrades**
 				- Full table scan queries or high user/transaction volume lead to high disk usage.
 				- Using RAID subsystems or Solid State Drives (SSD) sometimes solve the issue. But upgrading disks rarely solve performance issues.
-		- ## 2. Read Scaling
+		- ### 2. Read Scaling
 			- Read scaling is a simple technique of creating read-only replicas of the monolithic DB server to reduce the read-only queries on a single DB.
-		- ## 3. Horizontal Scaling
+		- ### 3. Horizontal Scaling
 			- When your application involves heavy data reads/writes and heavy transactional volumes, and if none of the above techniques work, then scaling horizontally is the only option.
 			- Partitioning/Sharding data across multiple nodes/servers in a cluster also introduces multiple failure points. DB cluster must be *highly available* to ensure the interim server failures do not interrupt the live operations.
 - # Caching

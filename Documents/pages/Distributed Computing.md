@@ -27,6 +27,7 @@ collapsed:: true
 	- ## Replication Types
 	  background-color:: pink
 		- <img src="https://mermaid.ink/img/IGZsb3djaGFydCBMUgogICBBW1JlcGxpY2F0aW9uXS0uLT5CMVtUeXBlc107CiAgIEEtLi0-QjJbQWxnb3JpdGhtc107CiAgIEIxLS4tPkMxW1N5bmNocm9ub3VzXTsKICAgQjEtLi0-QzJbQXN5bmNocm9ub3VzXTsKICAgCiAgIEIyLS4tPkQxW0xlYWRlci1iYXNlZCBSZXBsaWNhdGlvbl07CiAgIAogICBEMS0uLT5FMVtTaW5nbGUgTGVhZGVyIFJlcGxpY2F0aW9uXTsKICAgRDEtLi0-RTJbTXVsdGkgTGVhZGVyIFJlcGxpY2F0aW9uXTsKICAgQjItLi0-RDNbTGVhZGVybGVzcyBSZXBsaWNhdGlvbl07Cg" />
+		  collapsed:: true
 		  {{renderer :mermaid_luextzrw}}
 			- ```mermaid
 			  flowchart LR

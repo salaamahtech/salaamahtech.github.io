@@ -98,6 +98,9 @@ collapsed:: true
 				- **Cons**
 					- **Larger File Size**: AOF files can be significantly larger than RDB files, as they store every write operation.
 					- **Slower Recovery**: The recovery process for AOF can be slower than RDB, as Redis needs to replay all the logged commands to reconstruct the dataset.
+			- #### AOF vs. RDB
+				- Redis can be configured to use both the formats simultaneously
+				- One file format can be converted to the other
 		- ### Data Types
 		  collapsed:: true
 			- __Hash__ or Dictionaries

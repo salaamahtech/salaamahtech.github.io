@@ -49,18 +49,22 @@ background-color:: yellow
 	- ==Web Components==
 	  background-color:: blue
 		- creating framework-agnostic web components using standard HTML via custom elements [link](https://laurence-do.medium.com/web-components-and-stencil-js-b8e7dbf4dce0)
-		- 3 standards to build Web Components:
-			- Custom Elements
-				- for creating custom tags like `<card>`, `<blah>`, etc.
-				- Resources: [link1](https://web.dev/custom-elements-v1/)
-			- Shadow DOMs
-				- the most useful feature of shadow DOM is scoped CSS:
-					- CSS selectors from the outer page don't apply inside your component.
-					- Styles defined inside don't bleed out. They're scoped to the host element.
-				- *CSS selectors used inside shadow DOM apply locally to your component*. In practice, this means we can use common id/class names again, without worrying about conflicts elsewhere on the page. Simpler CSS selectors are a best practice inside Shadow DOM. They're also good for performance.
-				- Resources: [link1](https://web.dev/shadowdom-v1/), [link2](https://glazkov.com/2011/01/14/what-the-heck-is-shadow-dom/)
-			- HTML Templates
-				- to define an HTML template where the dynamic values are injected
+		- The web components specification offers a way to create reusable custom HTML elements with three inbuilt technologies. These are 3 standards to build web components:
+			- Custom elements
+			- Shadow DOM
+			- and HTML templates
+		- Custom Elements
+			- for creating custom tags like `<card>`, `<blah>`, etc.
+			- Resources: [link1](https://web.dev/custom-elements-v1/)
+		- Shadow DOMs
+			- Shadow DOM allows you to create an isolated custom element that doesn’t clash with the other parts of the webpage. For example, `document.querySelector()` won’t return nodes defined in a shadow DOM.
+			- the most useful feature of shadow DOM is "*scoped CSS*":
+				- CSS selectors from the outer page don't apply inside your component.
+				- Styles defined inside don't bleed out. They're scoped to the host element.
+			- *CSS selectors used inside shadow DOM apply locally to your component*. In practice, this means we can use common id/class names again, without worrying about conflicts elsewhere on the page. Simpler CSS selectors are a best practice inside Shadow DOM. They're also good for performance.
+			- Resources: [link1](https://web.dev/shadowdom-v1/), [link2](https://glazkov.com/2011/01/14/what-the-heck-is-shadow-dom/)
+		- HTML Templates
+			- to define an HTML template where the dynamic values are injected
 		- Web Component Lifecycle Methods
 			- `constructor()` - called when a custom element is created
 			- `connectedCallback()` - called when an element is added to the DOM
