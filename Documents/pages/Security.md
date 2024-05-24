@@ -404,9 +404,11 @@ collapsed:: true
 			- Get ID Token directly without involving any access token
 			- By default, the OIDC Implicit Flow returns all tokens via front-channel browser interaction to the redirect URI, using a URL fragment. The use of “id_token token” response_type is not recommended with the default response mode as it would expose an access token to potential compromise through a referer header or the browser’s history.
 			-
+			- ![image.png](../assets/image_1716591754755_0.png){:height 492, :width 616}
 			- In this flow, ID token is passed as part of the callback URL fragment. e.g., https://myapp.com/callback.com#id_token=xxxxx. Hence public clients must avoid implicit flow and should use the Authorization Code Flow with PKCE instead.
 			- ![oidc_implicit_flow.jpg](../assets/oidc_implicit_flow_1716428902252_0.jpg)
 		- ### 3. OIDC Flow - Hybrid Flow
+		  background-color:: green
 			- Hybrid Flow = AuthZ flow + Implicit flow
 			- Not widely used
 			- ![image.png](../assets/image_1716495064342_0.png){:height 854, :width 1101}
@@ -543,6 +545,7 @@ collapsed:: true
 			- Can only be used in an environment where you have control over the clients and can dictate what type of security each client must have in order to connect to the server.
 - # 2. Authorization
   background-color:: yellow
+  collapsed:: true
 	- ## Overview
 	  background-color:: pink
 		- Authorization is essentially access control - controlling what your users can access in your application, such as resources, web pages, etc.
@@ -1013,7 +1016,6 @@ collapsed:: true
 	- Apache Shiro enables a Session programming paradigm for any application - from small daemon standalone applications to the largest clustered web applications. This means that application developers who wish to use sessions are no longer forced to use Servlet or EJB containers if they don't need them otherwise.
 - # Secure Design & Coding
   background-color:: yellow
-  collapsed:: true
 	- > Notes from book "Pushing Left Like a Boss"
 	  https://wehackpurple.com/pushing-left-like-a-boss-part-3-secure-design/
 	- Design Flaw vs. Security bug
@@ -1027,6 +1029,7 @@ collapsed:: true
 		- Bug found during release = $10,000
 	- ## Secure Design Concepts
 	  background-color:: pink
+	  collapsed:: true
 		- **1) Defense in depth (layered protection)**
 			- Web app firewall + secure code + secure data store
 		- **2) Minimize attack surface**
@@ -1064,6 +1067,7 @@ collapsed:: true
 	  collapsed:: true
 		- ### SAST
 		  background-color:: blue
+		  collapsed:: true
 			- **What is SAST?**
 				- Static Application Security Testing
 				- SAST is open box testing that scans a software application from the inside out before it is compiled or executed.
@@ -1073,6 +1077,7 @@ collapsed:: true
 			- e.g., Checkmarx
 		- ### DAST
 		  background-color:: blue
+		  collapsed:: true
 			- **What is DAST?**
 				- Dynamic Application Security Testing
 				- DAST is a security testing methodology that involves dynamic analyzing of an application in its running state.
@@ -1091,6 +1096,7 @@ collapsed:: true
 			  | Technology dependent | Independent |
 		- ### IAST
 		  background-color:: blue
+		  collapsed:: true
 			- **What is IAST?**
 				- Interactive Application Security Testing
 				- IAST is a form of AppSec testing that analyzes applications in a running state but analyzes them from the inside out, rather than from the outside in.
@@ -1102,12 +1108,32 @@ collapsed:: true
 			- **Pros**
 				- IAST-style DAST does not require vulnerabilities to be exploited in order to discover them. Ordinary application traffic, not fuzzing and attack exploits, can be used to find complex vulnerabilities. This opens the world of DAST to anyone, not just experienced AppSec experts. Developers can instantly find vulnerabilities in their code as they do their ordinary quality testing. All quality assurance (QA) testing, including automated test cases, can now do double-duty as both QA testing and security testing at once.
 				- allows developers test their application's behaviors at runtime using DAST testing techniques while still monitoring source code execution, like SAST testing. IAST mitigates a significant limitation of the SAST methodology: its inability to follow and test all dependencies, like libraries and frameworks, that modern web applications use
+- # Zero Trust
+  background-color:: pink
+	- ## Overview
+		- Perimeter vs. Zero Trust
+			- Perimeter model
+				- The perimeter model attempts to build a wall between trusted and untrusted resources (i.e., local network and the internet).
+			- Zero Trust model
+				- basically throws the towel in, and accepts the reality that the “bad guys” are everywhere. Rather than build walls to protect the soft bodies inside, it turns the entire population into a militia.
+		- Automation is key to attain Zero Trust.
+			- Interactions between the control plane and the data plane are the most critical points requiring automation. If policy enforcement cannot be dynamically updated, zero trust will be unattainable; therefore it is critical that this process be automatic and rapid.
+		- 3 key components in a zero trust network:
+			- *user/application authentication*,
+			  logseq.order-list-type:: number
+			- *device authentication*,
+			  logseq.order-list-type:: number
+			- and *trust*.
+			  logseq.order-list-type:: number
+				- a “trust score” is computed, and the application, device, and score are bonded to form an agent. Policy is then applied against the agent in order to authorize the request. The richness of information contained within the agent allows very flexible yet fine-grained access control, which can adapt to varying conditions by including the score component in your policies.
+				  logseq.order-list-type:: number
+				  id:: 6650b400-03f2-4165-b0a4-eb3a9ab50e82
+		-
 - # Books and Trainings
   background-color:: yellow
   collapsed:: true
 	- ## OReilly Spring Security for REST APIs
 	  background-color:: pink
-	  collapsed:: true
 		- [Presentation Slide](/technology/springsecurityforrestapis.pdf)
 		- [https://www.katacoda.com/jzheaux/scenarios/local-authentication](https://www.katacoda.com/jzheaux/scenarios/local-authentication)
 		- [https://github.com/jzheaux/oreilly-spring-security-rest-apis](https://github.com/jzheaux/oreilly-spring-security-rest-apis)
@@ -1143,7 +1169,6 @@ collapsed:: true
 			  }
 			  ```
 		- ### Authentication
-		  collapsed:: true
 			- Spring Security is a set of servlet filters chained together. e.g., Authentication filter, authorization filter, defense filter (`HeaderWriterFilter`)
 			  
 			  | ![](../assets/spring-security-filter-chain.png) | ![](../assets/spring-security-filter-order.png) |
@@ -1174,27 +1199,26 @@ collapsed:: true
 			  }
 			  ```
 		- ### CORS
-		  collapsed:: true
 			- When a web app running on an origin (say, http://localhost:8081) tries to connect to a web service hosted on a different origin (say http://localhost:8080), then the browser blocks the call by default throwing a CORS error.
 			- To whitelist certain origins to make the call, do as follows:
 			  
 			  ```java
 			  @Configuration
 			  public class SecurityConfig{
-			  @Bean
-			  WebMvcConfigurer webMvc(){
-			  return new WebMvcConfigurer{
-			    @Override
-			    public void addCorsMapping(CorsRegistry registry){
-			      registry.addMapping("/**/goals")
-			              .allowedOrigins("http://localhost:8081")
-			              .allowedMethods("GET", "POST")
-			              .allowedHeaders("Content-Type")
-			              .allowCredentials(true) // to allow browser to pass the credentials entered to be passed to the webservice
-			              .maxAge(0); // to disable browser from caching these mappings
+			    @Bean
+			    WebMvcConfigurer webMvc(){
+			      return new WebMvcConfigurer{
+			        @Override
+			        public void addCorsMapping(CorsRegistry registry){
+			          registry.addMapping("/**/goals")
+			                  .allowedOrigins("http://localhost:8081")
+			                  .allowedMethods("GET", "POST")
+			                  .allowedHeaders("Content-Type")
+			                  .allowCredentials(true) // to allow browser to pass the credentials entered to be passed to the webservice
+			                  .maxAge(0); // to disable browser from caching these mappings
+			        }
+			      };
 			    }
-			  };
-			  }
 			  }
 			  ```
 			- __Pre-flight request__: A browser sends an `OPTION` request to the server before the actual user request asking _what kind of requests are you ok with me sending, e.g., the origins, http methods, etc._
@@ -1215,7 +1239,6 @@ collapsed:: true
 			  }
 			  ```
 		- ### CSRF tokens
-		  collapsed:: true
 			- Spring security performs CSRF checks before authentication for any non-GET HTTP calls with side-effect (`POST`, `PUT`, `DELETE`). This is to protect the app from cross site forgery even before the app tries to authenticate the request.
 			- Since CSRF checks happens earlier than authentication, the app would throw HTTP 403 instead of 401.
 			  
@@ -1226,14 +1249,14 @@ collapsed:: true
 			  
 			  @ControllerAdvice
 			  public class CsrfHeaderAdvice {
-			  @ModelAttribute("csrf")
-			  public CsrfToken token(HttpServletRequest request, HttpServletResponse response) {
-			  CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-			  if (token != null) {
-			  response.setHeader(token.getHeaderName(), token.getToken());
-			  }
-			  return token;
-			  }
+			    @ModelAttribute("csrf")
+			    public CsrfToken token(HttpServletRequest request, HttpServletResponse response) {
+			      CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+			      if (token != null) {
+			        response.setHeader(token.getHeaderName(), token.getToken());
+			      }
+			      return token;
+			    }
 			  }
 			  ```
 			  
