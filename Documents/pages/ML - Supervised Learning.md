@@ -109,7 +109,6 @@ collapsed:: true
 				- ![image.png](../assets/image_1693859553937_0.png){:height 419, :width 791}
 			- #### Formula for cost function
 			  background-color:: purple
-			  collapsed:: true
 				- To calculate the cost function, take the prediction $\hat{y}$ and compare it to the target $y$ by taking 
 				  $$\hat{y}-y$$.
 					- This measure is called the **error**. We are measuring how far off is the prediction to the target.

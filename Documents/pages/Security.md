@@ -180,15 +180,16 @@ collapsed:: true
 		- ### Cons
 		  collapsed:: true
 			- This approach is that unless you use HTTPS, you are still vulnerable to man-in-the-middle attacks, where the middleman can tell a client to use Basic authentication to obtain a password.
-	- ## X.509 certificates
+	- ## Certificate based Authentication
 	  background-color:: pink
-	  collapsed:: true
 		- HTTPS is not only an encryption mechanism - it can also be used for authentication.
-		- How it works?
+		- X.509 is the Digital Certificate Standard
+		- Using certificates, message receiver can guarantee the sender is a trusted entity.
+		- **How certificate-based authentication works?**
 			- ![](../assets/security-certs.gif)
 			- When you first interact with a secure website, your browser receives a digitally signed certificate from the server that identifies it.
 			- Your browser verifies this certificate with a central authority like VeriSign. This is how you guarantee the identity of the server you are interacting with and make sure you're not dealing with some *man-in-the-middle* security breach.
-		- HTTPS can also perform two-way authentication. In addition to the client receiving a signed digital certificate representing the server, the server can receive a certificate that represents and identifies the client. (See mTLS section below)
+		- HTTPS can also perform two-way authentication. In addition to the client receiving a signed digital certificate representing the server, the server can receive a certificate that represents and identifies the client. (See ((659ab87b-0fa2-4e6f-bd0f-3be115c2abdd)) section below)
 			- When a client initially connects to a server, it exchanges its certificate and the server matches it against its internal store.
 			- Once this link is established, there is no further need for user authentication, since the certificate has already positively identified the user.
 		- > SSL, or Secure Socket Layer, is a technology which allows web browsers and web servers to communicate over a secured connection. This means that the data being sent is encrypted by one side, transmitted, then decrypted by the other side before processing. This is a two-way process, meaning that both the server AND the browser encrypt all traffic before sending out data.
@@ -412,39 +413,9 @@ collapsed:: true
 			- Hybrid Flow = AuthZ flow + Implicit flow
 			- Not widely used
 			- ![image.png](../assets/image_1716495064342_0.png){:height 854, :width 1101}
-		- ### Ping Products
-		  background-color:: green
-			- ![image.png](../assets/image_1714734600739_0.png)
-			- #### PingAccess
-				- A Policy server - protects web apps and APIs by applying policies.
-				- Policies are collection of rules that enforce:
-					- Authentication criteria
-					- Access control
-						- RBAC (Role based AC)
-						- Or ABAC (Attribute-based AC)
-					- Modification of request/request
-				- Identity mapping
-					- HTTP header
-					- JWT
-				- 2 Models
-					- PA can operate in 2 models
-						- ![download.png](../assets/download_1714734757400_0.png)
-						- ![download.png](../assets/download_1714735142602_0.png){:height 333, :width 513}
-						- ![download.png](../assets/download_1714735164718_0.png){:height 617, :width 683}
-					- **Gateway Model** (as a reverse proxy server)
-						- PA combined Policy server and Reverse Proxy
-						- What is a reverse proxy server?
-							- A proxy server that retrieves resources on behalf of a client from one or more servers
-							- Resources are returned to the client as if they originated from the web server itself
-						- PingAccess acts as a combined reverse proxy and policy server, applying access management rules.
-						- ![download.png](../assets/download_1714734665784_0.png){:height 179, :width 469}
-					- **Agent Model**
-						- PingAccess agent installed on web server – Gets instructions from PingAccess server
-			- **PingFederate**
-				-
 	- ## mTLS
 	  background-color:: pink
-	  collapsed:: true
+	  id:: 659ab87b-0fa2-4e6f-bd0f-3be115c2abdd
 		- Mutual transport layer security (mTLS) or two-way secure socket layer is a method for mutual authentication.
 		- It ensures that traffic is secure and trusted in both directions between a client and the server – it ensures that both parties sharing information are who they claim to be by verifying that they both have the correct private key.
 		- In mutual includes an additional step in which the server also asks for the client's certificate and verifies it at their end. It is considered more secure than TLS, but it’s also more computationally costly.
@@ -509,21 +480,18 @@ collapsed:: true
 			- ![image.png](../assets/image_1704670823681_0.png)
 		- ### Difference between TLS and mTLS
 		  background-color:: blue
-		  collapsed:: true
 			- | **TLS** | **mTLS** |
 			  | Only server has a TLS certificate and a public/private key pair, while the client does not | Both client and server have their own TLS certificate and a key pair |
 			  | TLS uses an external certificate authority | Organization implementing mTLS act as its own certificate authority. It uses a self-signed root certificate -  meaning the org creates it themselves. This won't work for one-way TLS on the public Internet because an external CA has to issue those certificates |
 			  | Computationally cheap and fast | Costly and slower due to additional round-trips|
 		- ### Where to use mTLS?
 		  background-color:: blue
-		  collapsed:: true
 			- mTLS is often used in zero trust security environments to verify users, devices, and servers within an org network.
 			- In B2B API interactions where the server doesn’t want to expose its services to the entire world and wants to make sure the request is coming from a known client.
 			- In B2B financial transactions. For example, transactions between two bank servers.
 			- For authenticating and encrypting service-to-service communication between microservices or with the API gateway.
 		- ### mTLS in Service Mesh
 		  background-color:: blue
-		  collapsed:: true
 			- For implementing mTLS, the service mesh control plane offers:
 				- A Certificate Authority that issues trusted x.509 certificates for microservices authentication
 				- A configuration API server to define and deliver communication security policies for authentication and authorization to the sidecar proxies.
@@ -905,7 +873,6 @@ collapsed:: true
 		- TBD
 - # 3. Cryptography
   background-color:: yellow
-  collapsed:: true
 	- Cryptography is the process of hiding or obfuscating data so prying eyes can't understand it.
 	- Cryptography is put into practice anytime information requires secure transmission from a sender to a recipient.
 	- There are 3 forms of cryptography
@@ -991,7 +958,13 @@ collapsed:: true
 		- Secret key cryptography can be used for both in-transit data and at-rest data but is largely reserved for at-rest data. Because the secret key can become compromised during the transmission.
 	- ## Asymmetric Cryptography
 	  background-color:: pink
-		- Asymmetric encryption, also known as **public key encryption**, uses separate keys for the encryption and decryption processes, with one key remaining private and the other being shared for public use.
+		- Asymmetric encryption (or **public key encryption**) uses two cryptographic keys: a **public key** and a **private key**.
+			- The public key is distributed, and the private key is held as a secret.
+			- The public key can encrypt data that the private key can decrypt, and vice versa, as shown in picture below.
+			- This allows one to prove they are in the presence of the private key by correctly decrypting a piece of data that was encrypted by the well-known (and verifiable) public key. In this way, identity of the sender can be validated without ever exposing the secret.
+		- This is the technique used in mTLS using certificates.
+		-
+		-
 		- ![assymetric_cryptography.png](../assets/assymetric_cryptography_1704643369061_0.png)
 		  id:: 659acb1e-7c64-4573-9525-91b14a1c36c4
 		- ![image.png](../assets/image_1704643961430_0.png)
@@ -999,6 +972,27 @@ collapsed:: true
 		  | Visible to everyone | Owned only by the message owner |
 		  | Using public key, message can ONLY be encrypted. Decryption is NOT possible | Decryption of the encrypted text is possible only with private key|
 		  | From public key, one CANNOT derive the private key | From private key, one CAN derive the public key |
+		- ### Public Key Infrastructure (PKI)
+		  background-color:: green
+			- Though public keys don't need to be secret, but you must still have a way to know that you have the *right* public key.
+			- *Public key infrastructure*, or PKI, defines a set of roles and responsibilities that are used to securely distribute and validate public keys in untrusted networks. It allows unprivileged participants to validate the authenticity of their peers through an existing trust relationship with a mutual third party (e.g., certificate authorities).
+			- A PKI leverages what is known as a **registration authority** (RA) in order to bind an identity to a public key. This binding is embedded in the certificate, which is cryptographically signed by the trusted third party. The signed certificate can then be presented in order to “prove” identity, so long as the recipient trusts the same third party.
+			- There are many types of PKI providers. The most popular two are
+				- **Certificate authorities** (CAs)
+					- relies on a signature chain that is ultimately rooted in the mutually trusted party.
+					- the popularity of CAs which overshadows the WoT provider.
+				- and **Webs of trust** (WoTs)
+					- allows systems to assert validity of their peers, forming a web of endorsements rather than a chain.
+					- Trust is then asserted by traversing the web until a trusted certificate is found.
+			- #### Certificate Authorities
+			  background-color:: gray
+				- Certificate authorities act as the trust anchor of a certificate chain. They sign and publish public keys and their bound identities, allowing unprivileged entities to assert the validity of the binding through the signature.
+				- CA certificates are used to represent the identity of the CA itself, and it is the private key of the CA certificate that is used to sign client certificates.
+				- The CA certificate is well known, and is used by the authenticating entity to validate the signature of the presented client certificate. It is here that the trusted third-party relationship exists, issuing and asserting the validity of digital certificates on behalf of the clients.
+			- Types of PKIs
+				- **Public PKI** system relies on publicly trusted authorities to validate digital certificates
+				- **Private PKI**
+				-
 	- ## Cipher
 	  background-color:: pink
 		- Ciphers are cryptographic algorithms that can reversibly transform data using a key. We use them to keep data safe, especially when transferring or storing data, times when data is particularly susceptible to prying eyes.
@@ -1013,7 +1007,16 @@ collapsed:: true
 - # 4. Session Management
   background-color:: yellow
   collapsed:: true
-	- Apache Shiro enables a Session programming paradigm for any application - from small daemon standalone applications to the largest clustered web applications. This means that application developers who wish to use sessions are no longer forced to use Servlet or EJB containers if they don't need them otherwise.
+	- There are 2 types of authenticated user sessions
+		- **Identity Provider Session**
+			- Session created and managed by the IdP that authenticates the user. This scheme helps the IdP recognize if the user has authenticated or not.
+			- Session is stored within the IdP product
+			- Session contains the session ID, authentication mechanism used, time of authentication, session expiry time, etc.
+		- **Application Session**
+			- Session created and managed by the application
+			- Session is stored either on the client-side or the server-side, within the app or out the app in an external database or a distributed store like Redis
+			- Session contains the identity of the user, IdP session ID, in-flight transactions, session expiry time, etc.
+		- ![image.png](../assets/image_1716765301001_0.png){:height 947, :width 1163}
 - # Secure Design & Coding
   background-color:: yellow
 	- > Notes from book "Pushing Left Like a Boss"
@@ -1109,25 +1112,96 @@ collapsed:: true
 				- IAST-style DAST does not require vulnerabilities to be exploited in order to discover them. Ordinary application traffic, not fuzzing and attack exploits, can be used to find complex vulnerabilities. This opens the world of DAST to anyone, not just experienced AppSec experts. Developers can instantly find vulnerabilities in their code as they do their ordinary quality testing. All quality assurance (QA) testing, including automated test cases, can now do double-duty as both QA testing and security testing at once.
 				- allows developers test their application's behaviors at runtime using DAST testing techniques while still monitoring source code execution, like SAST testing. IAST mitigates a significant limitation of the SAST methodology: its inability to follow and test all dependencies, like libraries and frameworks, that modern web applications use
 - # Zero Trust
-  background-color:: pink
+  background-color:: yellow
 	- ## Overview
-		- Perimeter vs. Zero Trust
+	  background-color:: pink
+		- ### Perimeter vs. Zero Trust
+		  background-color:: green
 			- Perimeter model
 				- The perimeter model attempts to build a wall between trusted and untrusted resources (i.e., local network and the internet).
 			- Zero Trust model
 				- basically throws the towel in, and accepts the reality that the “bad guys” are everywhere. Rather than build walls to protect the soft bodies inside, it turns the entire population into a militia.
 		- Automation is key to attain Zero Trust.
+		- ### How Zero Trust Works
+		  background-color:: green
 			- Interactions between the control plane and the data plane are the most critical points requiring automation. If policy enforcement cannot be dynamically updated, zero trust will be unattainable; therefore it is critical that this process be automatic and rapid.
-		- 3 key components in a zero trust network:
-			- *user/application authentication*,
-			  logseq.order-list-type:: number
-			- *device authentication*,
-			  logseq.order-list-type:: number
-			- and *trust*.
-			  logseq.order-list-type:: number
-				- a “trust score” is computed, and the application, device, and score are bonded to form an agent. Policy is then applied against the agent in order to authorize the request. The richness of information contained within the agent allows very flexible yet fine-grained access control, which can adapt to varying conditions by including the score component in your policies.
+			- **Data Plane**
+				- The data plane in such a network is made up of the applications, firewalls, proxies, and routers that directly process all traffic on the network.
+				- These systems, being in the path of all connections, need to quickly make a determination of whether traffic should be allowed.
+			- **Control Plane**
+				- the control plane is the trust grantor for the entire network.
+				- The control plane in a zero trust network is made up of components that receive and process requests from data plane devices that wish to access (or grant access to) network resources
+				- These components will inspect data about the requesting system to make a determination on how risky the action is, and examine relevant policy to determine how much trust is required.
+				- Once a determination is made, the data plane systems are signaled or reconfigured to grant the requested access.
+				-
+			- Requests between the data plane and control plane systems must be encrypted and authenticated using a non-public PKI system to ensure that the receiving system is trustworthy.
+			- The first requirement is that the trust granted by the control plane to another actor in the data plane should have limited real-time value. Trust should be temporary, requiring regular check-ins between the truster and trustee to ensure that the continued trust is reasonable. When implementing this tenet, leased access tokens or short lifetime certificates are the most appropriate solution. These leased access tokens should be validated not just within the data plane (e.g., when the control plane grants a token to an agent to move through the data plane), but also between the interaction between the data plane and the control plane. By limiting the window during which the data plane and control plane can interact with a particular set of credentials, the possibility for physical attacks against the network is mitigated.
+			- ![ztnw_0205.png](../assets/ztnw_0205_1716603763357_0.png){:height 423, :width 662}
+		- ### Zero Trust Components
+		  background-color:: green
+			- 3 key components in a zero trust network:
+				- *user/application authentication*,
 				  logseq.order-list-type:: number
+				- *device authentication*,
+				  logseq.order-list-type:: number
+				- and *trust score* (computed)
+				  logseq.order-list-type:: number
+			- **How it works?**
+				- application, device, and score are bonded to form an agent.
 				  id:: 6650b400-03f2-4165-b0a4-eb3a9ab50e82
+				- Policy is then applied against the agent in order to authorize the request.
+				- The richness of information contained within the agent allows very flexible yet fine-grained access control, which can adapt to varying conditions by including the score component in your policies.
+				- If the request is authorized, the control plane signals the data plane to accept the incoming request. This action can configure encryption details as well. Encryption can be applied at the device level, application level, or both. At least one is required for confidentiality.
+				- With these authentication/authorization components, and the aide of the control plane in coordinating encrypted channels, we can assert that every single flow on the network is authenticated and expected.
+				- Hosts and network devices drop traffic that has not had all of these components applied to it, ensuring sensitive data can never leak out.
+				- Additionally, by logging each of the control plane events and actions, network traffic can be easily audited on a flow-by-flow or request-by-request basis.
+				-
+				- > Things like score-based policies, which can affect the outcome of an authorization request based on a number of variables like historical activity, drastically improve a network’s security stance when compared to static policy.
+				- In the picture below, the trust engine calculates a score and forms an agent, which is then compared against policy in order to authorize a request.
+				- ![zerotrust.png](../assets/zerotrust_1716603503381_0.png){:height 527, :width 643}
+		- ### Threat Model
+		  background-color:: green
+			- Defining threat models is an important first step when designing a security architecture.
+			- Goal of a threat model is
+				- to enumerate threats to the system - e.g., potential attackers, their capabilities, and resources and their intended targets
+				- and enumerate the mitigating systems and processes for those threats.
+			- Threat models will normally define which attackers are in scope, rationally choosing to mitigate attacks from weaker adversaries before moving onto more difficult adversaries.
+			- Common Threat Model Frameworks
+				- [STRIDE](https://msdn.microsoft.com/en-us/library/ee823878(v=cs.20).aspx)
+				- [DREAD](https://www.owasp.org/index.php/Threat_Risk_Modeling#DREAD)
+				- [PASTA](http://bit.ly/2rQGNoa)
+				- [Trike](http://octotrike.org/)
+				- [VAST](http://threatmodeler.com/threat-modeling-methodology/)
+- # Ping Products
+  background-color:: yellow
+  collapsed:: true
+	- ![image.png](../assets/image_1714734600739_0.png)
+	- #### PingAccess
+		- A Policy server - protects web apps and APIs by applying policies.
+		- Policies are collection of rules that enforce:
+			- Authentication criteria
+			- Access control
+				- RBAC (Role based AC)
+				- Or ABAC (Attribute-based AC)
+			- Modification of request/request
+		- Identity mapping
+			- HTTP header
+			- JWT
+		- 2 Models
+			- PA can operate in 2 models
+				- ![download.png](../assets/download_1714734757400_0.png)
+				- ![download.png](../assets/download_1714735142602_0.png){:height 333, :width 513}
+				- ![download.png](../assets/download_1714735164718_0.png){:height 617, :width 683}
+			- **Gateway Model** (as a reverse proxy server)
+				- PA combined Policy server and Reverse Proxy
+				- What is a reverse proxy server?
+					- A proxy server that retrieves resources on behalf of a client from one or more servers
+					- Resources are returned to the client as if they originated from the web server itself
+				- PingAccess acts as a combined reverse proxy and policy server, applying access management rules.
+				- ![download.png](../assets/download_1714734665784_0.png){:height 179, :width 469}
+			- **Agent Model**
+				- PingAccess agent installed on web server – Gets instructions from PingAccess server
+	- **PingFederate**
 		-
 - # Books and Trainings
   background-color:: yellow
