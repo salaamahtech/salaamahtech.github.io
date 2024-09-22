@@ -441,7 +441,6 @@
 			- Gateway-VTLs enable you to keep your current tape backup software and processes while storing your data more cost-effectively and simply on the cloud.
 - # Compute and Network Services
   background-color:: yellow
-  collapsed:: true
 	- ## EC2
 	  background-color:: pink
 	  collapsed:: true
@@ -1092,8 +1091,7 @@
 		- allows organizations to establish a dedicated n/w connection from their data center to AWS.
 	- ## Amazon Route 53
 	  background-color:: pink
-	  collapsed:: true
-		- [Read about DNS basics here](/technology/networking.html)
+		- Read about DNS basics here: ((6524bbc1-06a1-493f-a89d-7da276bc7bfa))
 		- is a highly available and scalable DNS web service. Also serves as domain registrar, allowing you to purchase and manage domains directly from AWS
 		- Amazon Route 53 performs 3 main functions. You can use none or any combination of these functions:
 		  collapsed:: true

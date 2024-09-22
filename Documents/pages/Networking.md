@@ -3,6 +3,7 @@
 - # DHCP (Dynamic Host Configuration Protocol)
 	- TBD
 - # DNS servers
+  id:: 6524bbc1-06a1-493f-a89d-7da276bc7bfa
   collapsed:: true
 	- ![](../assets/aws-dns.jpg)
 	- DNS is a globally-distributed service used to translate human-readable names (e.g., www.amazon.com) into the IP addresses

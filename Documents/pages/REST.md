@@ -1,10 +1,8 @@
 - [Must read on REST concepts](https://developer.github.com/v3/)
 - # Why REST?
-  collapsed:: true
 	- **Ability to leverage commodity caching technologies**
 		- This API style leverages commodity caching technologies designed specifically with HTTP in mind. If, for example, a client requests a product that hasn’t changed within the past day, and information on that product can be found in a **Reverse Proxy**, then the cached representation will be returned and service execution can be bypassed. This reduces the load on the Origin Server, especially in cases where the service would have queried a database or performed a CPU- or memory-intensive computation
 - # Basic definitions
-  collapsed:: true
 	- **What is REST?**
 		- Representational State Transfer. The server sends a representation via GET operations describing the state of a resource. The client sends a representation via `POST`/`PUT` describing the state it would like the resource to have. That’s representational state transfer.
 		- Though REST usually means REST over HTTP, it is actually not protocol-specific. Despite the occurrence of Transport in its name, HTTP acts as an API in RESTful approach and not simply as a transport protocol.
@@ -28,7 +26,8 @@
 		- `GET` & `HEAD` are defined as safe HTTP methods. It’s just a request for information. Sending a GET request to the server should have the same effect on resource state as not sending a `GET` request—that is, no effect at all. Incidental side effects like logging and rate limiting are OK, but a client should never make a `GET` request hoping that it will change the resource state.
 	- **What is Idempotence?**
 		- Sending a request twice has the same effect on resource state as sending it once. `GET`, `DELETE` and `PUT` are idempotent. This notion comes from math. Multiplying a number by zero or one is an idempotent operation. Once you multiply a number by zero, you can keep multiplying it by zero indefinitely and get the same result: zero.
-	- | GET | Cacheable, Safe method (no side effects)|
+	- | **HTTP Method** | **Description**|
+	  | GET | Cacheable, Safe method (no side effects)|
 	  | POST | Unsafe operation which can't be repeated|
 	  | PUT | Idempotent (same request yields same result) |
 	  | DELETE | Idempotent (same request yields same result)|
@@ -40,7 +39,6 @@
 		- URI - short string to identify a resource. URI may or may not have a representation. URI is nothing but an identifier. E.g., `urn:isbn:9781449358063`. It designates a resource: the print edition of a book. Not any particular copy of this book, but the abstract concept of an entire edition.
 		- URL - short string to identify a resource. Every URL is a URI. URL always has a representation. URL is an identifier that can be dereferenced (get a representation of a resource using the identifier).
 - # How REST works?
-  collapsed:: true
 	- In the usual case of web service access to a resource, the requester receives a representation of the resource if the request succeeds. It is the representation that transfers
 	- from the service machine to the requester machine. In a REST-style web service, a client does two things in an HTTP request:
 	- Names the targeted resource by giving its URI, typically as part of a URL.
@@ -48,7 +46,6 @@
 	- As web-based informational items, resources are pointless unless they have at least one representation. In the Web, representations are MIME typed. The most common type of resource representation is probably still text/html, but nowadays resources tend to have multiple representations.
 	- For the record, RESTful web services are Turing complete; that is, these services are equal in power to any computational system, including a system that consists of SOAP-based web services or DOA stubs and skeletons.
 - # Architectural Principles
-  collapsed:: true
 	- **Addressable resources**
 		- The key abstraction of information and data in REST is a resource, and each resource must be addressable via a URI (Uniform Resource Identifier).
 	- **A uniform, constrained interface**
@@ -412,22 +409,18 @@
 	- The bandwidth concerns become more important in the case of mobile clients consuming the API.
 	- Limiting the data can vastly improve the server’s ability to retrieve data faster from a datastore and the client’s ability to process the data and render the UI. By splitting the data into discrete pages or paging data, REST services allow clients to scroll through and access the entire dataset in manageable chunks.
 	- ## Pagination Styles
-	  collapsed:: true
 		- There are 4 different pagination styles.
 		- ### 1. Page Number Pagination
-		  collapsed:: true
 			- The clients specify a page number containing the data they need. For example, a client wanting all the blog posts in page 3 of a blog service, can use the following `GET` method: `http://blog.example.com/posts?page=3`
 			- The REST service in this scenario would respond with a set of posts. The number of posts returned depends on the default page size set in the service.
 			- It is possible for the client to override the default page size by passing in a page-size parameter: `http://blog.example.com/posts?page=3&size=20`
 			- GitHub’s REST services use this pagination style. By default, the page size is set to 30 but can be overridden using the per page parameter: https://api.github.com/user/repos?page=2&per_page=100
 		- ### 2. Limit Offset Pagination
-		  collapsed:: true
 			- The clients uses two parameters to retrieve the data that they need.
 			- a **limit** - indicates the maximum number of elements to return
 			- an **offset** indicates the starting point for the return data. 
 			  ( For example, to retrieve 10 blog posts starting from the item number 31, a client can use the following request: `http://blog.example.com/posts?limit=10&offset=30`
 		- ### 3. Cursor-based Pagination
-		  collapsed:: true
 			- The clients make use of a pointer or a cursor to navigate through the data set.
 			- A cursor is a service-generated random character string that acts as a marker for an item in the data set.
 			- Consider a client making the following request to get blog posts: `http://blog.example.com/posts`. On receiving the request, the service would send data similar to this:
@@ -447,13 +440,11 @@
 			- This pagination style is used by applications such as Twitter and Facebook that deal with real-time datasets (tweets and posts) where data changes frequently.
 			- The generated cursors typically don’t live forever and should be used for short-term pagination purposes only.
 		- ### 4. Time-base Pagination
-		  collapsed:: true
 			- The client specifies a timeframe to retrieve the data in which they are interested.
 			- Facebook supports this pagination style and requires time specified as a Unix timestamp. These are two Facebook example requests:
 			- `https://graph.facebook.com/me/feed?limit=25&until=1364587774` - specifies the end of the time range
 			- `https://graph.facebook.com/me/feed?limit=25&since=1364849754` - specifies the beginning of the time range
 	- ## Pagination Data
-	  collapsed:: true
 		- All the above pagination styles return only a subset of the data. So, in addition to supplying the requested data, it is also important for the service to communicate pagination-specific information such as total number of records or total number of pages or current page number and page size.
 		- The following example shows a response body with pagination information:
 		- ```json
@@ -473,19 +464,15 @@
 		  
 		  `Link: <https://api.github.com/user/repos?page=3&per_page=100>; rel="next", <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"`
 - # Scalability
-  collapsed:: true
 	- ## Caching
-	  collapsed:: true
 		- **Browser Cache**
 			- is one of the more important features of the Web. When you visit a website for the first time, your browser stores images and static text in memory and on disk. If you revisit the site within minutes, hours, days, or even months, your browser doesn’t have to reload the data over the network and can instead pick it up locally. This greatly speeds up the rendering of revisited web pages and makes the browsing experience much more fluid. Browser caching not only helps page viewing, it also cuts down on server load and reduced network traffic.
 		- **Proxy caches**
 			- are pseudo–web servers that work as middlemen between browsers and websites. Their sole purpose is to ease the load on master servers by caching static content and serving it to clients directly, bypassing the main servers. Content delivery networks (CDNs) like Akamai have made multimillion-dollar businesses out of this concept. These CDNs provide you with a worldwide network of proxy caches that you can use to publish your website and scale to hundreds of thousand of users.
 			- REST services can leverage the browser & proxy cache, if the HTTP constrained interface is followed religiously. Because any service URI that can be reached with an HTTP GET is a candidate for caching, as they are read-only and idempotent.
 	- ## HTTP Caching
-	  collapsed:: true
 		- HTTP protocol gives fine-grained control over the caching behavior of both browser and proxy caches.
 		- ### HTTP 1.0 style Expires Header
-		  collapsed:: true
 			- In the example below, *Expires* field in the header tells the browser that the response can be cached until the date & time provided. After expiry, the client should re-fetch the data from server.
 			- ```http HTTP 1.0 Response
 			  HTTP/1.1 200 OK
@@ -496,19 +483,18 @@
 			- ```java JAX-RS example of setting expires
 			  @Path("/customers")
 			  public class CustomerResource {
-			  @Path("{id}")
-			  @GET
-			  @Produces("application/xml")
-			  public Response getCustomer(@PathParam("id") int id) {
-			  Customer cust = findCustomer(id);
-			  Date date = Calendar.getInstance(TimeZone.getTimeZone("GMT")).set(2010, 5, 15, 16, 0);
+			    @Path("{id}")
+			    @GET
+			    @Produces("application/xml")
+			    public Response getCustomer(@PathParam("id") int id) {
+			      Customer cust = findCustomer(id);
+			      Date date = Calendar.getInstance(TimeZone.getTimeZone("GMT")).set(2010, 5, 15, 16, 0);
 			  
-			  return Response.ok(cust, "application/xml").expires(date).build();
-			  }
+			      return Response.ok(cust, "application/xml").expires(date).build();
+			    }
 			  }
 			  ```
 		- ### HTTP 1.1 style Cache-Control
-		  collapsed:: true
 			- HTTP 1.1 provides richer feature set over browser and CDN/proxy caches including cache revalidation.
 			- ```http HTTP 1.1 Response
 			  HTTP/1.1 200 OK
@@ -519,18 +505,18 @@
 			- ```java JAX-RS example setting cache-control
 			  @Path("/customers")
 			  public class CustomerResource {
-			  @Path("{id}")
-			  @GET
-			  @Produces("application/xml")
-			  public Response getCustomer(@PathParam("id") int id) {
-			  Customer cust = findCustomer(id);
-			  CacheControl cc = new CacheControl();
-			  cc.setMaxAge(300);
-			  cc.setPrivate(true);
-			  cc.setNoStore(true);
+			    @Path("{id}")
+			    @GET
+			    @Produces("application/xml")
+			    public Response getCustomer(@PathParam("id") int id) {
+			      Customer cust = findCustomer(id);
+			      CacheControl cc = new CacheControl();
+			      cc.setMaxAge(300);
+			      cc.setPrivate(true);
+			      cc.setNoStore(true);
 			  
-			  return Response.ok(cust, "application/xml").cacheControl(cc).build();
-			  }
+			      return Response.ok(cust, "application/xml").cacheControl(cc).build();
+			    }
 			  }
 			  ```
 			- | Cache Control Directive | Description |
@@ -543,22 +529,22 @@
 			  | `s-maxage` | The s-maxage directive is the same as the max-age directive, but it specifies the maximum time a shared, intermediary cache (like a proxy) is allowed to hold the data. This directive allows you to have different expiration times than the client.|
 			- **Revalidation and Conditional GETs**
 				- *Revalidation*
-				- when the cache is stale, the cacher can ask the server if the data it is holding is still valid. To perform revalidation, the server will send back a `Last-Modified` and/or an `ETag` (entity tag) header with its initial response to the client.
-				- *Last-Modified*
-					- represents a timestamp of the data sent by the server.
-					- ```http Response header with Last-Modified
-					  HTTP/1.1 200 OK
-					  Content-Type: application/xml
-					  Cache-Control: max-age=1000
-					  Last-Modified: Tue, 15 May 2013 09:56 EST
-					  <customer id="123">...</customer>
-					  ```
-					- As in example below, after 1000 seconds, client may opt to revalidate its cache data by sending a *conditional GET* request by passing a request header called `If-Modified-Since` with the value of the cached `Last-Modified` header.
-					- When a service receives this GET request, it checks to see if its resource has been modified since the date provided within the `If-Modified-Since` header. If it has been changed since the timestamp provided, the server will send back a `200, “OK,”` response with the new representation of the resource. If it hasn’t been changed, the server will respond with `304, “Not Modified,”` and return no representation. In both cases, the server should send an updated `Cache-Control` and `Last-Modified` header if appropriate.
-					- ```http
-					  GET /customers/123 HTTP/1.1
-					  If-Modified-Since: Tue, 15 May 2013 09:56 EST
-					  ```
+					- when the cache is stale, the cacher can ask the server if the data it is holding is still valid. To perform revalidation, the server will send back a `Last-Modified` and/or an `ETag` (entity tag) header with its initial response to the client.
+					- *Last-Modified*
+						- represents a timestamp of the data sent by the server.
+						- ```http Response header with Last-Modified
+						  HTTP/1.1 200 OK
+						  Content-Type: application/xml
+						  Cache-Control: max-age=1000
+						  Last-Modified: Tue, 15 May 2013 09:56 EST
+						  <customer id="123">...</customer>
+						  ```
+						- As in example below, after 1000 seconds, client may opt to revalidate its cache data by sending a *conditional GET* request by passing a request header called `If-Modified-Since` with the value of the cached `Last-Modified` header.
+						- When a service receives this GET request, it checks to see if its resource has been modified since the date provided within the `If-Modified-Since` header. If it has been changed since the timestamp provided, the server will send back a `200, “OK,”` response with the new representation of the resource. If it hasn’t been changed, the server will respond with `304, “Not Modified,”` and return no representation. In both cases, the server should send an updated `Cache-Control` and `Last-Modified` header if appropriate.
+						- ```http
+						  GET /customers/123 HTTP/1.1
+						  If-Modified-Since: Tue, 15 May 2013 09:56 EST
+						  ```
 				- *ETag*
 					- The ETag header is a pseudounique identifier that represents the version of the data sent back. Its value is any arbitrary quoted string and is usually an MD5 hash. Here’s an example response:
 					- ```http Response header with ETag
@@ -578,7 +564,6 @@
 					  If-None-Match: "3141271342554322343200"
 					  ```
 	- ## Reverse proxy
-	  collapsed:: true
 		- One of the best way to cache your API is to put a gateway cache (or reverse proxy) in front of it. Some frameworks provide their own reverse proxies, but a very powerful, open-source one is [Varnish](https://www.varnish-cache.org/).
 		- When a safe method is used on a resource URL, the reverse proxy should cache the response from the API. It will then use this cached response to answer all subsequent requests for the same resource before they hit the API. When an unsafe method is used on a resource URL, the cache ignores it and passes it to the API. The API is responsible for making sure that the cached resource is invalidated.
 		- HTTP has an unofficial `PURGE` method that is used for purging caches. When an API receives a call with an unsafe method on a resource, it should fire a `PURGE` request on that resource so that the reverse proxy knows that the cached resource should be expired. Note that you will still have to configure your reverse proxy to actually remove a resource when it receives a request with the PURGE method.
@@ -597,7 +582,7 @@
 		  
 		  PURGE /article/1234 HTTP/1.1
 		   - API sends PURGE method to the cache
-		   - The resources is removed from the cache
+		   - The resource is removed from the cache
 		  
 		  GET /article/1234 HTTP/1.1
 		   - The resource is not cached yet
@@ -605,12 +590,10 @@
 		   - Store response in cache and return
 		  ```
 - # API Security
-  collapsed:: true
 	- [Basics of Security](/technology/security.html)
 	- ## Authentication
-	  collapsed:: true
 		- To enable authentication, modify the */WEB-INF/web.xml* file in the war file deployed.
-		- Value of `<auth-method>` could be `BASIC`, 'DIGEST' or `CLIENT_CERT`
+		- Value of `<auth-method>` could be `BASIC`, `DIGEST` or `CLIENT_CERT`
 		- The `<login-config>` element doesn’t turn on authentication. To enforce authentication, you must specify a URL pattern you want to secure. e.g., `<url-pattern>/services/customers</url-pattern>`
 		- The `<http-method>` element says that we only want to secure POST requests to this URL. If we leave out this element, all HTTP methods are secured.
 		- `<auth-constraint>` specifies which roles are allowed to POST to `/services/customers`
@@ -649,7 +632,6 @@
 		  </security-constraint>
 		  ```
 	- ## Authorization
-	  collapsed:: true
 		- The server and application know the permissions for each user and do not need to share this information over a communication protocol. This is why authorization is the domain of the server and application
 		- JAX-RS relies on the servlet and Java EE specifications to define how authorization works. Authorization is performed in Java EE by associating one or more roles with a given user and then assigning permissions based on that role.
 		- You do not assign access control on a per-user basis, but rather on a per-role basis.
@@ -687,7 +669,6 @@
 			  }
 			  ```
 - # API Versioning
-  collapsed:: true
 	- [Excellent article - Nobody Understands REST or HTTP](http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http)
 	- There is no established industry standard for expressing versioning information for REST service contracts. We need to select a convention that works best for our IT enterprise.
 	- 4 popular approaches to versioning a REST API.
@@ -696,7 +677,6 @@
 		- 3. Accept header versioning
 		- 4. Custom header versioning
 	- ## 1) URI versioning
-	  collapsed:: true
 		- In this approach, version information becomes part of the **Base URI**. For example, http://api.example.org/v1/users and http://api.example.org/v2/users represent two different versions of an application API.
 		- It is used by major public APIs such as Twitter, LinkedIn, Yahoo, etc.
 			- LinkedIn: https://api.linkedin.com/v1/people/~
@@ -714,7 +694,6 @@
 		- Cons
 			- If client stores the permalinks locally, then for every upgrade it needs to be updated
 	- ## 2) URI parameter versioning
-	  collapsed:: true
 		- Similar to the URI versioning except that the version information is specified as a URI request parameter. E.g., http://api.example.org/users?v=2
 		- The version parameter is typically optional and a default version of the API will continue working for requests without version parameter. Most often, the default version is the latest version of the API.
 		- Although as not popular as other versioning strategies, a few major public APIs such as Netf lix have used this strategy.
@@ -722,7 +701,6 @@
 			- The URI parameter versioning shares the same disadvantages of URI versioning.
 			- Some proxies don’t cache resources with a URI parameter, resulting in additional network traffic.
 	- ## 3) Accept header versioning
-	  collapsed:: true
 		- This approach uses the *Accept* header to communicate version information. Because the header contains version information, there will be only one URI for multiple versions of API.
 		- To pass additional version information, we need a custom media type. The following convention is popular when creating a custom media type: `vnd.product_name.version+suffix`
 			- The **vnd** is the starting point of the custom media type and indicates vendor.
@@ -749,7 +727,6 @@
 		  ```
 		- This approach shares the same pros and cons as that of the Accept header approach. Because the HTTP specification provides a standard way of accomplishing this via the Accept header, the custom header approach hasn’t been widely adopted.
 - # Transactions
-  collapsed:: true
 	- How do I perform atomic operations using REST? If I would like to execute multiple operations, but have them all appear as an single, atomic transaction, REST seems inappropriate.
 	- ## Low Granularity Services Approach
 		- REST faces the exact same problem as SOAP-based web services with regards to atomic transactions. There is no stateful connection, and every operation is immediately committed; performing a series of operations means other clients can see interim states.

@@ -1172,6 +1172,50 @@ collapsed:: true
 				- [PASTA](http://bit.ly/2rQGNoa)
 				- [Trike](http://octotrike.org/)
 				- [VAST](http://threatmodeler.com/threat-modeling-methodology/)
+		- ### Network Agent
+		  background-color:: green
+			- In a zero trust network, it is insufficient to treat the user and device separately, because policy often needs to consider the two together to accurately enforce desired behavior. e.g., a user may have access to commit source code from his laptop, but not from his mobile device.
+			- A **network agent** is the term given to the combination of data known about the actors in a network request, typically containing a user, application, and device.
+			- Network agent is an ephemeral entity formed on demand to evaluate a policy
+			- Traditionally, these entities have been authorized separately, but zero trust networks recognize that policy is best captured as a combination of all participants in a request. By authorizing the entire context of a request, the impact of credential theft is greatly mitigated.
+			- When making an authorization decision in a zero trust network, it is the agent that is in fact authorized. While it is tempting to authorize the device and user separately, this approach is not recommended. Since the agent is the entity which is authorized, it is also the thing against which policy is written.
+			- An agent, being the primary actor in the network, plays an additional role in the calculation of trust scores.
+			- The trust engine can use recorded actions, in addition to data contained within the agent itself, to score agents for their trustworthiness.
+			- **Agents used for authorization, not authentication**
+				- Agents serve solely as authorization components and do not play any part in authentication. Typically authentication is session oriented, but in the case of authorization, it is best to be request oriented.
+			- **Securing agent details**
+				- To adequately secure the sensitive agent details, the entirety of the agent lifecycle should be contained to trusted control plane systems, which themselves are heavily secured. These systems should be logically and physically separated from the data plane systems, have clear boundaries, and change infrequently.
+				- Most policy decisions are made in the control plane. However, it will often be the case that the authorization engine in the control plane is not in the best position to enforce application-centric policy, despite its ability to enforce authorization on a request-by-request basis. This is especially so in user-facing systems. As a result, some agent details will need to be exposed to data plane systems.
+				- In order to allow applications to implement their own fine-grained authorization logic, agent details can be exposed to applications via a trusted communication channel. This could be as simple as injecting headers into network requests that flow through a reverse proxy. The proxy, being a zero trust control plane system, can view the agent to enforce its own authorization decisions and expose a subset of the data to the downstream application for further authorization.
+		- ### Authorization Architecture
+		  background-color:: green
+			- Authorization is arguably the most important process occurring within a zero trust network, and as such, making an authorization decision should not be taken lightly. Every flow and/or request will ultimately require a decision be made.
+			- ![ztnw_0401.png](../assets/ztnw_0401_1716815388323_0.png)
+			- The zero trust authorization architecture comprises four main components:
+				- **Enforcement**
+				  logseq.order-list-type:: number
+					- The enforcement component sits on the “front line” of the authorization flow and is responsible for carrying out decisions made by the rest of the authorization system. It ensures that clients are authenticated, and passes the context of each flow/request to the policy engine.
+					- It is typically manifested as a load balancer, proxy, or even a firewall.
+					- 2 responsibilities of Enforcement
+						- an interaction with the policy engine must occur. This is generally the authorization request itself (e.g., a load balancer has received a request and needs to know whether it is authorized or not).
+						  logseq.order-list-type:: number
+						- the actual installation and ongoing enforcement of the decision
+						  logseq.order-list-type:: number
+				- **Policy engine**
+				  logseq.order-list-type:: number
+					- The policy engine is the component that has the power to make a decision. It compares the request and its context to policy, and informs the enforcer whether the request will be permitted or not.
+				- **Trust engine**
+				  logseq.order-list-type:: number
+					- The *trust engine* is the system in a zero trust network that performs risk analysis against a particular request or action. This system’s responsibility is to produce a numeric assessment of the riskiness of allowing a particular request/action, which the policy engine uses to make an ultimate authorization decision.
+					- The trust engine will frequently pull from data contained in authoritative inventory systems to check attributes of an entity when computing its score. A device inventory, for example, could provide the trust engine with information like the last time a device was audited, or whether it has a particular hardware security feature.
+					- The trust engine is leveraged by the policy engine for risk analysis purposes. It leverages multiple data sources in order to compute a risk score, similar to a credit score. This score can be used to protect against unknown unknowns, and helps keep policy strong and robust without complicating it with edge cases and signatures.
+					- It is used by the policy engine as an additional component by which an authorization decision can be made.
+					- Google’s BeyondCorp is widely recognized as having pioneered this technology.
+				- **Data stores**
+				  logseq.order-list-type:: number
+					- Finally, we have the various data stores that represent the source of truth for the data being used to inform authorization. This data is used to paint a full contextual picture of a particular flow/request, using small authenticated bits of data as the primary lookup keys (i.e., a username or a device’s serial number).
+					- These data stores (user data, device data, or otherwise) are heavily leveraged by both the policy engine and trust engine, and represent the backing against which all decisions are measured.
+		-
 - # Ping Products
   background-color:: yellow
   collapsed:: true

@@ -1,5 +1,4 @@
 # Keys
-collapsed:: true
 	- > Refer to SQL Tips and Techniques-2002
 	- **Primary Key**
 		- PK is an attribute or a set of attributes that uniquely identify a specific instance of an entity.
@@ -19,7 +18,6 @@ collapsed:: true
 	- **Difference between a primary key and a unique key?**
 		- Both primary key and unique enforce uniqueness of the column on which they are defined. But by default primary key creates a clustered index on the column, whereas unique key creates a nonclustered index by default. Another major difference is that, primary key doesn't allow NULLs, but unique key allows one NULL only. Identity columns & default values
 - # Integrity
-  collapsed:: true
 	- **Data integrity** - means, in part, that you can correctly and consistently navigate and manipulate the tables in the database. There are two basic rules to ensure data integrity; entity integrity and referential integrity.
 	- **Entity Integrity** Entity integrity rule states that for every instance of an entity, the value of the primary key must exist, be unique, and cannot be null.
 	- **Referential Integrity** rule states that every foreign key value must match a primary key value in an associated table. Referential integrity ensures that we can correctly navigate between related entities. FKs can have nulls.
@@ -37,14 +35,13 @@ collapsed:: true
 			  ALTER TABLE table_name ADD CONSTRAINT constraint_name CHECK ( PRICE > 100 AND DATE_INSERTED > CURRENT_DATE );
 			  ```
 - # Table Types
-  collapsed:: true
 	- **Heap-organized table**
-	- A heap-organized table is a table with rows stored in no particular order. This is a standard Oracle table; the term "heap" is used to differentiate it from an *index-organized table- or *external table*.
-	- If a row is moved within a heap-organized table, the row's ROWID will also change
-	  
-	  ```sql
-	  CREATE TABLE t1 (c1 NUMBER PRIMARY KEY, c2 VARCHAR2(30)) ORGANIZATION HEAP;
-	  ```
+		- A heap-organized table is a table with rows stored in no particular order. This is a standard Oracle table; the term "heap" is used to differentiate it from an *index-organized table* or *external table*.
+		- If a row is moved within a heap-organized table, the row's ROWID will also change
+		  
+		  ```sql
+		  CREATE TABLE t1 (c1 NUMBER PRIMARY KEY, c2 VARCHAR2(30)) ORGANIZATION HEAP;
+		  ```
 	- **Index-organized Table (IOT) or Index-Only Table**
 	  collapsed:: true
 		- If the rows in a table are not too long, it may be desirable to copy all the columns into an index to make SELECTs faster. If the index has all the data, then a table is not needed.
@@ -95,7 +92,6 @@ collapsed:: true
 		- **Global temporary tables (DB2)** - with or without logging - http://www.ibm.com/developerworks/data/library/techarticle/dm-0912globaltemptable/
 		- **tempdb (Sybase)** - The `tempdb` database is a special Sybase supplied database that comes in each server. Data in tempdb is not permanent. The tempdb database is cleared each time the server reboots. Any queries which do any sort of sort operation implicitly use tempdb. These queries include select statments with group by's or order by's. Be careful, if you select a large set of rows and use an order by or group by clause, you query may fail because tempdb isn't big enough. The system administrator can extend the size of tempdb
 - # Views
-  collapsed:: true
 	- A view is an alternate way of representing data that exists in one or more tables.
 	- A view can include some or all of the columns from one or more tables. It can also be based on other views.
 	- A view is the result of a query on one or more tables. A view looks like a real table, but is actually just a representation of the data from one or more tables.
@@ -127,7 +123,6 @@ collapsed:: true
 				- You can’t modify the underlying tables and columns. The view is created with the WITH SCHEMABINDING option.
 				- You can’t always predict what the query optimizer will do.
 - # Cursors
-  collapsed:: true
 	- **Static Cursor**
 		- Specifies that cursor will use a temporary copy of the data instead of base tables. This cursor does not allow modifications and modifications made to base tables are not reflected in the data returned by fetches made to this cursor. (Kind of like [snapshot iterators](technology/java-collections.html#fail-safe-iterators) in Java)
 	- **Dynamic Cursor**
@@ -163,10 +158,8 @@ collapsed:: true
 	- ## Disadvantages of cursors
 		- Each time you fetch a row from the cursor,it results in a network round trip, where as a normal SELECT query makes only one round trip, however large the resultset is. Further, there are restrictions on the SELECT statements that can be used with some types of cursors.
 - # Triggers
-  collapsed:: true
 	- Triggers are special kind of stored procedures that get executed automatically when an INSERT, UPDATE or DELETE operation takes place on a table. Triggers can't be invoked on demand. They get triggered only when an associated action (INSERT, UPDATE, DELETE) happens on the table on which they are defined.
 - # Joins
-  collapsed:: true
 	- ![](../assets/visual_sql_joins.jpg){:height 578, :width 685}
 	- [A Visual Explanation of SQL Joins - Coding Horror](http://www.codinghorror.com/blog/2007/10/a-visual-explanation-of-sql-joins.html)
 	- http://publib.boulder.ibm.com/infocenter/iseries/v5r4/index.jsp?topic=%2Fsqlp%2Frbafyjoin.htm

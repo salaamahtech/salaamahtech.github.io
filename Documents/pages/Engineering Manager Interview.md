@@ -1,5 +1,7 @@
-# Interview Process
-collapsed:: true
+public:: false
+
+- # Interview Process
+  collapsed:: true
 	- Resume prep
 	- Recruiter screen
 		- research about the company in LinkedIn before this screening
@@ -83,7 +85,6 @@ collapsed:: true
 			- ❓ Any resources to learn conflict resolution topic?
 		- https://www.tryexponent.com/questions?role=em&type=behavioral
 - # Engineering Manager Story Bank
-  collapsed:: true
 	- > Map company's core value to your stories. Stick with stories 2 years old or less.
 	- > Choose both success and failure stories
 	- > Write the who, where, when, what and why
@@ -94,7 +95,6 @@ collapsed:: true
 	- ## Story no. 4
 	- ## Story no. 5
 - # Target Companies
-  collapsed:: true
 	- ## Companies
 	  collapsed:: true
 		- Google - Gaurav Pandit, Samip Chakraborty
@@ -108,7 +108,6 @@ collapsed:: true
 	- ## Recruiters
 		- TBD
 - # Interview Pointers
-  collapsed:: true
 	- ## Before Interview
 		- Be aware of the company's core values and try to align your answers accordingly
 	- ## Negotation

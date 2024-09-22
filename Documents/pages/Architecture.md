@@ -1,6 +1,5 @@
 - > Ralph Johnson famously defined software architecture as “the important stuff (whatever that is).” The architect’s job is to understand and balance all of those important things (whatever they are).
 - # Evolutionary Architecture
-  collapsed:: true
 	- the craft of software architecture manifests in the ability of architects to analyze business and domain requirements along with other important factors to find a solution that balances all concerns optimally.
 	- **Unicyclist & Architect**
 		- Visualize a unicyclist carrying boxes: _dynamic_ because she continues to adjust to stay upright and _equilibrium_ because she continues to maintain balance. In the software development ecosystem, each new innovation or practice may disrupt the status quo, forcing the establishment of a new equilibrium.
