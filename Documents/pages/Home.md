@@ -20,6 +20,8 @@ background-color:: yellow
 		  logseq.order-list-type:: number
 		- [[Operations]]
 		  logseq.order-list-type:: number
+		- [[Performance]]
+		  logseq.order-list-type:: number
 		- [[Scalability]]
 		  logseq.order-list-type:: number
 		- [[Security]]

@@ -156,7 +156,6 @@ collapsed:: true
 			- always use a user in Dockerfile
 - # Kubernetes
   background-color:: red
-  collapsed:: true
 	- ![](../assets/k8s_architecture.png)
 	- For local single node cluster, use `minikube`
 	- ## Benefits
@@ -403,14 +402,13 @@ collapsed:: true
 					- The __etcd server__ is the storage for the cluster where all of the API objects are stored.
 			- __Node Types__
 				- Master node
-				- has containers like the API server, scheduler, etc., which manage the cluster
-				- Kubernetes won’t generally schedule work onto master nodes to ensure that user workloads don’t harm the overall operation of the cluster.
+					- has containers like the API server, scheduler, etc., which manage the cluster
+					- Kubernetes won’t generally schedule work onto master nodes to ensure that user workloads don’t harm the overall operation of the cluster.
 				- Worker nodes
-				- where the application containers will run.
+					- where the application containers will run.
 		- ## Services
-			- | --- | --- |
-			  | --- | --- |
-			  | ![](../assets/kubernetes-services.jpg) | ![](../assets/kubernetes-services-endpoints.png) |
+			- ![](../assets/kubernetes-services.jpg)
+			- ![](../assets/kubernetes-services-endpoints.png)
 			- Why services?
 				- We can always use labels to identify the set of pods we are interested in, get all of the pods for those labels, and dig out the IP address.  But keeping the correct set of labels to use in sync can be tricky.  This is why the Service object was created.
 			- A `Service` object is a way to create a named label selector.
@@ -430,12 +428,12 @@ collapsed:: true
 				- DNS service is exposed to Pods running in the cluster
 				- It provides DNS names for cluster IPs
 				- Sample fully qualified DNS name: `alpaca-prod.default.svc.cluster.local`
-				- `alpaca-prod` - name of the service
-				- `default` - namespace that this service is in
-				- `svc` - recognizing that this is a service
-				- `cluster.local` - The base domain name for the cluster.  This is the default and what you will see for most clusters. Administrators may change this to allow unique DNS names across multiple clusters.
+					- `alpaca-prod` - name of the service
+					- `default` - namespace that this service is in
+					- `svc` - recognizing that this is a service
+					- `cluster.local` - The base domain name for the cluster.  This is the default and what you will see for most clusters. Administrators may change this to allow unique DNS names across multiple clusters.
 			- __Endpoints__
-				- For every Service object, Kubernetes creates a buddy Endpointsobject that contains the IP addresses for that service
+				- For every Service object, Kubernetes creates a buddy Endpoints object that contains the IP addresses for that service
 				- Apps that want to use services without using a cluster IP can use 'Endpoints'.
 				- To use a service, an advanced application can talk to the Kubernetes API directly to look up endpoints and call them.
 				- ![](../assets/kube_proxy.png)
@@ -515,6 +513,7 @@ collapsed:: true
 			- HPA requires the presence of out-of-the-box pod called _Heapster_ which keeps track of metrics and provides an API for consuming metrics HPA uses when making scaling decisions.
 			- > Because of the decoupled nature of Kubernetes, there is no direct link between the horizontal pod autoscaler and the ReplicaSet. While this is great for modularity and composition, it also enables some antipatterns. In particular, it’s a bad idea to combine both autoscaling and imperative or declarative management of the number of replicas. If both you and an autoscaler are attempting to modify the number of replicas, it’s highly likely that you will clash, resulting in unexpected behavior.
 		- ## Command Reference
+		  collapsed:: true
 			- `kubectl version`
 			- `kubectl cluster-info` - displays the cluster information
 			- __Get__

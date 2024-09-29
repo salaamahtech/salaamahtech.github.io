@@ -1,5 +1,4 @@
 # Overview
-collapsed:: true
 	- ![](../assets/mongo-datatypes.png)
 	- Max BSON document size = 16MB
 	- Mongo Shell is a Node.js REPL
@@ -19,7 +18,6 @@ collapsed:: true
 	- A Namespace in Mongo is a combination of database name and collection name. e.g., `db.plans`
 	- GridFS
 - # Index
-  collapsed:: true
 	- By default, MongoDB creates an index on the document’s _id primary key field.
 	- All user-defined indexes are secondary indexes. Any field can be used for a secondary index, including fields within
 	  arrays
@@ -46,7 +44,6 @@ collapsed:: true
 		- Fields used to sort should occur next in the index definition. If multiple fields are being sorted (such as (last_name, first_name), then they should occur in the same order in the index definition.
 		- Fields that are queried by range should occur last in the index definition.
 - # Profiling
-  collapsed:: true
 	- MongoDB provides a range of logging and monitoring tools to ensure collections are appropriately indexed and queries are tuned.
 	- The MongoDB Database Profiler is most commonly used during load testing and debugging, logging all database operations or only those events whose duration exceeds a configurable threshold (the default is 100ms).
 	- Profiling data is stored in a capped collection
@@ -137,7 +134,8 @@ collapsed:: true
 	- `aggregate()` function returns an array of result documents; cannot write to a collection;
 	- **Pipeline Operations** - Each operator receives a stream of documents, does some type of transformation on these documents, and then passes on the results of the transformation. If it is the last pipeline operator, these results are returned to the client. Otherwise, the results are streamed to the next operator as input.
 - # Sharding
-  collapsed:: true
+	- ![Image preview](../assets/mongodb.gif){:height 644, :width 625}
+	-
 	- One of the central reasons for Mongo to exist is to safely and quickly handle very large datasets. The clearest method of achieving this is through horizontal sharding by value ranges—or just sharding for brevity. Rather than a single server hosting all values in a collection, some range of values are split (or in other words, sharded) onto other servers. For example, in our phone numbers collection, we may put all phone numbers less than 1-500-000-0000 onto Mongo server A and put numbers greater than or equal to 1-500-000-0001 onto a server B. Mongo makes this easier by autosharding, managing this division for you.
 	- Diff b/w sharding and replication? Replication copies the exact copy of a data in multiple servers. Sharding stores different subset of data across multiple servers.
 	- Shard - server participating in a sharded cluster.

@@ -1,5 +1,6 @@
 # Basics
 background-color:: yellow
+collapsed:: true
 	- <img src="https://mermaid.ink/img/IGZsb3djaGFydCBMUgogICBBW1NjYWxpbmddLS4tPkIxW1NjYWxhYmlsaXR5IFR5cGVzXTsKICAgQSAtLi0-IEIyW1NjYWxpbmcgVHlwZXNdOwogICBCMSAtLi0-IEMxW1NpemUgc2NhbGFiaWxpdHldOwogICBCMSAtLi0-IEMyW0dlb2dyYXBoaWMgc2NhbGFiaWxpdHldOwogICBCMSAtLi0-IEMzW0FkbWluaXN0cmF0aXZlIHNjYWxhYmlsaXR5XTsKICAgCiAgIEIyIC0uLT4gRDFbU2NhbGluZyB1cCAvIFZlcnRpY2FsIFNjYWxpbmddOwogICBCMiAtLi0-IEQyW1NjYWxpbmcgb3V0IC8gSG9yaXpvbnRhbCBTY2FsaW5nXTsKCiAgIEQxIC0uLT4gRTFbU2hhcmVkIE1lbW9yeSBBcmNoaXRlY3R1cmVdOwogICBEMSAtLi0-IEUyW1NoYXJlZCBEaXNrIEFyY2hpdGVjdHVyZV0KICAgRDIgLS4tPiBFM1tTaGFyZWQgTm90aGluZyBBcmNoaXRlY3R1cmVdCg" />
 	  collapsed:: true
 	  {{renderer :mermaid_zcvped}}
@@ -97,52 +98,6 @@ background-color:: yellow
 		- ### 3. Horizontal Scaling
 			- When your application involves heavy data reads/writes and heavy transactional volumes, and if none of the above techniques work, then scaling horizontally is the only option.
 			- Partitioning/Sharding data across multiple nodes/servers in a cluster also introduces multiple failure points. DB cluster must be *highly available* to ensure the interim server failures do not interrupt the live operations.
-- # Caching
-  background-color:: yellow
-  collapsed:: true
-	- ## Locality of References
-	  background-color:: pink
-		- ### Principle of Locality
-		  background-color:: blue
-			- Programs tend to reuse data and instructions near those they have used recently, or that were recently referenced themselves
-			- ```java Locality Example
-			  int sum = 0;
-			  
-			  for(int i=0; i < a.length; i++){
-			  sum += a[i];
-			  }
-			  
-			  return sum;
-			  ```
-		- ### Temporal Locality
-		  background-color:: blue
-			- The concept that a resource that is referenced at one point in time will be  referenced again sometime in the near future.
-			- In code above, referencing `sum` in each iteration is an example of temporal locality
-		- ### Spatial Locality
-		  background-color:: blue
-			- The concept that likelihood of referencing a resource is higher if a resource near it was just referenced.
-			- In code above, referencing array elements in succession is an example of spatial locality
-	- ## Caching Solutions
-		- Ehcache
-		- Guava Caching library
-		- JCache (specification?)
-		- Distributed Caches
-		- Aerospike
-		- Coherence (Oracle)
-		- Gemfire
-		- Gigaspaces
-		- Hazelcast
-		- HBase with BlockCache
-		- Memcached
-		- Redis
-		- Riak (key-value database)
-	-
-	- For the remote cache layer, there are two possibilities:
-		- A distributed memory caching solution, such as Memcached, to distribute the data across a cluster of nodes.
-		- Setting up HBase so that all needed records can be found in the block cache. The block cache keeps data blocks in memory, where they can be quickly accessed.
-	- ## Distributed memory caching
-		- A distributed memory solution like Memcached or Redis simplifies the work of developing a caching layer. In terms of performance, though, it still requires a network call, which can add a small amount of latency to requests. Request times should be in the 1- to 4-millisecond range. The advantage of this solution over the partitioning solution is that we won’t have downtime when nodes fail, since we can set up the caching solution with multiple replicas of the data.
-		- The only downside of the distributed memory caching solution is you need enough memory to hold everything. If you can’t hold everything, you need an additional persistence store backed by disk, which means an additional call when data is not in memory. As we’ll see shortly, if we’re utilizing HBase, there is little reason why you need to also use a distributed caching solution.
 - # References
   background-color:: yellow
 	- Understanding Big Data Scalability - Cory Isaacson
