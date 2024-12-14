@@ -1,31 +1,20 @@
-# Popular names
-	- **OpenAI** is a research organization that aims to create safe and beneficial AI for humanity
-	- **ChatGPT** is a large language model (LLM) that understands and generates natural language text
-	- **GitHub Copilot** is an AI-powered pair programmer that suggests code snippets based on the context of your code
-	- **Azure OpenAI** is  a cloud-based platform that offers access to OpenAI's cutting-edge language models and AI capabilities
-	- **Amazon Bedrock**
-	- **Amazon Titan**
-	- **Huggingface** is like Github for AI/ML - open-source. Users can upload, create and share 3 types of resources
-		- Models
-		- Training data
-		- Spaces (Environment/Infrastructure to run ML Models & demo)
-	- **[Stability.ai](https://stability.ai)** - Open-source Gen AI company behind Stable Diffusion XL
-	- **NLP Cloud** - Company behind [Dolphin AI](https://chat.nlpcloud.com/) -
-	-
+- {{renderer :tocgen2}}
 - # Overview
-  background-color:: red
+  background-color:: yellow
+  collapsed:: true
 	- **Generative models** are a class of AI machine learning models that can generate new data based on training data. The generated content may be text, images, audio and video.
 	- Building Generative AI is a highly empirical (experimental) process - we repeatedly find and fix mistakes. Here are some tools used to improve its performance
 		- **Prompting**
 		- **RAG** (Retrieval Augmented Generation): Gives LLM access to external data sources
 		- **Fine-tune models**: Adapt LLM to your tasks
 		- **Pre-train models**: Train LLM from scratch
-	- ![image.png](../assets/image_1702311364193_0.png)
-	-
-	- ![image.png](../assets/image_1702310883058_0.png)
-	-
-	- ![image.png](../assets/image_1702246158680_0.png)
+	- Visuals here
+	  collapsed:: true
+		- ![image.png](../assets/image_1702311364193_0.png){:height 518, :width 559}
+		- ![image.png](../assets/image_1702310883058_0.png){:height 687, :width 726}
+		- ![image.png](../assets/image_1702246158680_0.png){:height 492, :width 883}
 	- ## Limitations of Generative AI
+	  background-color:: red
 	  collapsed:: true
 		- Knowledge cutoff
 			- cannot respond to events that happened after the cutoff data upto which the model is trained
@@ -38,25 +27,57 @@
 			- LLMs can reflect bias that exist in the text it learned from (generally from internet)
 			- LLMs can also output toxic or harmful speech
 			- ![image.png](../assets/image_1702321416981_0.png)
+	- ## Transformers
+	  background-color:: red
+	  collapsed:: true
+		- Special type of neural network - enabling context-aware text generation
+		- Transformers is a technology from Google Research and Google Brain from 2017.
+		- Transformers are the building blocks for the AI models like GPT-4. Used in Generative AI, Computer vision.
+		- Transformers are a machine learning model architecture, like Long Short Term Memory Neural Networks (LSTMs), and Convolutional Neural Networks (CNNs)
+		- Before transformers, the older models were sequential in processing the text - one word at a time - which limited processing large text since it was compute intensive and time-taking
+		- Transformers output only one word or token at a time which is then fed back into the model to generate the next word. Feeding the output back into the model is called **Auto Regressive Model**
+		- {{renderer :mermaid_66ef66dd-2501-4b44-be03-d2033ebb387d, 3}}
+			- ```mermaid
+			  flowchart LR
+			  	A0("Machine Learning Model Architectures") --> A1("LSTM (Long Short Term Memory neural networks)")
+			      A0 --> A2("CNN (Convolutional neural networks)")
+			      A0 --> A3("Transfomers")
+			  ```
+	- ## Embeddings
+	  background-color:: red
+		- Words -> Tokens -> Token IDs -> Vectors
+		- ![image.png](../assets/image_1702006081766_0.png){:height 440, :width 892}
+		- ![image.png](../assets/image_1702005489060_0.png){:height 296, :width 797}
+		- Libraries
+			- word2vec
+			- [FastText](https://fasttext.cc/)
+			- GloVe
+			- BERT
+			- [OpenAI Tiktoken](https://github.com/openai/tiktoken) - [How to count tokens with Tiktoken](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+		-
 - # LLM - Large Language Models
+  background-color:: yellow
 	- **What is a Language Model?**
 		- Predicting the next word e.g., Gmail, Teams, Google Search, etc.
 		- 3 ingredients to build a successful language model
 			- large amount of training text
 			- good word to vector embedding tools
 			- and a deep learning neural network architecture
-		- **Auto Regressive Models**
-			- Models that take the last output and feed back into the model to generate the next word
+		- **Auto Regressive Models**: Models that take the last output and feed back into the model to generate the next word
+		- LLMs are **stochastic** – there’s no guarantee that an LLM will give you the same output for the same input every time. You can force an LLM to give the same response by setting `temperature = 0`, which is, in general, a good practice.
+		- https://huyenchip.com/2023/04/11/llm-engineering.html
 	- ## What is a Large Language Model?
-	  collapsed:: true
+	  background-color:: red
 		- Language Model trained on internet scale data
 		- A large language model is a trained deep-learning model that understands and generates text in a human-like fashion.
-		- Think of LLM as a **reasoning engine*. Typically, a database is used as a source of information, whereas LLM is used to process information.
+		- Think of LLM as a **reasoning engine**. Typically, a database is used as a source of information, whereas LLM is used to process information.
 		- LLM have a lot of general knowledge, but they don't know everything.
+		- LLMs are much more than just a single model and there are many other techniques and models in the field of language AI that are worth exploring.
 		- Behind the scene, it is a large transformer model that does all the magic.
 		- https://machinelearningmastery.com/what-are-large-language-models/
 		- ![image.png](../assets/image_1702007259386_0.png)
 	- ## Popular LLMs
+	  background-color:: red
 	  collapsed:: true
 		- Developed by OpenAI. GPT-2 is open-source. GPT-3 & GPT-4 are not open-source.
 		- Microsoft's Sydney is model based on GPT-4 used in Bing search engine.
@@ -72,11 +93,13 @@
 			- GPT-3 provides a base "understanding" of English and several other human languages.
 			- Codex is trained on the contents of StackOverflow and Github.
 	- ## What is a Foundational Model?
+	  background-color:: red
 	  collapsed:: true
 		- The GPT-series LLMs are also called "foundation models."
 		- Foundation models are a class of very powerful AI models that can be used as the basis for other models: they can be specialized, or retrained, or otherwise modified for specific applications.
 		- While most of the foundation models people are talking about are LLMs, foundation models aren't limited to language: a generative art model like Stable Diffusion incorporates the ability to process language, but the ability to generate images belongs to an entirely different branch of AI.
 	- ## LLM Types
+	  background-color:: red
 	  collapsed:: true
 		- ![](https://tolacapital.com/wp-content/uploads/2023/05/image-1024x426.png)
 		- Text to text
@@ -91,9 +114,13 @@
 				- The output from each stage $x_1$ is fed into a denoising network (Reverse Diffusion Network) which tries to remove the noise and reconstruct the image
 				- ![image.png](../assets/image_1702245545952_0.png){:height 448, :width 713}
 	- ## LLM Managed Services
+	  background-color:: red
+	  collapsed:: true
 		- [Amazon Bedrock](https://aws.amazon.com/bedrock/)
 			- Fully managed serverless service that offers foundational models
 	- ## How to choose a model?
+	  background-color:: red
+	  collapsed:: true
 		- Model Size
 			- One way to estimate how capable an LLM is is to look at the model size
 			- | **Model size** | **Typical use-case** | **Example** |
@@ -104,13 +131,17 @@
 		- Open source vs. Proprietary
 			-
 - # Advanced Techniques
+  background-color:: yellow
+  collapsed:: true
 	- Both RAG and fine-tuning are cheaper options. Pre-training is expensive.
 	- ## RAG
+	  background-color:: red
 	  collapsed:: true
 		- RAG (Retrieval Augmented Generation) gives LLM access to external data sources
 		- RAG, simply is modification of your prompt
 		- Examples: Chat with PDF applications, Snapchat, etc.
 	- ## Fine-tuning
+	  background-color:: red
 	  collapsed:: true
 		- Why fine-tune?
 			- To carry out a task that isn't easy to define in a prompt.
@@ -127,11 +158,15 @@
 				- to run on mobile/laptop (edge devices)
 		- ![image.png](../assets/image_1702828208346_0.png)
 	- ## Pre-train LLM
+	  background-color:: red
+	  collapsed:: true
 		- Pre-training general purpose with specific knowledge to specialized domains e.g., Bloomberg has introduced BloombergGPT with 50-billion parameter LLM, purpose-built from scratch for finance.
 		- This option can cost $10s of millions of dollars, many months and huge amount of data.
 		- Some companies built such specialized LLMs and open-source it.
 		- This should be the last resort.
 	- ## RLHF
+	  background-color:: red
+	  collapsed:: true
 		- We've been thinking of LLMs as having learned from a lot of texts on the Internet to predict the next word. But when you prompt an LLM, it doesn't just predict the next word on the Internet, it actually follows your instructions. How does it do that?
 		- An LLM trained on data like this would be good at repeatedly predicting the next word based on what text on the Internet sounds like. If you were to prompt an LLM with a question like, "*what is the capital of France?*", it is quite possible that it will reply, "*what is the capital of Germany?*". But this isn't the answer you want. You wanted to say that the capital of France is Paris.
 		- In order to get an LLM to follow instructions and not just predict the next word, there's a technique called **RLHF (Reinforcement Learning from Human Feedback)**, that can improve the quality of answers further.
@@ -146,33 +181,51 @@
 				-
 		- https://huggingface.co/blog/rlhf
 		- ![image.png](../assets/image_1702007670099_0.png)
-- # Embeddings
-  collapsed:: true
-	- Words -> Tokens -> Token IDs -> Vectors
-	- ![image.png](../assets/image_1702006081766_0.png)
-	- ![image.png](../assets/image_1702005489060_0.png)
-	- Libraries
-		- word2vec
-		- [FastText](https://fasttext.cc/)
-		- GloVe
-		- BERT
-		- [OpenAI Tiktoken](https://github.com/openai/tiktoken)
-	-
-- # Transformers
-  collapsed:: true
-	- Special type of neural network - enabling context-aware text generation
-	-
-	- Transformers is a technology from Google Research and Google Brain from 2017.
-	- Transformers are the building blocks for the AI models like GPT-4. Used in Generative AI, Computer vision.
-	- Transformers are a machine learning model architecture, like Long Short Term Memory Neutal Networks (LSTMs), and Convolutional Neural Networks (CNNs)
-	- Before transformers, the older models were sequential in processing the text - one word at a time - which limited processing large text since it was compute intensive and time-taking
-	- Transformers output only one word or token at a time which is then fed back into the model to generate the next word. Feeding the output back into the model is called **Auto Regressive Model**
-	-
 - # Prompt Engineering
-	- https://promptingguide.ai
-	- CREATE framework
-		- ![image.png](../assets/image_1702246667115_0.png)
+  background-color:: yellow
+  collapsed:: true
+	- > https://promptingguide.ai
+	- Prompt Evaluation
+	- Prompt Versioning
+		- Small changes to a prompt can lead to very different results. It’s essential to version and track the performance of each prompt.
+	- Prompt Optimization
+		- Optimize the prompt for better results by using the techniques below or using a framework model.
+	- ## Prompting Techniques
+	  background-color:: red
+		- **Few-shot prompting**
+		  collapsed:: true
+			- A common technique for prompt engineering is to provide in the prompt a few examples and hope that the LLM will generalize from these examples.
+			- When doing fewshot learning, two questions to keep in mind:
+				- **Whether the LLM understands the examples given in the prompt**. One way to evaluate this is to input the same examples and see if the model outputs the expected scores. If the model doesn’t perform well on the same examples given in the prompt, it is likely because the prompt isn’t clear – you might want to rewrite the prompt or break the task into smaller tasks.
+				  logseq.order-list-type:: number
+				- **Whether the LLM overfits to these fewshot examples.** You can evaluate your model on separate examples.
+				  logseq.order-list-type:: number
+		- **Zero-shot prompting**: Zero-shot prompting means that the prompt used to interact with the model won't contain examples or demonstrations.
+		- **Chain-of-Thought prompting (COT)**: Prompt the model to explain or explain step-by-step how it arrives at an answer.
+			- Cons: COT can increase both latency and cost due to the increased number of output tokens
+		-
+	- ## Prompting Frameworks
+	  background-color:: red
+		- ### CREATE framework
+			- ![image.png](../assets/image_1702246667115_0.png)
+- # Appendix
+  background-color:: yellow
+  collapsed:: true
+	- **OpenAI** is a research organization that aims to create safe and beneficial AI for humanity
+	- **ChatGPT** is a large language model (LLM) that understands and generates natural language text
+	- **GitHub Copilot** is an AI-powered pair programmer that suggests code snippets based on the context of your code
+	- **Azure OpenAI** is  a cloud-based platform that offers access to OpenAI's cutting-edge language models and AI capabilities
+	- **Amazon Bedrock**
+	- **Amazon Titan**
+	- **Huggingface** is like Github for AI/ML - open-source. Users can upload, create and share 3 types of resources
+		- Models
+		- Training data
+		- Spaces (Environment/Infrastructure to run ML Models & demo)
+	- **[Stability.ai](https://stability.ai)** - Open-source Gen AI company behind Stable Diffusion XL
+	- **NLP Cloud** - Company behind [Dolphin AI](https://chat.nlpcloud.com/) -
+	-
 - # Links
+  background-color:: yellow
 	- https://machinelearningmastery.com/what-are-large-language-models/
 	- https://towardsai.net/p/machine-learning/introduction-to-neural-networks-and-their-key-elements-part-c-activation-functions-layers-ea8c915a9d9
 	- https://lifearchitect.ai/
@@ -181,6 +234,7 @@
 		- GPT API https://platform.openai.com
 		- API Playground https://platform.openai.com/playground
 		- Tokenizer https://platform.openai.com/tokenizer
+		- Cookbook - https://cookbook.openai.com/
 	- Text to Text
 		- Chat with PDF files
 			- Panda chat
@@ -196,3 +250,17 @@
 	- Text to Slides
 		- https://www.beautiful.ai/
 		- Canva with AI capability
+	- AI Tools
+		- Google Colab
+		- Google NotebookLM
+- # References
+	- Books
+		- Packt's Introduction to Transformers for NLP: With the Hugging Face Library and Models to Solve Problems - Shashank Mohan Jain
+		- OReilly's Hands-On Large Language Models - by Jay Alammar, Maarten Grootendorst 
+		  ![llm.jpg](../assets/llm_1733196125112_0.jpg){:height 362, :width 255}
+	- Blogs
+		- https://www.tensorops.ai/
+		- https://www.promptingguide.ai/
+		- https://jalammar.github.io/
+		-
+-

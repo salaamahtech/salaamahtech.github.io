@@ -196,7 +196,7 @@ background-color:: yellow
 		  logseq.order-list-type:: number
 	- ## Softskills
 	  background-color:: pink
-		- [[Leadership Best Practices]]
+		- [[Leadership]]
 		  logseq.order-list-type:: number
 		- [[Presentation Skills]]
 		  logseq.order-list-type:: number

@@ -14,3 +14,6 @@
 	- Give break between meetings. Convert 30 mins meeting to 25 mins, 1 hr meetings to 50 mins.
 	- Out-of-office emails - "set as free"
 	- Out-of-office emails - don't block few hours. Block the day but in the subject specify the away hours
+-
+- ![The Quiet Leader Skills Matrix.png](../assets/The_Quiet_Leader_Skills_Matrix_1727627883762_0.png){:height 1272, :width 918}
+-

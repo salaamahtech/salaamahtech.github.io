@@ -1,4 +1,5 @@
--
+- > https://www.designgurus.io/courses
+  > https://bytebytego.com/
 - ## Framework for System Design Interview
 	- Understand the problem (`Time: 3-10 mins`)
 	  logseq.order-list-type:: number
