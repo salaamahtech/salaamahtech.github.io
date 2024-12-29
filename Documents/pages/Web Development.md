@@ -1,5 +1,6 @@
 # Concepts
 background-color:: yellow
+collapsed:: true
 	- ==Polyfills/shims vs. Transpiling==
 		- Transpiling
 			- Transpiling = Transformation + Compiling
@@ -216,6 +217,7 @@ background-color:: yellow
 		- Rollup
 - # Node.js
   background-color:: yellow
+  collapsed:: true
 	- Node.js has 2 module systems
 		- [Modules](https://www.freecodecamp.org/news/modules-in-javascript/)
 		- CommonJS modules (`.cjs` file extension)
@@ -251,6 +253,7 @@ background-color:: yellow
 			  console.log(addTwo(4));
 			  ```
 - # References
+  background-color:: yellow
   collapsed:: true
 	- Best JS learning sites
 		- https://javascript.info/

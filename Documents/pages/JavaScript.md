@@ -1,7 +1,9 @@
 # Overview
+background-color:: yellow
 	- "JavaScript" is not really a single language. Each browser vendor implements their own JavaScript engine, and due to variations between browsers and versions, JavaScript suffers from some serious fragmentation. ([CanIUse.com](http://caniuse.com) documents some of these inconsistencies).
 	- **ES6**, also known as ES2015 / Harmony / ECMAScript 6 / ECMAScript 2015, is the most-recent version of the JavaScript specification. ([good primer on ES6](http://blog.teamtreehouse.com/get-started-ecmascript-6)).
 	- ## Transpilers
+	  background-color:: red
 		- Tools like `Babel`
 		- process of transforming the standardized JavaScript into a version that's compatible with older platforms is called _transpiling_. e.g., ES6 to ES5
 		- It's not much different from compiling. By using a transpiler, you don't need to worry as much about the headaches of whether or not a given browser will support the JavaScript feature you're using.
@@ -10,15 +12,17 @@
 			- TypeScript is essentially JavaScript, but with a type system.
 			- CoffeeScript is very similar to JavaScript, but with shinier syntax; much of the syntactic sugar promoted by CoffeeScript has been adopted by ES6 now.
 	- ## Build Tools
+	  background-color:: red
 		- Tools: `grunt`, `gulp`, `bower`, `browserify`, `webpack`
 		- Basically compiling the code into a production-ready format.
 		- Requiring each JavaScript dependency as part of a page, script tag by script tag, is slow. Therefore, most sites use so-called JavaScript _bundles_. The bundling process takes all of the dependencies and "bundles" them together into a single file for inclusion on your page.
 	- ## Test Tools
+	  background-color:: red
 		- Tools: `Mocha`, `Jasmine`, `Chai`, `Tape`, `Karma`, `PhantomJS`
 		- Karma is a test runner that can run both Jasmine and Mocha-style tests.
 		- PhantomJS is a _headless browser_ - it runs without GUI.
 - # Node.js
-  collapsed:: true
+  background-color:: yellow
 	- Node.js is a tool for writing server-side JavaScript.
 	- ___npm___ Node package manager. JavaScript modules are usually packaged and shared via npm.
 	- ___nvm___ Node version manager. Facilitates managing different version of Node.js.
@@ -40,7 +44,7 @@
 		- Data layer: uses an Object Data Modelling module (e.g. Mongoose.js) for communicating with NoSQL databases like MongoDB.
 		- This particular stack is called _MEAN stack_ , which consists of MongoDB, Express.js, Angular.js, and Node.js (the runtime environment)
 - # ES6 Basics
-  collapsed:: true
+  background-color:: yellow
 	- Another name for ES6 is ES2015.
 	- Since ES6, the ECMAScript specification has moved to a yearly release cadence, and versions of the language—ES2016, ES2017, ES2018, ES2019, and ES2020—are now identified by year of release.
 	- The core JavaScript language defines a minimal API for working with numbers, text, arrays, sets, maps, and so on, but does not include any input or output functionality. Input and output (as well as more sophisticated features, such as networking, storage, and graphics) are the responsibility of the _“host environment”_ within which JavaScript is embedded.
@@ -50,31 +54,29 @@
 	  * Good tutorial https://babeljs.io/docs/en/learn
 	  * MDN documentation https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
 	- ## Types, Values, Variables
-	  collapsed:: true
+	  background-color:: red
 		- JavaScript types can be divided into two categories: _primitive types_ and _object types_.
 		- Primitive Types
 			- JavaScript’s primitive types include numbers, strings, and booleans
 			- The special JavaScript values `null` and `undefined` are primitive values, but they are not numbers, strings, or booleans.
 			- Primitives are immutable
 		- ### Object Types
-		  collapsed:: true
+		  background-color:: pink
 			- __Object__: Any JavaScript value that is not a number, a string, a boolean, a symbol, null, or undefined is an __object__. An object (that is, a member of the type object) is a collection of properties where each property has a name and a value (either a primitive value or another object). One very special object is the __global object__.
 				- Objects are sometimes called _reference types_ to distinguish them from JavaScript’s primitive types
 			- __Array__
-			  collapsed:: true
 				- The language also defines a special kind of object, known as an __array__, that represents an ordered collection of numbered values.
 				- Object types are mutable.
 			- __Variables__
-			  collapsed:: true
 				- Constants are declared with `const` and variables are declared with `let` (or with `var` in older JavaScript code).
 		- ### Numbers
-		  collapsed:: true
+		  background-color:: pink
 			- Arithmetic in JavaScript does not raise errors in cases of overflow, underflow, or division by zero. When the result of a numeric operation is larger than the largest representable number (overflow), the result is a special infinity value, `Infinity`. Similarly, when the absolute value of a negative value becomes larger than the absolute value of the largest representable negative number, the result is negative infinity, `-Infinity`.
 			- Underflow occurs when the result of a numeric operation is closer to zero than the smallest representable number. In this case, JavaScript returns 0. If underflow occurs from a negative number, JavaScript returns a special value known as _“negative zero.”_
 			- Division by zero is not an error in JavaScript: it simply returns infinity or negative infinity. There is one exception, however: zero divided by zero does not have a well-defined value, and the result of this operation is the special not-a-number value, NaN. NaN also arises if you attempt to divide infinity by infinity, take the square root of a negative number, or use arithmetic operators with non-numeric operands that cannot be converted to numbers.
 			- BigInt literals are written as a string of digits followed by a lowercase letter `n`. e.g., `1234n`
 		- ### Text
-		  collapsed:: true
+		  background-color:: pink
 			- JavaScript uses the UTF-16 encoding of the Unicode character set, and JavaScript strings are sequences of unsigned 16-bit values.
 			- String literals - enclosed within a matched pair of single or double quotes or backticks (' or " or `
 			- As of ES5, however, you can break a string literal across multiple lines by ending each line but the last with a backslash (\)
@@ -92,7 +94,7 @@
 				  is included literally in this string`
 				  ```
 		- ### Template Literals
-		  collapsed:: true
+		  background-color:: pink
 			- Template literals are string literals with JavaScript expressions in it.
 			- ```js Template literals
 			  let name = "Hans"
@@ -110,7 +112,7 @@
 				  let message = foo`Hello ${name}. It's ${new Date().getHours()} I'm sleepy`;
 				  ```
 		- ### Symbols
-		  collapsed:: true
+		  background-color:: pink
 			- Property names are typically (and until ES6, were exclusively) strings. But in ES6 and later, Symbols can also serve this purpose.
 			- To obtain a Symbol value, you call the `Symbol()` function. This function never returns the same value twice, even when called with the same argument. This means that if you call `Symbol()` to obtain a Symbol value, you can safely use that value as a property name to add a new property to an object and do not need to worry that you might be overwriting an existing property with the same name. Similarly, if you use symbolic property names and do not share those symbols, you can be confident that other modules of code in your program will not accidentally overwrite your properties.
 			  
@@ -142,7 +144,7 @@
 			  Symbol.keyFor(t) // => "shared"
 			  ```
 		- ### Global Object
-		  collapsed:: true
+		  background-color:: pink
 			- The global object is a regular JavaScript object that serves a very important purpose: the properties of this object are the globally defined identifiers that are available to a JavaScript program.
 			- When the JavaScript interpreter starts (or whenever a web browser loads a new page), it creates a new `global` object and gives it an initial set of properties that define:
 				- Global constants like `undefined`, `Infinity`, and `NaN`
@@ -154,13 +156,13 @@
 			- ES2020 finally defines globalThis as the standard way to refer to the global object in any context. As of early 2020, this feature has been implemented by all modern browsers and by Node.
 			- Global object can be referenced as `globalThis`.
 		- ### Scope
-		  collapsed:: true
+		  background-color:: pink
 			- Variables and constants declared with let and const are _block scoped_.
 			- When a declaration appears at the top level, outside of any code blocks, we say it is a _global_ variable.
 				- In Node and in client-side JavaScript modules, the scope of a _global_ variable is the file that it is defined in.
 				- In traditional client-side JavaScript, however, the scope of a _global_ variable is the HTML document in which it is defined. That is: if one `<script>` declares a _global_ variable or constant, that variable or constant is defined in all of the `<script>` elements in that document (or at least all of the scripts that execute after the `let` or `const` statement executes).
 		- ### Hoisting
-		  collapsed:: true
+		  background-color:: pink
 			- One of the most unusual features of `var` declarations is known as hoisting. When a variable is declared with `var`, the declaration is lifted up (or __“hoisted”__) to the top of the enclosing function. The initialization of the variable remains where you wrote it, but the definition of the variable moves to the top of the function. So variables declared with var can be used, without error, anywhere in the enclosing function. If the initialization code has not run yet, then the value of the variable may be undefined, but you won’t get an error if you use the variable before it is initialized. (This can be a source of bugs and is one of the important misfeatures that `let` corrects: if you declare a variable with `let` but attempt to use it before the `let` statement runs, you will get an actual error instead of just seeing an `undefined` value.)
 			- Using var
 				- ```js using var
@@ -179,7 +181,7 @@
 				  console.log(message); // prints hi
 				  ```
 		- ### Destructuring assignment
-		  collapsed:: true
+		  background-color:: pink
 			- ES6 implements a kind of compound declaration and assignment syntax known as _destructuring assignment_.
 			- ```js Destructuring assignment
 			  let [x,y] = [1,2];              // Same as let x=1, y=2
@@ -300,9 +302,8 @@
 				  logEmail(secondperson) // mollis.Duis@ante.co.uk
 				  ```
 	- ## Expressions and Operators
-	  collapsed:: true
+	  background-color:: red
 		- ### Conditional Expressions
-		  collapsed:: true
 			- `expression ?. identifier`
 			- `expression ?.[ expression ]`
 			- In JavaScript, the values `null` and `undefined` are the only two values that do not have properties. In a regular property access expression using `.` or `[],` you get a `TypeError` if the expression on the left evaluates to `null` or `undefined`. You can use `?.` and `?.[]` syntax to guard against errors of this type.
@@ -322,7 +323,6 @@
 					  }
 					  ```
 		- ### Object Creation Expression
-		  collapsed:: true
 			- ```js Object Creation Expression
 			  new Object()
 			  new Point(2,3)
@@ -334,13 +334,11 @@
 			  
 			  ```
 		- ### eval()
-		  collapsed:: true
 			- `eval()` expects one argument. If you pass any value other than a string, it simply returns that value.
 			- If you pass a string, it attempts to parse the string as JavaScript code, throwing a `SyntaxError` if it fails.
 			- If it successfully parses the string, then it evaluates the code and returns the value of the last expression or statement in the string or undefined if the last expression or statement had no value. If the evaluated string throws an exception, that exception propogates from the call to `eval()`.
 			- The key thing about `eval()` (when invoked like this) is that it uses the variable environment of the code that calls it. That is, it looks up the values of variables and defines new variables and functions in the same way that local code does. If a function defines a local variable `x` and then calls `eval("x")`, it will obtain the value of the local variable. If it calls `eval("x=1")`, it changes the value of the local variable.
 		- ### First-Defined (??) operator
-		  collapsed:: true
 			- The first-defined operator `??` evaluates to its first defined operand: if its left operand is not null and not undefined, it returns that value. Otherwise, it returns the value of the right operand.
 			  
 			  ```js First-defined operator
@@ -350,9 +348,8 @@
 			  (a !== null && a !== undefined) ? a : b
 			  ```
 	- ## Statements
-	  collapsed:: true
+	  background-color:: red
 		- ### for/of
-		  collapsed:: true
 			- The for/of loop works with iterable objects
 			- ```js for/of
 			  let data = [1, 2, 3, 4, 5, 6, 7, 8, 9], sum = 0;
@@ -362,12 +359,10 @@
 			  console.log(sum);       // => 45
 			  ```
 		- ### for/in
-		  collapsed:: true
 			- A for/in loop looks a lot like a for/of loop, with the `of` keyword changed to `in`. While a for/of loop requires an __iterable object__ after the `of`, a for/in loop works with __any object__ after the in.
 			- The for/of loop is new in ES6, but for/in has been part of JavaScript since the very beginning (which is why it has the more natural sounding syntax). Attempting to use for/of on a regular object throws a `TypeError` at runtime.
 			- The for/in loop does not actually enumerate all properties of an object. It does not enumerate properties whose names are symbols. And of the properties whose names are strings, it only loops over the enumerable properties.
 		- ### try-catch
-		  collapsed:: true
 			- Occasionally you may find yourself using a catch clause solely to detect and stop the propagation of an exception, even though you do not care about the type or the value of the exception. In ES2019 and later, you can omit the parentheses and the identifier and use the catch keyword bare in this case. Here is an example:
 			  
 			  ```js try-catch
@@ -382,11 +377,9 @@
 			  }
 			  ```
 		- ### function
-		  collapsed:: true
 			- The `function` declarations in any block of JavaScript code are processed before that code runs, and the function names are bound to the function objects throughout the block. We say that function declarations are __“hoisted”__ because it is as if they had all been moved up to the top of whatever scope they are defined within. The upshot is that code that invokes a function can exist in your program before the code that declares the function.
 			- Unlike functions, `class` declarations are not hoisted, and you cannot use a class declared this way in code that appears before the declaration.
 		- ### import/export
-		  collapsed:: true
 			- The `import` and `export` declarations are used together to make values defined in one module of JavaScript code available in another module.
 			- A module is a file of JavaScript code with its own global namespace, completely independent of all other modules. The only way that a value (such as `function` or `class`) defined in one module can be used in another module is if the defining module exports it with export and the using module imports it with import.
 			- The export directive has more variants than the import directive does. Here is one of them:
@@ -467,7 +460,7 @@
 			  import * as _ from 'lodash';
 			  ```
 	- ## Objects
-	  collapsed:: true
+	  background-color:: red
 		- JavaScript object inherits the properties of another object, known as its **“prototype.”** The methods of an object are typically inherited properties, and this **“prototypal inheritance”** is a key feature of JavaScript.
 		- It is sometimes important to be able to distinguish between properties defined directly on an object and those that are inherited from a prototype object. JavaScript uses the term _own property_ to refer to non-inherited properties.
 		- ### Property Attributes
@@ -477,7 +470,6 @@
 				- The _configurable_ attribute specifies whether the property can be deleted and whether its attributes can be altered.
 		- Many of JavaScript’s built-in objects have properties that are read-only, non-enumerable, or non-configurable. By default, however, all properties of the objects you create are writable, enumerable, and configurable.
 		- ### Creating Objects
-		  collapsed:: true
 			- Objects can be created with object literals, with the `new` keyword, and with the `Object.create()` function.
 			- **Object literal**:  is a comma-separated list of colon-separated *name:value* pairs, enclosed within curly braces. 
 			  
@@ -487,7 +479,6 @@
 			  let p2 = { x: point.x, y: point.y+1 };   // More complex values
 			  ```
 		- ### Prototypes
-		  collapsed:: true
 			- Almost every JavaScript object has a second JavaScript object associated with it. This second object is known as a **prototype**, and the first object inherits properties from the prototype.
 			- **Object.prototype**
 				- All objects created by object literals have the same prototype object, and we can refer to this prototype object in JavaScript code as `Object.prototype`.
@@ -501,7 +492,6 @@
 			- Other prototype objects are normal objects that do have a prototype.
 			- Most built-in constructors (and most user-defined constructors) have a prototype that inherits from `Object.prototype`. For example, `Date.prototype` inherits properties from `Object.prototype`, so a `Date` object created by `new Date()` inherits properties from both `Date.prototype` and `Object.prototype`. This linked series of prototype objects is known as a **prototype chain**.
 		- ### Object.create()
-		  collapsed:: true
 			- `Object.create()` creates a new object, using its first argument as the prototype of that object
 			- You can pass `null` to create a new object that does not have a prototype, but if you do this, the newly created object will not inherit anything, not even basic methods like `toString()`
 			  
@@ -522,7 +512,6 @@
 			  library.function(Object.create(o));  // Guard against accidental modifications
 			  ```
 		- ### Inheritance
-		  collapsed:: true
 			- Suppose you query the property `x` in the object `o`.
 			- If `o` does not have an own property with that name, the prototype object of `o` is queried for the property `x`.
 			- If the prototype object does not have an own property by that name, but has a prototype itself, the query is performed on the prototype of the prototype.
@@ -541,7 +530,6 @@
 			  ```
 			- The fact that inheritance occurs when querying properties but not when setting them is a key feature of JavaScript because it allows us to selectively override inherited properties.
 		- ### Deleting Properties
-		  collapsed:: true
 			- `delete` does not remove properties that have a _configurable_ attribute of `false`.
 			- Certain properties of built-in objects are non-configurable, as are properties of the `global` object created by variable declaration and function declaration.
 			- In _strict_ mode, attempting to delete a non-configurable property causes a `TypeError`.
@@ -552,7 +540,6 @@
 				  delete x                // => true: this property can be deleted
 				  ```
 		- ### valueOf() method
-		  collapsed:: true
 			- The `valueOf()` method is much like the `toString()` method, but it is called when JavaScript needs to convert an object to some primitive type other than a string — typically, a number. JavaScript calls this method automatically if an object is used in a context where a primitive value is required.
 				- ```js valueOf()
 				  let point = {
@@ -567,7 +554,6 @@
 				  point < 6      // => true
 				  ```
 		- ### Spread operator
-		  collapsed:: true
 			- In ES2018 and later, you can copy the properties of an existing object into a new object using the “spread operator” `...` inside an object literal:
 				- ```js Spread operator
 				  let position = { x: 0, y: 0 };
@@ -579,7 +565,6 @@
 			- Performance
 				- Finally, it is worth noting that, although the spread operator is just three little dots in your code, it can represent a substantial amount of work to the JavaScript interpreter. If an object has n properties, the process of spreading those properties into another object is likely to be an `O(n)` operation. This means that if you find yourself using `...` within a loop or recursive function as a way to accumulate data into one large object, you may be writing an inefficient `O(n^2)` algorithm that will not scale well as n gets larger.
 		- ### Shorthand methods
-		  collapsed:: true
 			- When a function is defined as a property of an object, we call that function a method.
 			- Old Syntax
 				- ```js old syntax
@@ -599,7 +584,6 @@
 				  ```
 			- Both forms of the code are equivalent: both add a property named _area_ to the object literal, and both set the value of that property to the specified function. The shorthand syntax makes it clearer that `area()` is a method and not a data property like side.
 		- ### Getters and Setters
-		  collapsed:: true
 			- ```js Getters/Setters
 			  let o = {
 			  // An ordinary data property
@@ -613,7 +597,7 @@
 			  
 			  Other reasons to use accessor properties include sanity checking of property writes and returning different values on each property read:
 	- ## Arrays
-	  collapsed:: true
+	  background-color:: red
 		- Arrays inherit properties from `Array.prototype`, which defines a rich set of array manipulation methods
 		- ES6 introduces a set of new array classes known collectively as *“typed arrays.”* Unlike regular JavaScript arrays, typed arrays have a fixed length and a fixed numeric element type. They offer high performance and byte-level access to binary data.
 		  
@@ -621,7 +605,6 @@
 		  let count = [1,,3]; // Elements at indexes 0 and 2. No element at index 1
 		  ```
 		- ### Spread operator
-		  collapsed:: true
 			- In ES6 and later, you can use the “spread operator,” `...`, to include the elements of one array within an array literal:
 			- ```js
 			  let a = [1, 2, 3];
@@ -645,7 +628,6 @@
 			  let copy = Array.from(original);
 			  ```
 		- ### Sparse Arrays
-		  collapsed:: true
 			- A sparse array is one in which the elements do not have contiguous indexes starting at 0.
 			- Normally, the `length` property of an array specifies the number of elements in the array.
 			- If the array is sparse, the value of the `length` property is greater than the number of elements.
@@ -659,7 +641,6 @@
 			  a[1000] = 0;          // Assignment adds one element but sets length to 1001.
 			  ```
 		- ### Array length
-		  collapsed:: true
 			- if you set the `length` property to a non-negative integer `n` smaller than its current value, any array elements whose index is greater than or equal to `n` are deleted from the array:
 			- ```js
 			  a = [1,2,3,4,5];     // Start with a 5-element array.
@@ -668,14 +649,12 @@
 			  a.length = 5;        // Length is 5, but no elements, like new Array(5)
 			  ```
 		- ### Adding/Deleting Array Elements
-		  collapsed:: true
 			- ```js
 			  let a = [];           // Start with an empty array
 			  a.push("zero");       // Add a value at the end.  a = ["zero"]
 			  a.push("one", "two"); // Add two more values.  a = ["zero", "one", "two"]
 			  ```
 		- ### slice & splice
-		  collapsed:: true
 			- The `slice()` method returns a slice, or subarray, of the specified array.
 				- ```js slice
 				  let a = [1,2,3,4,5];
@@ -692,14 +671,13 @@
 				  a.splice(1,1)  // => [4]; a is now [1]
 				  ```
 		- ### Array-like Objects
-		  collapsed:: true
 			- JavaScript arrays have some special features that other objects do not have:
 			- The `length` property is automatically updated as new elements are added to the list.
 			- Setting `length` to a smaller value truncates the array.
 			- Arrays inherit useful methods from `Array.prototype`.
 			- `Array.isArray()` returns `true` for arrays.
 	- ## Functions
-	  collapsed:: true
+	  background-color:: red
 		- __Function vs. Method__: If a function is assigned to a property of an object, it is known as a method of that object. When a function is invoked on or through an object, that object is the invocation context or `this` value for the function.
 		- __Closures__: JavaScript function definitions can be nested within other functions, and they have access to any variables that are in scope where they are defined. This means that JavaScript functions are _closures_, and it enables important and powerful programming techniques.
 		- __Generators__: `function*` defines generator functions
@@ -707,10 +685,10 @@
 		- Declaring a Function
 			- Using `Function()` constructor.
 		- ### Hoisting
-		  collapsed:: true
+		  background-color:: pink
 			- Function declaration statements are __“hoisted”__ to the top of the enclosing script, function, or block so that functions defined in this way may be invoked from code that appears before the definition. Another way to say this is that all of the functions declared in a block of JavaScript code will be defined throughout that block, and they will be defined before the JavaScript interpreter begins to execute any of the code in that block.
 		- ### Arrow Functions
-		  collapsed:: true
+		  background-color:: pink
 			- Arrow functions are most commonly used when you want to pass an unnamed function as an argument to another function.
 			- _Diff b/w Arrow functions and other functions_
 				- they inherit the value of the `this` keyword from the environment in which they are defined rather than defining their own invocation context as functions defined in other ways do.
@@ -722,7 +700,7 @@
 				  let arrowGreeting = (message,name) => message + name;
 				  ```
 		- ### Default values in function parameters
-		  collapsed:: true
+		  background-color:: pink
 			- ```js example of default value in parameter
 			  function greet(greeting, name = "John"){
 			  console.log(greeting + ", " + name);
@@ -743,7 +721,7 @@
 			  let receive = (complete = () => console.log("complete")) => complete();
 			  ```
 		- ### Invoking Functions
-		  collapsed:: true
+		  background-color:: pink
 			- JS functions can be invoked in 5 ways:
 				- 1. __As functions__ e.g., `factorial(3)`
 				- 2. __As methods__ e.g., `obj.method()`
@@ -760,9 +738,9 @@
 				- in strict mode, however, the invocation context is `undefined`. Note that functions defined using the arrow syntax behave differently: they always inherit the `this` value that is in effect where they are defined.
 				- > Note that `this` is a keyword, not a variable or property name. JavaScript syntax does not allow you to assign a value to `this`.
 		- ### Function Arguments and Parameters
+		  background-color:: pink
 		  collapsed:: true
 			- __Parameter defaults__ enable us to write functions that can be invoked with fewer arguments than parameters.
-			  collapsed:: true
 				- ```js Parameter defaults
 				  // This function returns an object representing a rectangle's dimensions.
 				  // If only width is supplied, make it twice as high as it is wide.
@@ -770,7 +748,6 @@
 				  rectangle(1)  // => { width: 1, height: 2 }
 				  ```
 			- __Rest parameters__
-			  collapsed:: true
 				- ```js Rest parameters or varargs
 				  function max(first=-Infinity, ...rest) {
 				  xxx
@@ -789,7 +766,6 @@
 					  ```
 				- enable the opposite of Parameter defaults: they allow us to write functions that can be invoked with arbitrarily more arguments than parameters.
 			- __Shorthand properties__
-			  collapsed:: true
 				- ```js
 				  let firstName = "John";
 				  let lastName = "Lindquist";
@@ -826,7 +802,6 @@
 					  console.log(car.go()); // "vroom"
 					  ```
 			- __Spread operator__
-			  collapsed:: true
 				- The spread operator allows you to "explode" an array into its individual elements.
 					- ```js
 					  console.log([ 1, 2, 3]); // [1, 2, 3]
@@ -853,14 +828,18 @@
 					  
 					  addThreeThings(...first);
 					  ```
+	- ## Asynchronous Programming
+	  background-color:: red
+		- ### Callback
+		  background-color:: pink
+			-
 		- ### Promises
-		  collapsed:: true
+		  background-color:: pink
 			- Promises in ES6 are very similar to those of Angular's **$q service**.
 			- The callback inside of a promise takes two arguments, `resolve` and `reject`.
 			- Promises can either be resolved or rejected. When you resolve a promise, the `.then()` will fire, and when you reject a promise, the `.catch()` will fire instead. Usually, inside of your promise, you have some sort of logic that decides whether you're going to reject or resolve the promise.
 			- The `.then()` method callback also takes an argument. This one we'll call `data`. The value for `data` is the argument that is passed into the `resolve` method.
 			- Alternatively, in the `.catch()` method, we also have a callback function as the argument, but here, what will be passed back is the information that's supplied into the `reject` method of our promise.
-			  collapsed:: true
 				- ```js Promise example
 				  let d = new Promise((resolve, reject) => {
 				  if (true) {
@@ -876,7 +855,6 @@
 				  ```
 			- Promises are useful for a lot of things. Most importantly, they allow you to perform **asynchronous operations** in a **synchronous-like manner**
 			- For example, let's add a 2 seconds timeout in the above code
-			  collapsed:: true
 				- ```js Promise with delay
 				  let d = new Promise((resolve, reject) => {
 				  setTimeout(() => {
@@ -889,21 +867,18 @@
 				  });
 				  ```
 			- There is a variation of `.then()` method which takes error function as a 2nd parameter. But from readability perspective, it is better to keep them separate.
-			  collapsed:: true
 				- ```js
 				  d.then ((data) => console.log('success : ', data), (error) => {
 				  console.error('new error msg: ', error);
 				  });
 				  ```
 			- Several `.then` methods can be chained together and have them called in succession. In this case, once the `resolve` is called, both _.thens_ will fire one after another.
-			  collapsed:: true
 				- ```js chained then methods
 				  d.then((data) => console.log('success : ', data))
 				  .then((data) => console.log('success 2 : ', data)) //prints "success 2 : undefined"
 				  .catch((error) => console.error('error : ', error));
 				  ```
 			- As you notice, the 2nd `then` input parameter `data` is `undefined`. This is because the `data` that's available in the callback of the second `then` is not what is originally passed into the `resolve` but rather what is returned from the 1st `.then` method.
-			  collapsed:: true
 				- ```js chained then version 2
 				  d.then((data) => {
 				    console.log('success : ', data);
@@ -913,7 +888,9 @@
 				  .catch((error) => console.error('error : ', error));
 				  ```
 - # References
+  background-color:: yellow
 	- Websites
 		- [State of JavaScript 2016](https://www.infoq.com/articles/state-of-javascript-2016?utm_source=twitter&utm_medium=link&utm_campaign=calendar)
+		- https://javascript.info/
 	- Book
 		- OReilly JavaScript - The Definitive Guide - David Flanagan

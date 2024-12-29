@@ -1,23 +1,34 @@
 # DOM
+background-color:: yellow
 	- DOM is an API.
 	- DOM is not the source HTML or the code you write.
 	- DOM is not what you see in the browser's DevTools
 	- DOM tree can have 12 different types of nodes
-	  collapsed:: true
 		- Element
+		  logseq.order-list-type:: number
 		- Text
+		  logseq.order-list-type:: number
 		- Attr
+		  logseq.order-list-type:: number
 		- CDATASection
+		  logseq.order-list-type:: number
 		- EntityReference
+		  logseq.order-list-type:: number
 		- Entity
+		  logseq.order-list-type:: number
 		- Comment
+		  logseq.order-list-type:: number
 		- ProcessingInstruction
+		  logseq.order-list-type:: number
 		- Document
+		  logseq.order-list-type:: number
 		- Notation
+		  logseq.order-list-type:: number
 		- DocumentFragment
+		  logseq.order-list-type:: number
 		- DocumentType
-	- Javascript 
-	  collapsed:: true
+		  logseq.order-list-type:: number
+	- Javascript
 		- can interact with DOM and manipulate the DOM.
 		- can change, add, or remove HTML elements and attributes
 		- can change CSS styles
@@ -31,11 +42,10 @@
 			  button.removeAttribute('onclick');
 			  ```
 	- ## DOM Events
-	  collapsed:: true
+	  background-color:: red
 		- > DOM Events Visualizer - [https://domevents.dev](https://domevents.dev)
 		- > Events Reference: https://developer.mozilla.org/en-US/docs/Web/events
 		- Event
-		  collapsed:: true
 			- An event is a signal that something has occurred in the browser.
 			- An event is a message that is dispatched to event targets.
 			- Types of events
@@ -43,23 +53,19 @@
 				- *system events*, such as `DOMContentLoaded`.
 			- Events are dispatched to event targets.
 		- Event Target
-		  collapsed:: true
 			- An event target is an object that implements the `EventTarget` interface. e.g., it is implemented by a number of foundational objects in the browser, such as `window`, `document`, `element` and `XMLHttpRequest`.
 			- An event target can be the target of events and can have event listeners added and removed from them
 			- When an object implements the `EventTarget` interface, it allows that object to be the target of events as well as enabling other pieces of code to listen for particular events that hit that object.
 			- in the HTML code below, parent div, child and button are few event targets.
-		- Event Listener 
-		  collapsed:: true
+		- Event Listener
 			- Code that is registered to listen for events that hit an event target is known as an **event listener**. The term **event handler** is a name for a particular *method* of adding an event listener. In practice, it is common to see the term event handler used interchangeably with the term event listener.
 			- Event targets can exist as their own objects, and they can also participate in a tree, such as when elements participate in a document.
 		- Event Phases
-		  collapsed:: true
 			- Generally, events flow through event targets in three separate phases.
 			- (1) *Capture Phase*:  In the first phase, the event travels down through the event targets towards the target of the event. This is known as the **capture phase**.
 			- (2) *Target Phase*: When the event hits the event target, it then travels through the target. This is the second phase known as the **target phase**.
 			- (3) *Bubble Phase*: After that's completed, then the event goes back up to the root event target in the **bubble phase**.
 		- Event Options
-		  collapsed:: true
 			- An event's behaviour can be configured
 				- **bubbles**: Conditionally allow the  Bubble phase.
 				- **cancelable**: Conditionally allow an event to be canceled. Canceling an event prevents the events default behavior.
@@ -88,13 +94,11 @@
 				  </html>
 				  ```
 	- ## DOM Zero or DOM-0 Event Handlers
-	  collapsed:: true
+	  background-color:: red
 		- ### HTML Attribute Event Handlers
-		  collapsed:: true
 			- It is possible to write code in HTML attributes that will be executed when a matching event occurs.
 			- Different element types allow different event handler attributes to be set. e.g., `Window`, `document`, and all HTML elements implement the `GlobalEventHandlers` mixin which provides a common set of HTML event handler attributes like `onClick` and `onLoad`.
 			- **HTML event handler attributes**
-			  collapsed:: true
 				- are a way to define an `EventListener` in the *bubble phase* of an event.
 				- You CANNOT use these types of `EventListener` bindings to listen to events in the capture phase of an event.
 				- This style of event binding is also known as a **DOM-zero event handler** and is referred to as *event handler content attributes* in formal specifications.
@@ -108,7 +112,6 @@
 					  ```
 				- Within HTML event handler attributes, you can execute any function body you like. However, it is common to execute a named function that you have defined somewhere else.
 				- In order for this code to work, the function `myOnClick()` must be accessible on the **global scope**. If not found on the global scope, then a `ReferenceError` will be thrown when your attribute string is executed.
-				  collapsed:: true
 					- ```html Calling a named function
 					  <button onclick="myOnClick();" type="button"/>
 					  ```
@@ -120,12 +123,11 @@
 					  }
 					  ```
 		- ### Global functions and minifiers
-		  collapsed:: true
+		  background-color:: pink
 			- However, a bug can occur with this approach of creating global functions when you *minify* your code. Code minifiers will commonly mangle function names to ensure the smallest amount of code is sent over the wire to your users. Unfortunately, this can break your attempts to use a named function in the global scope.
 			- In this case, `myOnClick()` in the JS file can be mangled to say `a()`, however, the html still calls `myOnClick()`, which no longer exists. Because of the minifier, I've broken the link between my html and my JavaScript file.
 			- Modern minifiers commonly won't mangle root level function names. Not mangling root level function names is not a guarantee for every minifier that will ever exist. Also, you might change an option for a minifier that can result in top-level function names being mangled without you realizing.
-			- **Safer option** 
-			  collapsed:: true
+			- **Safer option**
 				- A safer option for defining functions in the global scope is to add a named property to the global `window` object directly.
 				- Minifiers should not minify object properties. You can sidestep the function name mangling concern by using this approach.
 				- Attaching functions to the window directly also lets you write your global functions inside of nested scopes, which is pretty commonplace in module systems.
@@ -150,13 +152,11 @@
 			- *Forgetting to call the function* - Another gotcha is forgetting to actually execute a global function that you're trying to call. While this code may look right, it's not actually executing the `myOnClick` function. e.g., `<button onclick="myOnClick" type="button"/>`
 			- *Only a single event handler allowed* - you can only add a single event handler attribute of a particular event type. We can only have one `onClick` handler to listen for click events, which sucks at scale.
 		- ### Object Property Event Handlers
-		  collapsed:: true
-			- 2 representations of HTML attributes: 
-			  collapsed:: true
+		  background-color:: pink
+			- 2 representations of HTML attributes:
 				- One representation is the *HTML attribute* itself and they are named **content attributes**.
 				- The other representation of these HTML attributes is *properties* on corresponding JavaScript DOM objects. These object properties are named **IDL attributes** or *Interface Description Language* attributes.
 			- Event handler attributes, such as `onclick`, also have a corresponding `onclick` object property.
-			  collapsed:: true
 				- ```js Example
 				  const button = document.querySelector('button');
 				  
@@ -164,14 +164,12 @@
 				    console.log.(this, event);
 				  }
 				  ```
-			- Object property event handlers 
-			  collapsed:: true
+			- Object property event handlers
 				- are a way to define an event listener in the *bubble phase* of an event.
 				- are also classified as *DOM zero event handlers*.
 				- An object property event handler function is provided with the `event` as the first and only argument to the function.
 				- Like HTML attribute event handlers, you cannot use this type of binding to listen to events in the capture phase.
 			- You can only use one binding mechanism - either HTML attribute event handler or the Object property event handler. Setting both will override one another.
-			  collapsed:: true
 				- ```html
 				  <button onclick="console.log('html attribute');" type="button">
 				  Call to action
@@ -186,14 +184,13 @@
 				  }
 				  ```
 	- ## DOM2 or DOM2+ Event Listeners
-	  collapsed:: true
+	  background-color:: red
 		- Event targets such as `elements` have an `addEventListener` API, which allows you to add multiple event listeners to a single event target, as well as giving you a lot of control over the event listener binding.
 		- Event listeners created with `addEventListener` are also known as **DOM2 event listeners** or **DOM2+ event listeners**.
 		- Pros
 			- multiple event listeners can be added for a single event like 'onclick'
 			- Gives a lot of control over the event listener binding
 		- The best practice is to always use `addEventListener` instead of HTML attribute or object property event listeners, since some events don't support them. e.g., `DOMContentLoaded`
-		  collapsed:: true
 			- ```js addEventListener example
 			  const button = document.querySelector('button');
 			  
@@ -226,7 +223,6 @@
 			  );
 			  ```
 		- **Remove Event Listener**
-		  collapsed:: true
 			- To remove an event listener from the target, the following 4 values must be correct: target, event type, listener, capture value.
 			- The same reference to listener function must be passed to the `removeEventListener` method. Passing a similar but a different function won't work. 
 			  It won't throw an error, but it won't remove either.
@@ -241,7 +237,7 @@
 			  );
 			  ```
 	- ## Event Object
-	  collapsed:: true
+	  background-color:: red
 		- Event handlers and event listeners are provided with an event object.
 		- The event constructor has four constants representing the different states that an event can be in.
 		  
@@ -258,7 +254,6 @@
 			- Every HTML attribute event handler, element property event handler, and event listener on the event path will be provided with an event object that shares the exact same reference.
 			- The shared event object will mutate as it flows through event listeners and event targets, as well as in response to side effects such as canceling an event.
 		- **Event Object Properties**
-		  collapsed:: true
 			- `event.eventPhase`  - which matches the phase that the event is currently in. Return an integer which maps to the Event states above.
 			- `event.eventType` - which matches the event type that the event listener was added for. e.g., 'type: click'
 			- `event.target` - points at the event target in which the event is occurring and where the event is traveling to.
@@ -266,7 +261,6 @@
 				- To understand this better, take a look at the example below. A button inside nested div elements called parent and child. The `eventlistener` is added to parent.
 				- When the button is clicked, `event.target` returns the button, and the `currentTarget` return `parent`, because that's what this event listener will be bound to.
 				- When the parent element is clicked, both the `target` and `currentTarget` return parent.
-				  collapsed:: true
 					- ```html Example
 					  <div id='parent'>
 					  <h3>Parent element</h3>
@@ -302,11 +296,9 @@
 			- `event.returnValue` - this is the inverse of `defaultPrevented`. false, when an event is canceled and true when an event is not cancelled.
 		- **Event Object Methods**
 			- `event.composedPath()` -  returns an array of event targets that an event will travel through during an event. The returned array starts with the target of the event and then works up the tree of event targets.
-			  collapsed:: true
 				- in the above example, when I click on the button to see the composedPath, I will see that the event started with button. This is in the target phase. Then it's going to go through the bubble phase up to the child, the parent, body, HTML element, document, and finally the window. There doesn't need to be any event listeners on an `eventTarget` for to be included in the event path.
 				- The `composedPath` function or return the same event path regardless of which event target the `eventListener` is added to. In this case, my eventListener is added to the parent element, but the target of the event was the button. The composedPath function will only return the event path when the event is being dispatched. Once the event has finished or if it hasn't been dispatched yet, then composePath will just return an empty array.
 			- **Log Events to console**
-			  collapsed:: true
 				- ```js Console log
 				  function onClick(event){
 				  console.log(event);
@@ -329,7 +321,6 @@
 					  parent.addEventListener('click', onClick, {capture: false});
 					  ```
 	- ## Cancel Events
-	  collapsed:: true
 		- If an event is cancellable, then it can be cancelled by event listeners.
 		- Cancelling an event is a way to opt out of the default behavior associated with an event.
 		- Events have an internal cancelled flag which can be obtained via `event.preventDefault` property. When an event is created, this is set to `false`. If an event is cancelled, then the internal cancelled flag is set to `true`.

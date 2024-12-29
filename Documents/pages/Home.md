@@ -122,7 +122,7 @@ background-color:: yellow
 		  logseq.order-list-type:: number
 		- [[Micro Frontend]]
 		  logseq.order-list-type:: number
-		- [[Web Application Physical Architecture]]
+		- [[React/NextJS]]
 		  logseq.order-list-type:: number
 		- [[Web Analytics]]
 		  logseq.order-list-type:: number
@@ -235,5 +235,7 @@ background-color:: yellow
 	- [[2019 Sep - NYC - Open FinTech Forum - Linux Foundation]]
 	  logseq.order-list-type:: number
 	- [[2020 Feb - NYC - O'Reilly Software Architecture Conference]]
+	  logseq.order-list-type:: number
+	- [[2024 Dec - ClearWater, FL - NoFluffJustStuff]]
 	  logseq.order-list-type:: number
 - {{embed [[Books]]}}

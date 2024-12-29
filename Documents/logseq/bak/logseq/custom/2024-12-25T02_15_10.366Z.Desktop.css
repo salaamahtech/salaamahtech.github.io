@@ -1,6 +1,4 @@
 @import url('https://cdn.jsdelivr.net/gh/mendax1234/logseq-cusgit-theme/custom.css')
 :root {
-	--ls-main-content-max-width: 100%;
-  --ct-text-size: 30px;
-  --ct-line-height: 1.6;
+	--ls-main-content-max-width: 1000px;
 }

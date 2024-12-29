@@ -57,6 +57,7 @@
 		-
 - # LLM - Large Language Models
   background-color:: yellow
+  collapsed:: true
 	- **What is a Language Model?**
 		- Predicting the next word e.g., Gmail, Teams, Google Search, etc.
 		- 3 ingredients to build a successful language model
@@ -136,13 +137,11 @@
 	- Both RAG and fine-tuning are cheaper options. Pre-training is expensive.
 	- ## RAG
 	  background-color:: red
-	  collapsed:: true
 		- RAG (Retrieval Augmented Generation) gives LLM access to external data sources
 		- RAG, simply is modification of your prompt
 		- Examples: Chat with PDF applications, Snapchat, etc.
 	- ## Fine-tuning
 	  background-color:: red
-	  collapsed:: true
 		- Why fine-tune?
 			- To carry out a task that isn't easy to define in a prompt.
 				- e.g., summarize a call center conversation in a certain style or structure
@@ -208,6 +207,82 @@
 	  background-color:: red
 		- ### CREATE framework
 			- ![image.png](../assets/image_1702246667115_0.png)
+- # Vector Databases
+  background-color:: yellow
+	- ## Overview
+	  background-color:: red
+		- **Difference between Traditional and Vector Databases**
+		  collapsed:: true
+			- https://www.singlestore.com/blog/a-complete-guide-to-vector-databases/
+			- | | **Data Type**| **Structure**|  **Optimized for**| **Search Method**| 
+			  | **Traditional DB** | Scalar | Row/Columns | Transactional Data | SQL Queries (Lexical search)|
+			  | **Vector DB** | Vector | Multi-dimensional space| AI & ML apps | Similarity search (Cosine, DOT, Euclidean Distance)|
+			- | | **Traditional DB** | **Vector DB** |
+			  | **Data Type**| Scalar | Vector |
+			  | **Structure**| Rows/Columns| Multi-dimensional space|
+			  |  **Optimized for**| Transactional data | AI & ML apps |
+			  | **Search Method**| SQL Queries (Lexical search) | Similarity search (Cosine, DOT, Euclidean Distance)|
+	- ## Similarity Search
+	  background-color:: red
+		- https://www.pinecone.io/learn/what-is-similarity-search/
+		- ### What is Similarity Search?
+		  background-color:: pink
+		  collapsed:: true
+			- Given a set of vectors and a query vector, finding the most similar items in our set for the query is called Similarity Search. We call this task **nearest neighbor search**.
+			- #### Search Algorithms
+			  background-color:: green
+				- **K Nearest Neighbors or k-NN**: a very popular algorithm to find nearest vectors in a space for a given query vector. The `k` here denotes how many nearest neighbors we want to retrieve.
+				  logseq.order-list-type:: number
+					- Product Quantizers for k-NN - [Part 1](https://mccormickml.com/2017/10/13/product-quantizer-tutorial-part-1/), [Part 2](https://mccormickml.com/2017/10/22/product-quantizer-tutorial-part-2/)
+					- ![knn.webp](../assets/knn_1734323185889_0.webp){:height 595, :width 413}
+				- **Approximate Nearest Neighbors or ANN**: To reduce the computation complexity added by an exhaustive search like kNN we can make use of approximate neighbor search.
+				  logseq.order-list-type:: number
+		- **Diff b/w Lexical and Semantic Search?**
+		  collapsed:: true
+			- **Lexical Search**: Finding similar items based on fixed numeric criteria is very straightforward using a query language in traditional databases. e.g., finding employees in a database within a fixed salary range.
+			- **Semantic Search**
+				- Example: “*Which objects in our inventory are similar to what a user searched for?*”, "*a user can search for something generic like “shoes”,“black shoes” or something more precise like “Nike AF-1 LV8”*"
+				- To handle such queries we need a representation that captures the deeper **conceptual meaning** of the objects. With similarity search, we can work with semantic representations (as vector embeddings) of our data and find similar items fast.
+				- When we represent images or pieces of text as vector embeddings, their semantic similarity is represented by how close their vectors are in the vector space. Hence, what we want to look at is the distance between vectors of the objects
+		- ### Semantic Search Methods
+		  background-color:: pink
+			- [Importance of Distance Metrics in Machine Learning Modelling](https://towardsdatascience.com/importance-of-distance-metrics-in-machine-learning-modelling-e51395ffe60d)
+			- We can calculate the distance between these vectors in the vectors space according to the distance metric that fits our problem the best. Some of the commonly used distance metrics in ML are Euclidean, Manhattan, Cosine, and Chebyshev.
+			- ![vector_search.webp](../assets/vector_search_1734302770143_0.webp){:height 654, :width 644}
+			- **Cosine Similarity**
+				- $cos \theta = 1$ means two vectors are identical
+				- $cos \theta = 0$ means two vectors are orthogonal
+			- **DOT Product**
+			- **Manhattan & Euclidean Distance**
+				- L1 Distance Similarity - Manhattan Distance
+				- L2 Distance Similarity - Euclidean Distance
+				- Manhattan distance is like walking around the blocks to reach from A to B. Euclidean distance is like a crow's fly between A to B.
+				- ![manhattan_distance.jpeg](../assets/manhattan_distance_1734300738046_0.jpeg)
+	- ## Vector Compressions
+	  background-color:: red
+		- **Scalar Quantization**
+		- **Product Quantization**
+			- PQ approximates the distance/similarity calculation. PQ achieves this approximated similarity operation by compressing the vectors themselves, which consists of three steps.
+				- We split the original vector into several subvectors.
+				  logseq.order-list-type:: number
+				- For each set of subvectors, we perform a clustering operation — creating multiple centroids for each sub-vector set.
+				  logseq.order-list-type:: number
+				- In our vector of sub-vectors, we replace each sub-vector with the ID of it’s nearest set-specific centroid.
+				  logseq.order-list-type:: number
+			- ![pq.webp](../assets/pq_1734326171146_0.webp){:height 531, :width 666}
+	- ## Indexing Methods
+	  background-color:: red
+		- k-Dimensional Tree Indexing
+			- nearest vector search
+		- Inverted File Indexing
+		- HNSW (Hierarchical Navigable Small Worlds)
+			- https://www.pinecone.io/learn/series/faiss/hnsw/
+	- ## Search Tools
+	  background-color:: red
+		- [Faiss - Facebook AI Similarity Search](https://www.pinecone.io/learn/series/faiss/faiss-tutorial/) - a library developed by Facebook
+	- ## List of Popular Vector Databases
+	  background-color:: red
+		- Pinecone
 - # Appendix
   background-color:: yellow
   collapsed:: true
@@ -226,6 +301,7 @@
 	-
 - # Links
   background-color:: yellow
+  collapsed:: true
 	- https://machinelearningmastery.com/what-are-large-language-models/
 	- https://towardsai.net/p/machine-learning/introduction-to-neural-networks-and-their-key-elements-part-c-activation-functions-layers-ea8c915a9d9
 	- https://lifearchitect.ai/
@@ -254,6 +330,8 @@
 		- Google Colab
 		- Google NotebookLM
 - # References
+  background-color:: yellow
+  collapsed:: true
 	- Books
 		- Packt's Introduction to Transformers for NLP: With the Hugging Face Library and Models to Solve Problems - Shashank Mohan Jain
 		- OReilly's Hands-On Large Language Models - by Jay Alammar, Maarten Grootendorst 

@@ -5,4 +5,3 @@
 - [[Leadership Concepts]]
 - [[Psychology Concepts]]
 - [[Tech Concepts]]
-- [[ChatGPT]]

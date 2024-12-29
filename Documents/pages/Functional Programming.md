@@ -1,12 +1,13 @@
 # Abstraction
-collapsed:: true
+background-color:: yellow
 	- Object-oriented programming is mostly about abstracting over data, while functional programming is mostly about abstracting over behavior.
 	- ## Declarative vs. Imperative Programming
+	  background-color:: red
 		- Object-oriented programming is primarily imperative, where we tell the computer what to do. E.g., calculating factorial in for loop which involves mutations.
 		- Functional programming is primarily declarative, where we define properties and relations, and let the runtime figure out how to compute what we want. E.g., calculating factorial in a recursive method without any mutations.
 		- Declarative programming is made easier by lazy evaluation, because laziness gives the runtime the opportunity to “understand” all the properties and relations, then determine the optimal way to compute values on demand. Like lazy evaluation, declarative programming is largely incompatible with mutability and functions with side effects.
 - # FP principles & concepts
-  collapsed:: true
+  background-color:: yellow
 	- **Avoiding mutable state**
 		- eases concurrent programming. We still need to handle mutations in a thread-safe way. Software Transactional Memory and the Actor Model give us this safety
 	- **Functions as First-Class Values**
@@ -33,35 +34,35 @@ collapsed:: true
 		- Use currying to construct specific functions from general ones.
 		- Currying is a meta function technique: doing something to the function itself rather than the function results.
 		- Currying acts as a factory (pattern) for functions.
-		  
-		  ```java Example 1
-		  def product = { x, y -> 
-		  println "x = $x, y = $y"
-		  x - y 
-		  }
-		  
-		  def quadrate = product.curry(4)
-		  println quadrate.call(2) 
-		  
-		  //x = 4, y = 2
-		  //8
-		  ```
-		  
-		  ```java Example 2
-		  println product.curry(4).curry(2).call() //same result as above
-		  ```
-		  
-		  
-		  ```java Example 3
-		  def productWithX = product.curry(4)
-		  println productWithX(2) //same result as above
-		  ```
+			- ```java Example 1
+			  def product = { x, y -> 
+			    println "x = $x, y = $y"
+			    x - y 
+			  }
+			  
+			  def quadrate = product.curry(4)
+			  println quadrate.call(2) 
+			  
+			  //x = 4, y = 2
+			  //8
+			  ```
+			  
+			  ```java Example 2
+			  println product.curry(4).curry(2).call() //same result as above
+			  ```
+			  
+			  
+			  ```java Example 3
+			  def productWithX = product.curry(4)
+			  println productWithX(2) //same result as above
+			  ```
 	- **Memoization**
 		- The word memoization was coined by Donald Michie, a British artificial-intelligence researcher, to refer to function-level caching for repeating values.
 		- In order to memoize a function in Groovy, you define it as a closure, then execute the `memoize()` method to return a function whose results will be cached.
 		- Groovy built memoization into its Closure class; other languages implement it differently.
 		- Memoization acts as a flyweight (pattern) for functions.
 - # Data Structures
+  background-color:: yellow
 	- **Filter**
 		- Create a new collection, keeping only the elements for which a filter method returns true. The size of the new collection will be less than or equal to the size of the original collection.
 	- **Map**
@@ -73,33 +74,36 @@ collapsed:: true
 		- Recursion can be avoided by using combinators.
 		- Persistent Data Structures (Software Transactional Memory)
 - # Concurrency Principles
-  collapsed:: true
+  background-color:: yellow
 	- ## The Actor Model
+	  background-color:: red
 		- The Actor model isn’t really a functional approach to concurrency, but it fits our general goal of managing state mutation in principled ways. In the Actor model of concurrency, work is coordinated by message passing between “actors.” Each actor has a queue, sometimes called a mailbox, for incoming messages. The actor processes each message, one at a time.
 	- ## Software Transactional Model (STM)
+	  background-color:: red
 		- Software Transactional Memory (STM) brings transactions to locations in memory that are referenced by variables. STM can’t provide durability, because memory isn’t durable (e.g., if the power is lost), but STM can provide the ACI, atomicity, consistency, and isolation in ACID.
 		- Persistent Data Structures are exactly what STM needs.
 - # Lambdas
+  background-color:: yellow
 	- ## Java 8 Lambda Styles
+	  background-color:: red
 		- ```java
 		  Runnable noArguments = () -> System.out.println("Hello World");
-		  
 		  ActionListener oneArgument = event -> System.out.println("button clicked");
 		  
 		  Runnable multiStatement = () -> {
-		  System.out.print("Hello");
-		  System.out.println(" World");
+		  	System.out.print("Hello");
+		  	System.out.println(" World");
 		  };
 		  
 		  BinaryOperator<Long> add = (x, y) -> x + y;
-		  
 		  BinaryOperator<Long> addExplicit = (Long x, Long y) -> x + y;
 		  ```
 	- ## Concepts
-	  collapsed:: true
+	  background-color:: red
 		- Lambda expression’s type is context dependent and it gets inferred by the compiler.
 		- Lambda expressions capture values, not variables.
 		- ### Lexical Scoping
+		  background-color:: pink
 			- ```java
 			  public static Predicate<String> checkIfStartsWith(final String letter) {
 			  	return name -> name.startsWith(letter);
@@ -108,10 +112,10 @@ collapsed:: true
 			- In `return name -> name.startsWith(letter)`, it’s clear what name is: it’s the parameter passed to this lambda expression. But what’s the variable letter bound to? Since that’s not in the scope of this anonymous function, Java reaches over to the scope of the definition of this lambda expression and finds the variable letter in that scope. This is called lexical scoping. Since this lambda expression closes over the scope of its definition, it’s also referred to as a closure.
 			- Local variables referenced from a lambda expression must be final or effectively final.
 		- ### Data Type Inference
-		  collapsed:: true
+		  background-color:: pink
 			- In the following example, data type of the parameters are inferred by the compiler. If the parameters are inferred, then they are NOT final. In general, modifying parameters is in poor taste and leads to errors, so marking them final is a good practice. - E.g., `friends.forEach(name -> System.out.println(name));`
 		- ### Functional Interface
-		  collapsed:: true
+		  background-color:: pink
 			- A functional interface is an interface with a single abstract method that is used as the type of a lambda expression.
 			- There are some interfaces in Java that have only a single method but aren’t normally meant to be implemented by lambda expressions.For example, they might assume that the object has internal state and be interfaces with a single method only coincidentally. A couple of good examples are `java.lang.Comparable` and `java.io.Closeable`. For an object to be Closeable it must hold an open resource, such as a file handle that needs to be closed at some point in time. Again, the interface being called cannot be a pure function because closing a resource is really another example of mutating state.
 			- For those reasons, all functional interfaces should annotate with `@FunctionalInterface`.
@@ -125,7 +129,7 @@ collapsed:: true
 				  BinaryOperator<T> - input = (T1, T2), output = T3
 				  ```
 		- ### Default Methods
-		  collapsed:: true
+		  background-color:: pink
 			- default methods are designed primarily to allow binary compatible API evolution. It allows API providers to add new methods to interfaces, and clients no longer are forced to implement them.
 			- Can be added only in interfaces, functional or not.
 			- If a class implements 2 interfaces with default methods by the same name, then a compilation error is thrown.
@@ -133,12 +137,12 @@ collapsed:: true
 			- Previously, super acted as a reference to the parent class, but by using the InterfaceName.super variant it’s possible to specify a method from an inherited interface.
 			- Unlike classes, interfaces don’t have instance fields, so default methods can modify their child classes only by calling methods on them.
 			- With default methods, interfaces have now become like abstract classes. The only difference is abstract classes can have state while the interfaces can't.
-			- ***Rules of Default Methods**
+			- **Rules of Default Methods**
 				- 1. Any class wins over any interface. So if there’s a method with a body, or an abstract declaration, in the superclass chain, we can ignore the interfaces completely.
 				- 2. Subtype wins over supertype. If we have a situation in which two interfaces are competing to provide a default method and one interface extends the other, the subclass wins.
 				- 3. No rule 3. If the previous two rules don’t give us the answer, the subclass must either implement the method or declare it abstract.
 		- ### Method References
-		  collapsed:: true
+		  background-color:: pink
 			- ```java
 			  artist -> artist.getName() == Artist::getName
 			  Classname::new - is for call constructors.
@@ -146,7 +150,7 @@ collapsed:: true
 			- The above two statements are one and the same. The standard form is `Classname::methodName`. Remember that even though it’s a method, you don’t need to use brackets because you’re not actually calling the method. You’re providing the equivalent of a lambda expression that can be called in order to call the method.
 			- Method references can refer to static methods, non-static methods and methods with input parameters.
 		- ### Streams
-		  collapsed:: true
+		  background-color:: pink
 			- ```java
 			  allArtists.stream().filter(artist -> artist.isFrom("London")).count();
 			  ```
@@ -157,7 +161,7 @@ collapsed:: true
 			  List<String> collected = Stream.of("a", "b", "hello") .map(string -> string.toUpperCase()) .collect(toList());
 			  ```
 		- ### Data Parallelism
-		  collapsed:: true
+		  background-color:: pink
 			- Data parallelism is a way to split up work to be done on many cores at the same time. In streams framework, we can utilize data parallelism by calling the parallel or parallelStream methods.
 			- Going by horses-pulling-carts analogy, it would be like taking half of the goods inside our cart and putting them into another cart for another horse to pull, with both horses taking an identical route to the destination.
 			- Data parallelism works really well when you want to perform the same operation on a lot of data. The problem needs be decomposed in a way that will work on subsections of the data, and then the answers from each subsection can be composed at the end.
@@ -172,12 +176,14 @@ collapsed:: true
 				- Java 8 introduces default methods and static methods on interfaces. This change means that methods on interfaces can now have bodies and contain code.
 				- As a consequence of these performance overheads, the streams library differentiates between the primitive and boxed versions of some library functions. The mapToLong higher-order function and ToLongFunction, shown in Figure 4-1, are examples of this effort. Only the int, long, and double types have been chosen as the focus of the primitive specialization implementation in Java 8 because the impact is most noticeable in numerical algorithms.
 	- ## Lambdas and Patterns
+	  background-color:: red
 		- Loan Pattern
 		- Execute Around Method - A synchronized block of code, such as synchronized { ... }, is a realization of the _execute around method_ pattern.
 		- Referential transparency
 		- Tail-Call Optimization
-			- The biggest hurdle to using recursion is the risk of stack overflow for problems with large inputs. The brilliant TCO technique can remove that concern. A tail call is a recursive call in which the last operation performed is a call to itself. Java does not directly support TCO at the compiler level, but we can use lambda expressions to implement it in a few lines of code. This is called '**trampoline calls**' and lets enjoy the power of recursion without the concern of blowing up the stack.
+			- The biggest hurdle to using recursion is the risk of stack overflow for problems with large inputs. The brilliant TCO technique can remove that concern. A tail call is a recursive call in which the last operation performed is a call to itself. Java does not directly support TCO at the compiler level, but we can use lambda expressions to implement it in a few lines of code. This is called **trampoline calls** and lets enjoy the power of recursion without the concern of blowing up the stack.
 - # References
+  background-color:: yellow
 	- Functional Programming for Java Developers - Venkat Subramaniam - Pragmatic Programmers
 	- Java 8 Lambdas - O'Reilly
 	- Functional Thinking - by Neal Ford - O'Reilly
